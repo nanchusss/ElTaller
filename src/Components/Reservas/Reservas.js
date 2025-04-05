@@ -1,10 +1,9 @@
 // src/Components/Reservas/Reservas.js
 import React, { useState } from "react";
 import styled from "styled-components";
-// import emailjs from "@emailjs/browser";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 const Section = styled.section`
   background-color: #fff9f0;
@@ -194,6 +193,15 @@ const Button = styled.button`
   }
 `;
 
+const GroupLink = styled(Link)`
+  display: inline-block;
+  margin-top: 2.5rem;
+  color: #5a7263;
+  font-weight: bold;
+  font-size: 1rem;
+  text-decoration: underline;
+`;
+
 const Reservas = () => {
   const [step, setStep] = useState(1);
   const [fecha, setFecha] = useState(null);
@@ -230,6 +238,8 @@ const Reservas = () => {
         Si quieres venir a pintar, te recomendamos reservar tu plaza con
         antelación.
       </SubText>
+
+      <GroupLink to="/Grupal">¿Sois un grupo grande? Haz click aquí</GroupLink>
 
       <CalendarContainer>
         {step === 1 && (
@@ -295,6 +305,8 @@ const Reservas = () => {
               <option value={2}>2 personas</option>
               <option value={3}>3 personas</option>
               <option value={4}>4 personas</option>
+              <option value={5}>5 personas</option>
+              <option value={6}>6 personas</option>
             </Select>
             <Button onClick={() => setStep(4)} style={{ marginTop: "1.5rem" }}>
               Continuar

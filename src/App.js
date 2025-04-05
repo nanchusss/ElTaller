@@ -8,6 +8,7 @@ import Header from "./Components/Header/Header";
 import Contacto from "./Components/Contacto/Contacto";
 import Gracias from "./Components/Gracias/Gracias";
 import GraciasContacto from "./Components/GraciasContacto/GraciasContacto";
+import ReservaGrupal from "./Components/Grupal/Grupal.js";
 
 const App = () => {
   return (
@@ -21,6 +22,7 @@ const App = () => {
           <Route path="/contacto" element={<Contacto />} />
           <Route path="/gracias" element={<Gracias />} />
           <Route path="/GraciasContacto" element={<GraciasContacto />} />
+          <Route path="/Grupal" element={<ReservaGrupal />} />
         </Routes>
         <Footer />
       </Router>
