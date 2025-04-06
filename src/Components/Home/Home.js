@@ -9,6 +9,7 @@ import estanteria from "./Images/imagen3.png";
 import macetas from "./Images/imagen4.png";
 import banner from "./Images/taller interior.png";
 import AsistenteIA from "../Asistente/Asistente";
+import { useTranslation } from "react-i18next";
 
 const Section = styled.section`
   background-color: #fff9f0;
@@ -226,98 +227,68 @@ const HighlightText = styled.p`
 
 const Home = () => {
   const [showChat, setShowChat] = useState(false);
+  const { t } = useTranslation();
 
   return (
     <Section>
-      <Title>El Taller</Title>
-      <SubTitleMini>de Aguaymanto</SubTitleMini>
-      <Subtitle>
-        Un espacio creativo y acogedor en el centro de Granollers. Ven a pintar
-        cerámica, disfrutar de algo rico y compartir una experiencia única.
-      </Subtitle>
-      <CTAButton to="/reservas">Reservar tu plaza</CTAButton>
+      <Title>{t("home.title")}</Title>
+      <SubTitleMini>{t("home.subtitleMini")}</SubTitleMini>
+      <Subtitle>{t("home.subtitle")}</Subtitle>
+      <CTAButton to="/reservas">{t("home.ctaButton")}</CTAButton>
       <BannerImage src={banner} alt="Vista del Taller de Aguaymanto" />
       <Divider />
       <Title style={{ fontSize: "2rem", marginBottom: "1rem" }}>
-        ¿Qué puedes encontrar en El Taller?
+        {t("home.whatYouCanFind")}
       </Title>
       <FeatureGrid>
         <FeatureCard>
-          <FeatureTitle>Pinta tu cerámica</FeatureTitle>
-          <FeatureText>
-            Dispones de una selección única de piezas listas para decorar a tu
-            manera.
-          </FeatureText>
+          <FeatureTitle>{t("home.feature1.title")}</FeatureTitle>
+          <FeatureText>{t("home.feature1.text")}</FeatureText>
         </FeatureCard>
-
         <FeatureCard>
-          <FeatureTitle>Café y cosas ricas</FeatureTitle>
-          <FeatureText>
-            Disfruta de algo calentito mientras creas, en un ambiente relajado y
-            acogedor.
-          </FeatureText>
+          <FeatureTitle>{t("home.feature2.title")}</FeatureTitle>
+          <FeatureText>{t("home.feature2.text")}</FeatureText>
         </FeatureCard>
-
         <FeatureCard>
-          <FeatureTitle>Regalos con alma</FeatureTitle>
-          <FeatureText>
-            Objetos únicos, hechos a mano, pensados para regalar o regalarte.
-          </FeatureText>
+          <FeatureTitle>{t("home.feature3.title")}</FeatureTitle>
+          <FeatureText>{t("home.feature3.text")}</FeatureText>
         </FeatureCard>
-
         <FeatureCard>
-          <FeatureTitle>Un rincón verde</FeatureTitle>
-          <FeatureText>
-            Macetas, plantas y objetos para llenar de vida y color tus espacios.
-          </FeatureText>
+          <FeatureTitle>{t("home.feature4.title")}</FeatureTitle>
+          <FeatureText>{t("home.feature4.text")}</FeatureText>
         </FeatureCard>
       </FeatureGrid>
       <Divider />
       <HighlightCard>
-        <HighlightTitle>¡Diviértete con la cerámica!</HighlightTitle>
+        <HighlightTitle>{t("home.highlight.title")}</HighlightTitle>
         <HighlightGrid>
           <HighlightBox>
-            <HighlightHeading>LOS PRIMEROS EN GRANOLLERS</HighlightHeading>
-            <HighlightText>
-              Los primeros en ofrecer a la ciudad, una experiencia única en
-              familia, con amigos, o como más lo disfrutes. La magia de la
-              cerámica está en Granollers.
-            </HighlightText>
+            <HighlightHeading>{t("home.highlight1.title")}</HighlightHeading>
+            <HighlightText>{t("home.highlight1.text")}</HighlightText>
           </HighlightBox>
           <HighlightBox>
-            <HighlightHeading>MÁS DE 50 PIEZAS PARA ELEGIR</HighlightHeading>
-            <HighlightText>
-              Desde tazas hasta figuras decorativas, tenemos una gran variedad
-              de piezas esperando a ser pintadas por ti. ¡Explora y encuentra la
-              que más te inspire!
-            </HighlightText>
+            <HighlightHeading>{t("home.highlight2.title")}</HighlightHeading>
+            <HighlightText>{t("home.highlight2.text")}</HighlightText>
           </HighlightBox>
           <HighlightBox>
-            <HighlightHeading>¿NECESITO EXPERIENCIA?</HighlightHeading>
-            <HighlightText>
-              ¡Para nada! El Taller es para todos. Lo único que necesitas son
-              ganas de pintar y pasarlo bien. ¿Te apuntas?
-            </HighlightText>
+            <HighlightHeading>{t("home.highlight3.title")}</HighlightHeading>
+            <HighlightText>{t("home.highlight3.text")}</HighlightText>
           </HighlightBox>
           <HighlightBox>
-            <HighlightHeading>LIBERA TU CREATIVIDAD</HighlightHeading>
-            <HighlightText>
-              Aquí, la creatividad es tuya. Nosotros te damos las herramientas,
-              y tú pones lo demás: ideas, colores y una buena dosis de
-              diversión. ¡Deja volar tu imaginación!
-            </HighlightText>
+            <HighlightHeading>{t("home.highlight4.title")}</HighlightHeading>
+            <HighlightText>{t("home.highlight4.text")}</HighlightText>
           </HighlightBox>
         </HighlightGrid>
       </HighlightCard>
       <Divider />
       <Title style={{ fontSize: "1.8rem", marginBottom: "1rem" }}>
-        Momentos en el Taller
+        {t("home.moments")}
       </Title>
       <Carousel>
-        <CarouselImage src={pintando} alt="Pintando cerámica" />
-        <CarouselImage src={cafe} alt="Espacio del café" />
-        <CarouselImage src={estanteria} alt="Estantería de piezas" />
-        <CarouselImage src={macetas} alt="Macetas artesanales" />
+        <CarouselImage src={pintando} alt={t("home.carousel.pintando")} />
+        <CarouselImage src={cafe} alt={t("home.carousel.cafe")} />
+        <CarouselImage src={estanteria} alt={t("home.carousel.estanteria")} />
+        <CarouselImage src={macetas} alt={t("home.carousel.macetas")} />
       </Carousel>
       <Divider />
       <WhatsAppButton

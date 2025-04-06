@@ -1,0 +1,140 @@
+{
+  "home": {
+    "title": "El Taller",
+    "subtitleMini": "de Aguaymanto",
+    "subtitle": "Un espacio creativo y acogedor en el centro de Granollers. Ven a pintar cerámica, disfrutar de algo rico y compartir una experiencia única.",
+    "ctaButton": "Reservar tu plaza",
+    "whatYouCanFind": "¿Qué puedes encontrar en El Taller?",
+    "feature1": {
+      "title": "Pinta tu cerámica",
+      "text": "Dispones de una selección única de piezas listas para decorar a tu manera."
+    },
+    "feature2": {
+      "title": "Café y cosas ricas",
+      "text": "Disfruta de algo calentito mientras creas, en un ambiente relajado y acogedor."
+    },
+    "feature3": {
+      "title": "Regalos con alma",
+      "text": "Objetos únicos, hechos a mano, pensados para regalar o regalarte."
+    },
+    "feature4": {
+      "title": "Un rincón verde",
+      "text": "Macetas, plantas y objetos para llenar de vida y color tus espacios."
+    },
+    "highlight": {
+      "title": "¡Diviértete con la cerámica!"
+    },
+    "highlight1": {
+      "title": "LOS PRIMEROS EN GRANOLLERS",
+      "text": "Los primeros en ofrecer a la ciudad, una experiencia única en familia, con amigos, o como más lo disfrutes. La magia de la cerámica está en Granollers."
+    },
+    "highlight2": {
+      "title": "MÁS DE 50 PIEZAS PARA ELEGIR",
+      "text": "Desde tazas hasta figuras decorativas, tenemos una gran variedad de piezas esperando a ser pintadas por ti. ¡Explora y encuentra la que más te inspire!"
+    },
+    "highlight3": {
+      "title": "¿NECESITO EXPERIENCIA?",
+      "text": "¡Para nada! El Taller es para todos. Lo único que necesitas son ganas de pintar y pasarlo bien. ¿Te apuntas?"
+    },
+    "highlight4": {
+      "title": "LIBERA TU CREATIVIDAD",
+      "text": "Aquí, la creatividad es tuya. Nosotros te damos las herramientas, y tú pones lo demás: ideas, colores y una buena dosis de diversión. ¡Deja volar tu imaginación!"
+    },
+    "moments": "Momentos en el Taller",
+    "carousel": {
+      "pintando": "Pintando cerámica",
+      "cafe": "Espacio del café",
+      "estanteria": "Estantería de piezas",
+      "macetas": "Macetas artesanales"
+    }
+  },
+  "header": {
+    "inicio": "Inicio",
+    "reserva": "Reserva",
+    "contacto": "Contacto",
+    "tienda": "Tienda"
+  },
+  "asistente": {
+  "saludo": "Hola 👋 ¿En qué puedo ayudarte hoy?",
+  "placeholder": "Escribe tu pregunta...",
+  "enviar": "Enviar",
+  "opciones": {
+    "1": "Cómo reservo",
+    "2": "Precio",
+    "3": "¿Necesito experiencia?",
+    "4": "¿Es para niños?",
+    "5": "¿Hacéis eventos?",
+    "6": "¿Qué puedo pintar?",
+    "7": "¿Cuánto dura?",
+    "8": "¿Puedo llevar a alguien?",
+    "9": "¿Hay comida o bebida?"
+  },
+  "respuestas": {
+    "comoReservo": "Puedes reservar desde la sección de Turnos. Es fácil y rápido.",
+    "necesitoExperiencia": "No necesitas experiencia, solo ganas de crear y pasarlo bien.",
+    "ninios": "Sí, es para todas las edades. ¡Ideal para venir con peques!",
+    "eventos": "Sí, organizamos eventos para grupos. Escríbenos desde la sección de contacto.",
+    "precio": "Tenemos piezas desde 10 € en adelante. ¡Hay una gran variedad para elegir!",
+    "duracion": "La experiencia suele durar entre 1h y 1h30min, dependiendo del ritmo de cada persona.",
+    "quePintar": "Puedes elegir entre más de 50 piezas diferentes: tazas, platos, figuras, macetas y más.",
+    "acompanar": "Sí, puedes venir acompañado o en grupo. Incluso organizamos celebraciones.",
+    "comidaBebida": "Tenemos un rincón de café donde puedes disfrutar de algo rico mientras pintas.",
+    "default": "Lo siento, aún estoy aprendiendo. ¿Podrías reformular tu pregunta?"
+  }
+},
+"contacto": {
+  "titulo": "CONTACTO",
+  "altIlustracion": "Ilustración de contacto",
+  "subtexto": "Si tenés alguna duda, propuesta o solo querés saludarnos, completá el formulario y te respondemos pronto 💌",
+  "placeholderNombre": "Tu nombre",
+  "placeholderEmail": "Tu correo electrónico",
+  "placeholderMensaje": "Tu mensaje",
+  "boton": "Enviar",
+  "errorCampos": "Por favor, completá todos los campos.",
+  "enviado": "¡Gracias por escribirnos! Te responderemos pronto."
+},
+"reservas": {
+  "titulo": "RESERVAS",
+  "subtexto": "Si quieres venir a pintar, te recomendamos reservar tu plaza con antelación.",
+  "linkGrupal": "¿Sois un grupo grande? Haz click aquí",
+  "seleccionaDia": "Selecciona el día que quieres venir:",
+  "seleccionaHora": "Elige el horario:",
+  "labelPersonas": "¿Cuántas personas seréis?",
+  "persona1": "1 persona",
+  "persona2": "2 personas",
+  "persona3": "3 personas",
+  "persona4": "4 personas",
+  "persona5": "5 personas",
+  "persona6": "6 personas",
+  "botonContinuar": "Continuar",
+  "placeholderNombre": "Tu nombre",
+  "placeholderEmail": "Tu correo electrónico",
+  "placeholderTelefono": "Tu teléfono",
+  "botonConfirmar": "Confirmar reserva"
+},
+"gracias": {
+  "altIlustracion": "Gracias por tu reserva",
+  "titulo": "¡Gracias por tu mensaje!",
+  "texto": "Te responderemos lo más pronto posible",
+  "redireccion": "Serás redirigido al inicio en unos segundos..."
+},
+"gracias": {
+  "altIlustracion": "Gracias por tu reserva",
+  "titulo": "¡Gracias por tu reserva!",
+  "texto": "Te esperamos para disfrutar de la cerámica en",
+  "redireccion": "Serás redirigido al inicio en unos segundos..."
+},
+"reservaGrupal": {
+  "titulo": "Reservas Grupales",
+  "texto1": "¿Estás planeando una actividad para un grupo grande? En El Taller nos encanta recibir familias, colegios, equipos y celebraciones especiales.",
+  "texto2": "Para reservas de más de 6 personas, gestionamos todo de forma personalizada. Solo necesitamos saber cuántos son, qué día prefieren y si tienen alguna idea especial en mente.",
+  "texto3": "Podés escribirnos desde el siguiente enlace y nos pondremos en contacto para coordinarlo todo con vos:",
+  "boton": "Enviar mensaje"
+}
+
+
+
+
+
+
+}

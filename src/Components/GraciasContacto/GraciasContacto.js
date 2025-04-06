@@ -2,7 +2,8 @@
 import React, { useEffect } from "react";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
-import ilustracion from "./images/ilustracionGracias.png"; // reemplaza por tu ilustración real
+import ilustracion from "./images/ilustracionGracias.png";
+import { useTranslation } from "react-i18next";
 
 const Section = styled.section`
   background-color: #fff9f0;
@@ -31,21 +32,22 @@ const Texto = styled.p`
 
 const Gracias = () => {
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   useEffect(() => {
     const timer = setTimeout(() => {
       navigate("/");
-    }, 10000); // redirige después de 10 segundos
+    }, 10000);
     return () => clearTimeout(timer);
   }, [navigate]);
 
   return (
     <Section>
-      <Imagen src={ilustracion} alt="Gracias por tu reserva" />
-      <Titulo>¡Gracias por tu mensaje!</Titulo>
-      <Texto>Te responderemos lo más pronto posible</Texto>
+      <Imagen src={ilustracion} alt={t("gracias.altIlustracion")} />
+      <Titulo>{t("gracias.titulo")}</Titulo>
+      <Texto>{t("gracias.texto")}</Texto>
       <p style={{ color: "#e3a092", fontSize: "1.3rem" }}>
-        Serás redirigido al inicio en unos segundos...
+        {t("gracias.redireccion")}
       </p>
     </Section>
   );

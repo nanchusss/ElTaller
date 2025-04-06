@@ -2,6 +2,9 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { FaRobot } from "react-icons/fa";
+import { useTranslation } from "react-i18next";
+
+// ...styled-components (sin cambios)
 
 const Container = styled.div`
   position: fixed;
@@ -105,31 +108,23 @@ const OptionButton = styled.button`
 `;
 
 const AsistenteIA = () => {
+  const { t } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState([
-    { text: "Hola 👋 ¿En qué puedo ayudarte hoy?", user: false },
+    { text: t("asistente.saludo"), user: false },
   ]);
   const [input, setInput] = useState("");
 
   const respuestas = {
-    "como reservo":
-      "Puedes reservar desde la sección de Turnos. Es fácil y rápido.",
-    "necesito experiencia":
-      "No necesitas experiencia, solo ganas de crear y pasarlo bien.",
-    "es para niños":
-      "Sí, es para todas las edades. ¡Ideal para venir con peques!",
-    "hacéis eventos":
-      "Sí, organizamos eventos para grupos. Escríbenos desde la sección de contacto.",
-    precio:
-      "Tenemos piezas desde 10 € en adelante. ¡Hay una gran variedad para elegir!",
-    "cuánto dura":
-      "La experiencia suele durar entre 1h y 1h30min, dependiendo del ritmo de cada persona.",
-    "qué puedo pintar":
-      "Puedes elegir entre más de 50 piezas diferentes: tazas, platos, figuras, macetas y más.",
-    "puedo llevar a alguien":
-      "Sí, puedes venir acompañado o en grupo. Incluso organizamos celebraciones.",
-    "hay comida o bebida":
-      "Tenemos un rincón de café donde puedes disfrutar de algo rico mientras pintas.",
+    "como reservo": t("asistente.respuestas.comoReservo"),
+    "necesito experiencia": t("asistente.respuestas.necesitoExperiencia"),
+    "es para niños": t("asistente.respuestas.ninios"),
+    "hacéis eventos": t("asistente.respuestas.eventos"),
+    precio: t("asistente.respuestas.precio"),
+    "cuánto dura": t("asistente.respuestas.duracion"),
+    "qué puedo pintar": t("asistente.respuestas.quePintar"),
+    "puedo llevar a alguien": t("asistente.respuestas.acompanar"),
+    "hay comida o bebida": t("asistente.respuestas.comidaBebida"),
   };
 
   const handleSend = (texto = input) => {
@@ -140,7 +135,7 @@ const AsistenteIA = () => {
     );
     const respuesta = respuestaClave
       ? respuestas[respuestaClave]
-      : "Lo siento, aún estoy aprendiendo. ¿Podrías reformular tu pregunta?";
+      : t("asistente.respuestas.default");
     setMessages([
       ...messages,
       { text: texto, user: true },
@@ -150,15 +145,15 @@ const AsistenteIA = () => {
   };
 
   const opciones = [
-    "Cómo reservo",
-    "Precio",
-    "¿Necesito experiencia?",
-    "¿Es para niños?",
-    "¿Hacéis eventos?",
-    "¿Qué puedo pintar?",
-    "¿Cuánto dura?",
-    "¿Puedo llevar a alguien?",
-    "¿Hay comida o bebida?",
+    t("asistente.opciones.1"),
+    t("asistente.opciones.2"),
+    t("asistente.opciones.3"),
+    t("asistente.opciones.4"),
+    t("asistente.opciones.5"),
+    t("asistente.opciones.6"),
+    t("asistente.opciones.7"),
+    t("asistente.opciones.8"),
+    t("asistente.opciones.9"),
   ];
 
   return (
@@ -184,10 +179,12 @@ const AsistenteIA = () => {
             <Input
               value={input}
               onChange={(e) => setInput(e.target.value)}
-              placeholder="Escribe tu pregunta..."
+              placeholder={t("asistente.placeholder")}
               onKeyDown={(e) => e.key === "Enter" && handleSend()}
             />
-            <SendButton onClick={() => handleSend()}>Enviar</SendButton>
+            <SendButton onClick={() => handleSend()}>
+              {t("asistente.enviar")}
+            </SendButton>
           </InputBar>
         </Container>
       )}

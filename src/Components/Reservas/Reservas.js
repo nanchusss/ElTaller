@@ -4,6 +4,7 @@ import styled from "styled-components";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 import { useNavigate, Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 const Section = styled.section`
   background-color: #fff9f0;
@@ -14,7 +15,7 @@ const Section = styled.section`
 
 const Title = styled.h2`
   font-size: 2.8rem;
-  color: #5a7263;
+  color: #726a5a;
   margin-bottom: 2rem;
   font-family: "Playfair Display", serif;
 `;
@@ -203,6 +204,7 @@ const GroupLink = styled(Link)`
 `;
 
 const Reservas = () => {
+  const { t } = useTranslation();
   const [step, setStep] = useState(1);
   const [fecha, setFecha] = useState(null);
   const [horarioSeleccionado, setHorarioSeleccionado] = useState(null);
@@ -233,13 +235,10 @@ const Reservas = () => {
 
   return (
     <Section>
-      <Title>RESERVAS</Title>
-      <SubText>
-        Si quieres venir a pintar, te recomendamos reservar tu plaza con
-        antelación.
-      </SubText>
+      <Title>{t("reservas.titulo")}</Title>
+      <SubText>{t("reservas.subtexto")}</SubText>
 
-      <GroupLink to="/Grupal">¿Sois un grupo grande? Haz click aquí</GroupLink>
+      <GroupLink to="/Grupal">{t("reservas.linkGrupal")}</GroupLink>
 
       <CalendarContainer>
         {step === 1 && (
@@ -251,7 +250,7 @@ const Reservas = () => {
                 color: "#5a7263",
               }}
             >
-              Selecciona el día que quieres venir:
+              {t("reservas.seleccionaDia")}
             </h3>
             <CustomCalendarWrapper>
               <Calendar
@@ -275,7 +274,7 @@ const Reservas = () => {
                 color: "#5a7263",
               }}
             >
-              Elige el horario:
+              {t("reservas.seleccionaHora")}
             </h3>
             <Horarios>
               {horarios.map((hora) => (
@@ -295,21 +294,21 @@ const Reservas = () => {
 
         {step === 3 && horarioSeleccionado && (
           <SelectorContainer>
-            <Label htmlFor="personas">¿Cuántas personas seréis?</Label>
+            <Label htmlFor="personas">{t("reservas.labelPersonas")}</Label>
             <Select
               id="personas"
               value={personas}
               onChange={(e) => setPersonas(e.target.value)}
             >
-              <option value={1}>1 persona</option>
-              <option value={2}>2 personas</option>
-              <option value={3}>3 personas</option>
-              <option value={4}>4 personas</option>
-              <option value={5}>5 personas</option>
-              <option value={6}>6 personas</option>
+              <option value={1}>{t("reservas.persona1")}</option>
+              <option value={2}>{t("reservas.persona2")}</option>
+              <option value={3}>{t("reservas.persona3")}</option>
+              <option value={4}>{t("reservas.persona4")}</option>
+              <option value={5}>{t("reservas.persona5")}</option>
+              <option value={6}>{t("reservas.persona6")}</option>
             </Select>
             <Button onClick={() => setStep(4)} style={{ marginTop: "1.5rem" }}>
-              Continuar
+              {t("reservas.botonContinuar")}
             </Button>
           </SelectorContainer>
         )}
@@ -319,7 +318,7 @@ const Reservas = () => {
             <Input
               type="text"
               name="nombre"
-              placeholder="Tu nombre"
+              placeholder={t("reservas.placeholderNombre")}
               value={formData.nombre}
               onChange={handleFormChange}
               required
@@ -327,7 +326,7 @@ const Reservas = () => {
             <Input
               type="email"
               name="email"
-              placeholder="Tu correo electrónico"
+              placeholder={t("reservas.placeholderEmail")}
               value={formData.email}
               onChange={handleFormChange}
               required
@@ -335,11 +334,11 @@ const Reservas = () => {
             <Input
               type="tel"
               name="telefono"
-              placeholder="Tu teléfono"
+              placeholder={t("reservas.placeholderTelefono")}
               value={formData.telefono}
               onChange={handleFormChange}
             />
-            <Button type="submit">Confirmar reserva</Button>
+            <Button type="submit">{t("reservas.botonConfirmar")}</Button>
           </Form>
         )}
       </CalendarContainer>

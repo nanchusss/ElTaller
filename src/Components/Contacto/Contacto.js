@@ -3,6 +3,9 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import ilustracion from "./images/ilustracion.png";
+import { useTranslation } from "react-i18next";
+
+// ...styled-components sin cambios
 
 const Section = styled.section`
   background-color: #fff9f0;
@@ -76,6 +79,7 @@ const Message = styled.p`
 `;
 
 const Contacto = () => {
+  const { t } = useTranslation();
   const [nombre, setNombre] = useState("");
   const [email, setEmail] = useState("");
   const [mensaje, setMensaje] = useState("");
@@ -87,14 +91,14 @@ const Contacto = () => {
     if (!nombre || !email || !mensaje) {
       setEstado({
         success: false,
-        msg: "Por favor, completá todos los campos.",
+        msg: t("contacto.errorCampos"),
       });
       return;
     }
 
     setEstado({
       success: true,
-      msg: "¡Gracias por escribirnos! Te responderemos pronto.",
+      msg: t("contacto.enviado"),
     });
     setNombre("");
     setEmail("");
@@ -107,33 +111,30 @@ const Contacto = () => {
 
   return (
     <Section>
-      <Title>CONTACTO</Title>
-      <Ilustracion src={ilustracion} alt="Ilustración de contacto" />
-      <SubText>
-        Si tenés alguna duda, propuesta o solo querés saludarnos, completá el
-        formulario y te respondemos pronto 💌
-      </SubText>
+      <Title>{t("contacto.titulo")}</Title>
+      <Ilustracion src={ilustracion} alt={t("contacto.altIlustracion")} />
+      <SubText>{t("contacto.subtexto")}</SubText>
 
       <Form onSubmit={handleSubmit}>
         <Input
           type="text"
-          placeholder="Tu nombre"
+          placeholder={t("contacto.placeholderNombre")}
           value={nombre}
           onChange={(e) => setNombre(e.target.value)}
         />
         <Input
           type="email"
-          placeholder="Tu correo electrónico"
+          placeholder={t("contacto.placeholderEmail")}
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
         <Textarea
           rows="5"
-          placeholder="Tu mensaje"
+          placeholder={t("contacto.placeholderMensaje")}
           value={mensaje}
           onChange={(e) => setMensaje(e.target.value)}
         />
-        <Button type="submit">Enviar</Button>
+        <Button type="submit">{t("contacto.boton")}</Button>
         {estado && <Message success={estado.success}>{estado.msg}</Message>}
       </Form>
     </Section>

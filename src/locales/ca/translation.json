@@ -1,0 +1,143 @@
+{
+  "home": {
+    "title": "El Taller",
+    "subtitleMini": "d'Aguaymanto",
+    "subtitle": "Un espai creatiu i acollidor al centre de Granollers. Vine a pintar ceràmica, gaudir d’alguna cosa bona i compartir una experiència única.",
+    "ctaButton": "Reserva la teva plaça",
+    "whatYouCanFind": "Què hi pots trobar al Taller?",
+    "feature1": {
+      "title": "Pinta la teva ceràmica",
+      "text": "Tens una selecció única de peces llestes per decorar al teu gust."
+    },
+    "feature2": {
+      "title": "Cafè i coses bones",
+      "text": "Gaudeix d’alguna cosa calentona mentre crees, en un ambient relaxat i acollidor."
+    },
+    "feature3": {
+      "title": "Regals amb ànima",
+      "text": "Objectes únics, fets a mà, pensats per regalar o per regalar-te."
+    },
+    "feature4": {
+      "title": "Un racó verd",
+      "text": "Testos, plantes i objectes per omplir de vida i color els teus espais."
+    },
+    "highlight": {
+      "title": "Divertiu-vos amb la ceràmica!"
+    },
+    "highlight1": {
+      "title": "ELS PRIMERS A GRANOLLERS",
+      "text": "Els primers a oferir a la ciutat una experiència única en família, amb amics, o com més ho gaudeixis. La màgia de la ceràmica ja és a Granollers."
+    },
+    "highlight2": {
+      "title": "MÉS DE 50 PECES PER TRIAR",
+      "text": "Des de tasses fins a figures decoratives, tenim una gran varietat de peces esperant ser pintades per tu. Explora i troba la que més t’inspiri!"
+    },
+    "highlight3": {
+      "title": "CAL EXPERIÈNCIA?",
+      "text": "De cap manera! El Taller és per a tothom. L’únic que necessites són ganes de pintar i passar-ho bé. T’hi apuntes?"
+    },
+    "highlight4": {
+      "title": "ALLIBERA LA TEVA CREATIVITAT",
+      "text": "Aquí, la creativitat és teva. Nosaltres et donem les eines i tu hi poses la resta: idees, colors i una bona dosi de diversió. Deixa volar la teva imaginació!"
+    },
+    "moments": "Moments al Taller",
+    "carousel": {
+      "pintando": "Pintant ceràmica",
+      "cafe": "Espai del cafè",
+      "estanteria": "Estanteria de peces",
+      "macetas": "Testos artesanals"
+    }
+    
+  
+
+  },
+  "header": {
+    "inicio": "Inici",
+    "reserva": "Reserva",
+    "contacto": "Contacte",
+    "tienda": "Botiga"
+  },
+  "asistente": {
+  "saludo": "Hola 👋 En què et puc ajudar avui?",
+  "placeholder": "Escriu la teva pregunta...",
+  "enviar": "Enviar",
+  "opciones": {
+    "1": "Com reservo",
+    "2": "Preu",
+    "3": "Necessito experiència?",
+    "4": "És per a nens?",
+    "5": "Feu esdeveniments?",
+    "6": "Què puc pintar?",
+    "7": "Quant dura?",
+    "8": "Puc portar algú?",
+    "9": "Hi ha menjar o beguda?"
+  },
+  "respuestas": {
+    "comoReservo": "Pots reservar des de la secció de torns. És fàcil i ràpid.",
+    "necesitoExperiencia": "No cal experiència, només ganes de crear i passar-ho bé.",
+    "ninios": "Sí, és per a totes les edats. Ideal per venir amb petits!",
+    "eventos": "Sí, organitzem esdeveniments per a grups. Escriu-nos des de la secció de contacte.",
+    "precio": "Tenim peces des de 10 € en endavant. Hi ha una gran varietat per triar!",
+    "duracion": "L'experiència sol durar entre 1h i 1h30min, depenent del ritme de cada persona.",
+    "quePintar": "Pots triar entre més de 50 peces diferents: tasses, plats, figures, testos i més.",
+    "acompanar": "Sí, pots venir acompanyat o en grup. Fins i tot organitzem celebracions.",
+    "comidaBebida": "Tenim un racó de cafè on pots gaudir d'alguna cosa bona mentre pintes.",
+    "default": "Ho sento, encara estic aprenent. Pots reformular la teva pregunta?"
+  }
+}, 
+"contacto": {
+  "titulo": "CONTACTE",
+  "altIlustracion": "Il·lustració de contacte",
+  "subtexto": "Si tens algun dubte, proposta o només vols saludar-nos, omple el formulari i et respondrem ben aviat 💌",
+  "placeholderNombre": "El teu nom",
+  "placeholderEmail": "El teu correu electrònic",
+  "placeholderMensaje": "El teu missatge",
+  "boton": "Enviar",
+  "errorCampos": "Si us plau, completa tots els camps.",
+  "enviado": "Gràcies per escriure'ns! Et respondrem aviat."
+},
+"reservas": {
+  "titulo": "RESERVES",
+  "subtexto": "Si vols venir a pintar, et recomanem reservar la teva plaça amb antelació.",
+  "linkGrupal": "Sou un grup gran? Fes clic aquí",
+  "seleccionaDia": "Selecciona el dia que vols venir:",
+  "seleccionaHora": "Tria l'horari:",
+  "labelPersonas": "Quantes persones sereu?",
+  "persona1": "1 persona",
+  "persona2": "2 persones",
+  "persona3": "3 persones",
+  "persona4": "4 persones",
+  "persona5": "5 persones",
+  "persona6": "6 persones",
+  "botonContinuar": "Continuar",
+  "placeholderNombre": "El teu nom",
+  "placeholderEmail": "El teu correu electrònic",
+  "placeholderTelefono": "El teu telèfon",
+  "botonConfirmar": "Confirmar reserva"
+},
+"gracias": {
+  "altIlustracion": "Gràcies per la teva reserva",
+  "titulo": "Gràcies pel teu missatge!",
+  "texto": "Et respondrem tan aviat com sigui possible",
+  "redireccion": "Seràs redirigit a l'inici en uns segons..."
+},
+"gracias": {
+  "altIlustracion": "Gràcies per la teva reserva",
+  "titulo": "Gràcies per la teva reserva!",
+  "texto": "T'esperem per gaudir de la ceràmica a",
+  "redireccion": "Seràs redirigit a l'inici en uns segons..."
+},
+"reservaGrupal": {
+  "titulo": "Reserves Grups Grans",
+  "texto1": "Estàs organitzant una activitat per a un grup gran? A El Taller ens encanta rebre famílies, escoles, equips i celebracions especials.",
+  "texto2": "Per a reserves de més de 6 persones, gestionem tot de manera personalitzada. Només necessitem saber quants sou, quin dia preferiu i si teniu alguna idea especial.",
+  "texto3": "Pots escriure'ns des del següent enllaç i ens posarem en contacte per coordinar-ho tot amb tu:",
+  "boton": "Enviar missatge"
+}
+
+
+
+
+
+
+}

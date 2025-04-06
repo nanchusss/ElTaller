@@ -2,6 +2,7 @@
 import React from "react";
 import styled from "styled-components";
 import { NavLink } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 const Section = styled.section`
   background-color: #fff9f0;
@@ -39,23 +40,15 @@ const CTAButton = styled(NavLink)`
 `;
 
 const ReservaGrupal = () => {
+  const { t } = useTranslation();
+
   return (
     <Section>
-      <Title>Reservas Grupales</Title>
-      <Text>
-        ¿Estás planeando una actividad para un grupo grande? En El Taller nos
-        encanta recibir familias, colegios, equipos y celebraciones especiales.
-      </Text>
-      <Text>
-        Para reservas de más de 6 personas, gestionamos todo de forma
-        personalizada. Solo necesitamos saber cuántos son, qué día prefieren y
-        si tienen alguna idea especial en mente.
-      </Text>
-      <Text>
-        Podés escribirnos desde el siguiente enlace y nos pondremos en contacto
-        para coordinarlo todo con vos:
-      </Text>
-      <CTAButton to="/contacto">Enviar mensaje</CTAButton>
+      <Title>{t("reservaGrupal.titulo")}</Title>
+      <Text>{t("reservaGrupal.texto1")}</Text>
+      <Text>{t("reservaGrupal.texto2")}</Text>
+      <Text>{t("reservaGrupal.texto3")}</Text>
+      <CTAButton to="/contacto">{t("reservaGrupal.boton")}</CTAButton>
     </Section>
   );
 };

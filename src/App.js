@@ -9,6 +9,7 @@ import Contacto from "./Components/Contacto/Contacto";
 import Gracias from "./Components/Gracias/Gracias";
 import GraciasContacto from "./Components/GraciasContacto/GraciasContacto";
 import ReservaGrupal from "./Components/Grupal/Grupal.js";
+import LanguageSwitcher from "./Components/Botones/Botones.js";
 
 const App = () => {
   return (
@@ -16,6 +17,16 @@ const App = () => {
       <GlobalStyle />
       <Router>
         <Header />
+        <div
+          style={{
+            position: "fixed",
+            top: "20px",
+            right: "20px",
+            zIndex: 1000,
+          }}
+        >
+          <LanguageSwitcher />
+        </div>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/reservas" element={<Reservas />} />

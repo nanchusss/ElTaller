@@ -2,6 +2,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
+import { useTranslation } from "react-i18next";
 
 const HeaderContainer = styled.header`
   background-color: #fff;
@@ -32,18 +33,20 @@ const StyledLink = styled(NavLink)`
 `;
 
 const Header = () => {
+  const { t } = useTranslation();
+
   return (
     <HeaderContainer>
       <Nav>
-        <StyledLink to="/">Inicio</StyledLink>
-        <StyledLink to="/reservas">Reserva</StyledLink>
-        <StyledLink to="/contacto">Contacto</StyledLink>
+        <StyledLink to="/">{t("header.inicio")}</StyledLink>
+        <StyledLink to="/reservas">{t("header.reserva")}</StyledLink>
+        <StyledLink to="/contacto">{t("header.contacto")}</StyledLink>
         <StyledLink
           to="https://www.aguaymanto.shop"
           target="_blank"
           rel="noopener noreferrer"
         >
-          Tienda
+          {t("header.tienda")}
         </StyledLink>
       </Nav>
     </HeaderContainer>
