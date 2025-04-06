@@ -5,6 +5,15 @@ import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 import { useNavigate, Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import { Helmet } from "react-helmet";
+
+<Helmet>
+  <title>El Taller d’Aguaymanto – Cerámica, plantas y café</title>
+  <meta
+    name="description"
+    content="Un espacio creativo en Barcelona para talleres, eventos y experiencias con cerámica."
+  />
+</Helmet>;
 
 const Section = styled.section`
   background-color: #fff9f0;

@@ -1,5 +1,14 @@
 import React from "react";
 import styled from "styled-components";
+import { Helmet } from "react-helmet";
+
+<Helmet>
+  <title>El Taller d’Aguaymanto – Cerámica, plantas y café</title>
+  <meta
+    name="description"
+    content="Un espacio creativo en Barcelona para talleres, eventos y experiencias con cerámica."
+  />
+</Helmet>;
 
 const Section = styled.section`
   background-color: #fff9f0;

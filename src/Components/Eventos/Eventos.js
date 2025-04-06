@@ -4,6 +4,15 @@ import { useTranslation } from "react-i18next";
 import imagen1 from "./images/evento1.png";
 import imagen2 from "./images/evento2.png";
 import imagen3 from "./images/evento3.png";
+import { Helmet } from "react-helmet";
+
+<Helmet>
+  <title>El Taller d’Aguaymanto – Cerámica, plantas y café</title>
+  <meta
+    name="description"
+    content="Un espacio creativo en Barcelona para talleres, eventos y experiencias con cerámica."
+  />
+</Helmet>;
 
 const Section = styled.section`
   background-color: #fff9f0;
