@@ -150,6 +150,7 @@ const Header = () => {
           >
             {t("header.tienda")}
           </StyledLink>
+          <StyledLink to="/quienes-somos">{t("header.quienes")}</StyledLink>
         </MobileMenu>
       </Nav>
     </HeaderContainer>

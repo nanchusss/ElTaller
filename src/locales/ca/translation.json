@@ -158,7 +158,14 @@
 
    "previewEventos": {
     "titulo": "Esdeveniments personalitzats"
-  }
+  },
+  "quienes": {
+  "titulo": "Qui som",
+  "p1": "A El Taller d’Aguaymanto treballem amb un propòsit clar: crear un espai on la ceràmica, la cura per l’artesania i el trobament entre persones tinguin lloc.",
+  "p2": "El projecte neix d’una història familiar vinculada al fang: la Ligia, la meva besàvia, va ser ceramista i pintora. Avui continuem aquesta tradició la meva mare, Marité, i jo, Nancy, com a tercera generació.",
+  "p3": "Apostem per la creativitat compartida, per objectes fets amb intenció i per experiències que convidin a baixar el ritme. Des d’un taller fins a una celebració, el nostre objectiu és senzill: que tothom se senti part."
+}
+
 
 
 

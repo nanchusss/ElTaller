@@ -10,7 +10,7 @@ import Gracias from "./Components/Gracias/Gracias";
 import GraciasContacto from "./Components/GraciasContacto/GraciasContacto";
 import ReservaGrupal from "./Components/Grupal/Grupal.js";
 import Eventos from "./Components/Eventos/Eventos.js";
-import QuienesSomos from "./Components/QuienesSomos/QuienesSomos"; // ajustá el path si hace falta
+import QuienesSomos from "./Components/QuienesSomos/QuienesSomos.js"; // ajustá el path si hace falta
 
 const App = () => {
   return (
@@ -34,7 +34,7 @@ const App = () => {
           <Route path="/GraciasContacto" element={<GraciasContacto />} />
           <Route path="/Grupal" element={<ReservaGrupal />} />
           <Route path="/eventos" element={<Eventos />} />
-          <Route path="/quienesSomos" element={<QuienesSomos />} />
+          <Route path="/quienes-somos" element={<QuienesSomos />} />
         </Routes>
         <Footer />
       </Router>

@@ -157,7 +157,14 @@
   "previewEventos": {
     "titulo": "Eventos personalizados"
   
+},
+"quienes": {
+  "titulo": "Quiénes somos",
+  "p1": "En El Taller de Aguaymanto trabajamos con un propósito claro: crear un espacio donde la cerámica, el cuidado por lo artesanal y el encuentro entre personas tengan lugar.",
+  "p2": "El proyecto nace de una historia familiar vinculada al barro: Ligia, mi bisabuela, fue ceramista y pintora. Hoy continuamos esa tradición mi madre, Marité, y yo, Nancy, como tercera generación.",
+  "p3": "Apostamos por la creatividad compartida, por los objetos hechos con intención y por experiencias que inviten a bajar el ritmo. Desde un taller hasta una celebración, nuestro objetivo es simple: que cada quien se sienta parte."
 }
+
 
 
 
