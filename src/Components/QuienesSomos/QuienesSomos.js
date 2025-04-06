@@ -3,7 +3,11 @@ import styled from "styled-components";
 import { useTranslation } from "react-i18next";
 
 const Section = styled.section`
-  background-color: #fff9f0;
+  background-color: #fbf3e6;
+  background-image: url("/assets/fondo-quienes.png");
+  background-repeat: repeat;
+  background-size: 800px;
+  background-position: center;
   padding: 5rem 2rem;
   text-align: center;
 `;
