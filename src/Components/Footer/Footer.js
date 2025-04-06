@@ -32,7 +32,7 @@ const Footer = () => {
         target="_blank"
         rel="noopener noreferrer"
       >
-        Seguinos en Instagram
+        Instagram
       </InstagramLink>
     </FooterContainer>
   );
