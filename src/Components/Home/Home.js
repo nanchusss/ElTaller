@@ -7,6 +7,7 @@ import pintando from "./Images/imagen1.png";
 import cafe from "./Images/imagen2.png";
 import estanteria from "./Images/imagen3.png";
 import macetas from "./Images/imagen4.png";
+import frente from "./Images/imagen5.png";
 import banner from "./Images/taller interior.png";
 import AsistenteIA from "../Asistente/Asistente";
 import { useTranslation } from "react-i18next";
@@ -289,6 +290,7 @@ const Home = () => {
         <CarouselImage src={cafe} alt={t("home.carousel.cafe")} />
         <CarouselImage src={estanteria} alt={t("home.carousel.estanteria")} />
         <CarouselImage src={macetas} alt={t("home.carousel.macetas")} />
+        <CarouselImage src={frente} alt={t("home.carousel.macetas")} />
       </Carousel>
       <Divider />
       <WhatsAppButton
