@@ -1,16 +1,17 @@
-// src/Components/Home/Home.js
 import React, { useState } from "react";
 import styled from "styled-components";
 import { NavLink } from "react-router-dom";
-import { FaWhatsapp, FaRobot } from "react-icons/fa";
+import { FaWhatsapp } from "react-icons/fa";
 import pintando from "./Images/imagen1.png";
 import cafe from "./Images/imagen2.png";
 import estanteria from "./Images/imagen3.png";
 import macetas from "./Images/imagen4.png";
 import frente from "./Images/imagen5.png";
+import grupo from "./Images/imagen6.png";
 import banner from "./Images/taller interior.png";
 import AsistenteIA from "../Asistente/Asistente";
 import { useTranslation } from "react-i18next";
+import PreviewEventos from "../ClickEventos/ClickEventos";
 
 const Section = styled.section`
   background-color: #fff9f0;
@@ -105,6 +106,7 @@ const BannerImage = styled.img`
 const Carousel = styled.div`
   display: flex;
   overflow-x: auto;
+
   scroll-snap-type: x mandatory;
   gap: 1rem;
   margin: 3rem auto;
@@ -120,6 +122,7 @@ const CarouselImage = styled.img`
   object-fit: cover;
   border-radius: 12px;
   scroll-snap-align: start;
+  cursor: pointer;
 `;
 
 const WhatsAppButton = styled.a`
@@ -140,49 +143,43 @@ const WhatsAppButton = styled.a`
   z-index: 1000;
 `;
 
-const ChatButton = styled.button`
+const ModalOverlay = styled.div`
   position: fixed;
-  bottom: 20px;
-  left: 20px;
-  background-color: #5a7263;
-  color: white;
-  border: none;
-  border-radius: 50%;
-  width: 60px;
-  height: 60px;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.6);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.5rem;
-  cursor: pointer;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  z-index: 1000;
+  z-index: 2000;
 `;
 
-const ChatBox = styled.div`
-  position: fixed;
-  bottom: 90px;
-  left: 20px;
-  width: 280px;
-  background-color: #fdf6ec;
-  border: 2px solid #e3a092;
-  border-radius: 12px;
+const ModalContent = styled.div`
+  background: white;
   padding: 1rem;
-  z-index: 1000;
+  border-radius: 12px;
+  max-width: 90vw;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+
+  img {
+    max-width: 100%;
+    max-height: 80vh;
+    border-radius: 12px;
+  }
 `;
 
-const ChatQuestion = styled.div`
+const Cerrar = styled.button`
+  background: none;
+  border: none;
   color: #5a7263;
-  font-weight: bold;
+  font-size: 2rem;
+  cursor: pointer;
   margin-bottom: 0.5rem;
-  font-family: "Playfair Display", serif;
-`;
-
-const ChatAnswer = styled.div`
-  color: #6d6762;
-  font-size: 0.95rem;
-  margin-bottom: 1.2rem;
-  font-family: "Open Sans", sans-serif;
 `;
 
 const HighlightCard = styled.div`
@@ -228,7 +225,12 @@ const HighlightText = styled.p`
 
 const Home = () => {
   const [showChat, setShowChat] = useState(false);
+  const [imagenAmpliada, setImagenAmpliada] = useState(null);
   const { t } = useTranslation();
+
+  const cerrarModal = () => {
+    setImagenAmpliada(null);
+  };
 
   return (
     <Section>
@@ -237,28 +239,7 @@ const Home = () => {
       <Subtitle>{t("home.subtitle")}</Subtitle>
       <CTAButton to="/reservas">{t("home.ctaButton")}</CTAButton>
       <BannerImage src={banner} alt="Vista del Taller de Aguaymanto" />
-      <Divider />
-      <Title style={{ fontSize: "2rem", marginBottom: "1rem" }}>
-        {t("home.whatYouCanFind")}
-      </Title>
-      <FeatureGrid>
-        <FeatureCard>
-          <FeatureTitle>{t("home.feature1.title")}</FeatureTitle>
-          <FeatureText>{t("home.feature1.text")}</FeatureText>
-        </FeatureCard>
-        <FeatureCard>
-          <FeatureTitle>{t("home.feature2.title")}</FeatureTitle>
-          <FeatureText>{t("home.feature2.text")}</FeatureText>
-        </FeatureCard>
-        <FeatureCard>
-          <FeatureTitle>{t("home.feature3.title")}</FeatureTitle>
-          <FeatureText>{t("home.feature3.text")}</FeatureText>
-        </FeatureCard>
-        <FeatureCard>
-          <FeatureTitle>{t("home.feature4.title")}</FeatureTitle>
-          <FeatureText>{t("home.feature4.text")}</FeatureText>
-        </FeatureCard>
-      </FeatureGrid>
+
       <Divider />
       <HighlightCard>
         <HighlightTitle>{t("home.highlight.title")}</HighlightTitle>
@@ -282,16 +263,53 @@ const Home = () => {
         </HighlightGrid>
       </HighlightCard>
       <Divider />
+      <Title style={{ fontSize: "2rem", marginBottom: "1rem" }}>
+        {t("home.whatYouCanFind")}
+      </Title>
+      <FeatureGrid>
+        <FeatureCard>
+          <FeatureTitle>{t("home.feature1.title")}</FeatureTitle>
+          <FeatureText>{t("home.feature1.text")}</FeatureText>
+        </FeatureCard>
+        <FeatureCard>
+          <FeatureTitle>{t("home.feature2.title")}</FeatureTitle>
+          <FeatureText>{t("home.feature2.text")}</FeatureText>
+        </FeatureCard>
+        <FeatureCard>
+          <FeatureTitle>{t("home.feature3.title")}</FeatureTitle>
+          <FeatureText>{t("home.feature3.text")}</FeatureText>
+        </FeatureCard>
+        <FeatureCard>
+          <FeatureTitle>{t("home.feature4.title")}</FeatureTitle>
+          <FeatureText>{t("home.feature4.text")}</FeatureText>
+        </FeatureCard>
+      </FeatureGrid>
+      <Divider />
+      <PreviewEventos />
+      <Divider />
       <Title style={{ fontSize: "1.8rem", marginBottom: "1rem" }}>
         {t("home.moments")}
       </Title>
       <Carousel>
-        <CarouselImage src={pintando} alt={t("home.carousel.pintando")} />
-        <CarouselImage src={cafe} alt={t("home.carousel.cafe")} />
-        <CarouselImage src={estanteria} alt={t("home.carousel.estanteria")} />
-        <CarouselImage src={macetas} alt={t("home.carousel.macetas")} />
-        <CarouselImage src={frente} alt={t("home.carousel.macetas")} />
+        {[pintando, cafe, estanteria, macetas, frente, grupo].map(
+          (img, index) => (
+            <CarouselImage
+              key={index}
+              src={img}
+              alt={`imagen ${index}`}
+              onClick={() => setImagenAmpliada(img)}
+            />
+          )
+        )}
       </Carousel>
+      {imagenAmpliada && (
+        <ModalOverlay onClick={cerrarModal}>
+          <ModalContent onClick={(e) => e.stopPropagation()}>
+            <Cerrar onClick={cerrarModal}>×</Cerrar>
+            <img src={imagenAmpliada} alt="Imagen ampliada" />
+          </ModalContent>
+        </ModalOverlay>
+      )}
       <Divider />
       <WhatsAppButton
         href="https://wa.me/34683704011"

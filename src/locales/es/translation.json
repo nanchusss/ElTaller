@@ -130,7 +130,37 @@
   "texto2": "Para reservas de más de 6 personas, gestionamos todo de forma personalizada. Solo necesitamos saber cuántos son, qué día prefieren y si tienen alguna idea especial en mente.",
   "texto3": "Podés escribirnos desde el siguiente enlace y nos pondremos en contacto para coordinarlo todo con vos:",
   "boton": "Enviar mensaje"
+},
+
+ "eventos": {
+    "titulo": "Un espacio para crear, celebrar y compartir",
+    "subtexto": "En El Taller d’Aguaymanto organizamos eventos únicos: desde team buildings creativos hasta celebraciones íntimas. Siempre con calidez, creatividad y diversión.",
+    "cards": {
+      "team": {
+        "title": "Team buildings",
+        "texto": "Actividades de cerámica para fortalecer vínculos, fomentar la creatividad y salir de la rutina."
+      },
+      "celebraciones": {
+        "title": "Celebraciones",
+        "texto": "Fiestas distintas, rodeadas de arcilla, risas y buen café. Ideal para cumpleaños o encuentros familiares."
+      },
+      "privados": {
+        "title": "Talleres privados",
+        "texto": "Experiencias a medida para grupos pequeños en un entorno íntimo y acogedor."
+      }
+    },
+    "boton": "Solicitar información"
+  
+},
+ 
+  "previewEventos": {
+    "titulo": "Eventos personalizados"
+  
 }
+
+
+
+
 
 
 

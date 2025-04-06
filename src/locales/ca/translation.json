@@ -133,7 +133,36 @@
   "texto2": "Per a reserves de més de 6 persones, gestionem tot de manera personalitzada. Només necessitem saber quants sou, quin dia preferiu i si teniu alguna idea especial.",
   "texto3": "Pots escriure'ns des del següent enllaç i ens posarem en contacte per coordinar-ho tot amb tu:",
   "boton": "Enviar missatge"
-}
+},
+  "eventos": {
+    "titulo": "Un espai per crear, celebrar i compartir",
+    "subtexto": "A El Taller d’Aguaymanto organitzem esdeveniments únics: des de team buildings creatius fins a celebracions íntimes. Sempre amb calidesa, creativitat i diversió.",
+    "cards": {
+      "team": {
+        "title": "Team buildings",
+        "texto": "Activitats de ceràmica per enfortir vincles, fomentar la creativitat i sortir de la rutina."
+      },
+      "celebraciones": {
+        "title": "Celebracions",
+        "texto": "Festes diferents, envoltades d’argila, rialles i bon cafè. Ideals per a aniversaris o trobades familiars."
+      },
+      "privados": {
+        "title": "Tallers privats",
+        "texto": "Experiències a mida per a grups petits en un entorn íntim i acollidor."
+      }
+    },
+    "boton": "Sol·licitar informació"
+  
+},
+
+   "previewEventos": {
+    "titulo": "Esdeveniments personalitzats"
+  }
+
+
+
+
+ 
 
 
 
