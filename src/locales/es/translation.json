@@ -52,7 +52,8 @@
     "inicio": "Inicio",
     "reserva": "Reserva",
     "contacto": "Contacto",
-    "tienda": "Tienda"
+    "tienda": "Tienda",
+     "quienes": "Quienes somos"
   },
   "asistente": {
   "saludo": "Hola 👋 ¿En qué puedo ayudarte hoy?",

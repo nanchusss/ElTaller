@@ -67,6 +67,8 @@ const StyledLink = styled(NavLink)`
   color: #5a7263;
   font-weight: 600;
   font-size: 1rem;
+  position: relative;
+  padding-bottom: 4px;
 
   &.active {
     border-bottom: 2px solid #f0b65b;
@@ -75,6 +77,21 @@ const StyledLink = styled(NavLink)`
 
   &:hover {
     color: #2e2e2e;
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 2px;
+    width: 0%;
+    background-color: #f0b65b;
+    transition: width 0.3s ease;
+  }
+
+  &:hover::after {
+    width: 100%;
   }
 `;
 
@@ -101,6 +118,7 @@ const Header = () => {
           >
             {t("header.tienda")}
           </StyledLink>
+          <StyledLink to="/quienes-somos">{t("header.quienes")}</StyledLink>
         </LeftGroup>
 
         {/* Botón hamburguesa (solo mobile) */}
