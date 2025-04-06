@@ -9,7 +9,6 @@ import Contacto from "./Components/Contacto/Contacto";
 import Gracias from "./Components/Gracias/Gracias";
 import GraciasContacto from "./Components/GraciasContacto/GraciasContacto";
 import ReservaGrupal from "./Components/Grupal/Grupal.js";
-import LanguageSwitcher from "./Components/Botones/Botones.js";
 
 const App = () => {
   return (
@@ -24,9 +23,7 @@ const App = () => {
             right: "20px",
             zIndex: 1000,
           }}
-        >
-          <LanguageSwitcher />
-        </div>
+        ></div>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/reservas" element={<Reservas />} />
