@@ -15,10 +15,10 @@ import PreviewEventos from "../ClickEventos/ClickEventos";
 import { Helmet } from "react-helmet";
 
 <Helmet>
-  <title>El Taller d’Aguaymanto – Cerámica, plantas y café</title>
+  <title>El Taller d’Aguaymanto – Café Creatiu</title>
   <meta
     name="description"
-    content="Un espacio creativo en Barcelona para talleres, eventos y experiencias con cerámica."
+    content="Un espacio creativo en Granollers para disfrutar de un café, taller para pintar cerámica, eventos y experiencias con cerámica."
   />
 </Helmet>;
 
