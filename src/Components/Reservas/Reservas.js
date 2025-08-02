@@ -8,10 +8,10 @@ import { useTranslation } from "react-i18next";
 import { Helmet } from "react-helmet";
 
 <Helmet>
-  <title>El Taller d’Aguaymanto – Cerámica, plantas y café</title>
+  <title>El Taller d’Aguaymanto – Un café amb art</title>
   <meta
     name="description"
-    content="Un espacio creativo en Barcelona para talleres, eventos y experiencias con cerámica."
+    content="Un espacio creativo en Granollers para talleres, eventos y experiencias con cerámica."
   />
 </Helmet>;
 
@@ -244,7 +244,8 @@ const Reservas = () => {
 
   return (
     <Section>
-      <Title>{t("reservas.titulo")}</Title>
+      <div>De moment no disponible</div>
+      {/* <Title>{t("reservas.titulo")}</Title>
       <SubText>{t("reservas.subtexto")}</SubText>
 
       <GroupLink to="/Grupal">{t("reservas.linkGrupal")}</GroupLink>
@@ -350,7 +351,7 @@ const Reservas = () => {
             <Button type="submit">{t("reservas.botonConfirmar")}</Button>
           </Form>
         )}
-      </CalendarContainer>
+      </CalendarContainer> */}
     </Section>
   );
 };
