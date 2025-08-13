@@ -11,6 +11,7 @@ import GraciasContacto from "./Components/GraciasContacto/GraciasContacto";
 import ReservaGrupal from "./Components/Grupal/Grupal.js";
 import Eventos from "./Components/Eventos/Eventos.js";
 import QuienesSomos from "./Components/QuienesSomos/QuienesSomos.js"; // ajustá el path si hace falta
+import Carta from "./Components/Carta/carta.js"; 
 
 const App = () => {
   return (
@@ -35,6 +36,7 @@ const App = () => {
           <Route path="/Grupal" element={<ReservaGrupal />} />
           <Route path="/eventos" element={<Eventos />} />
           <Route path="/quienes-somos" element={<QuienesSomos />} />
+          <Route path="/carta" element={<Carta />} />
         </Routes>
         <Footer />
       </Router>

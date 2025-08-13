@@ -4,11 +4,11 @@ import { NavLink } from "react-router-dom";
 import { FaWhatsapp } from "react-icons/fa";
 import pintando from "./Images/imagen1.png";
 import cafe from "./Images/imagen2.png";
-import estanteria from "./Images/imagen3.png";
-import macetas from "./Images/imagen4.png";
-import frente from "./Images/imagen5.png";
+import estanteria from "./Images/Fachada Alfons IV.jpeg";
+import macetas from "./Images/Interior 3.jpeg";
+import frente from "./Images/Interior Alfons IV.jpeg";
 import grupo from "./Images/imagen6.png";
-import banner from "./Images/taller interior.png";
+import banner from "./Images/Fachada Alfons IV.jpeg";
 import AsistenteIA from "../Asistente/Asistente";
 import { useTranslation } from "react-i18next";
 import PreviewEventos from "../ClickEventos/ClickEventos";
@@ -288,10 +288,10 @@ const Home = () => {
           <FeatureTitle>{t("home.feature3.title")}</FeatureTitle>
           <FeatureText>{t("home.feature3.text")}</FeatureText>
         </FeatureCard>
-        <FeatureCard>
+        {/* <FeatureCard>
           <FeatureTitle>{t("home.feature4.title")}</FeatureTitle>
           <FeatureText>{t("home.feature4.text")}</FeatureText>
-        </FeatureCard>
+        </FeatureCard> */}
       </FeatureGrid>
       <Divider />
       <PreviewEventos />

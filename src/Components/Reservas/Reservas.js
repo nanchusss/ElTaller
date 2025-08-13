@@ -225,7 +225,7 @@ const Reservas = () => {
   });
   const navigate = useNavigate();
 
-  const horarios = ["11:00", "13:00", "15:00", "17:00"];
+  const horarios = ["18:00", "20:00"];
 
   const handleFormChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -239,13 +239,13 @@ const Reservas = () => {
   const isDisabledDay = ({ date }) => {
     const day = date.getDay();
     const today = new Date();
-    return day === 0 || day === 1 || date < today.setHours(0, 0, 0, 0);
+    return day === 0 || day === 1 || day === 2 || day === 3  ||   date < today.setHours(0, 0, 0, 0);
   };
 
   return (
     <Section>
-      <div>De moment no disponible</div>
-      {/* <Title>{t("reservas.titulo")}</Title>
+      
+      <Title>{t("reservas.titulo")}</Title>
       <SubText>{t("reservas.subtexto")}</SubText>
 
       <GroupLink to="/Grupal">{t("reservas.linkGrupal")}</GroupLink>
@@ -351,7 +351,7 @@ const Reservas = () => {
             <Button type="submit">{t("reservas.botonConfirmar")}</Button>
           </Form>
         )}
-      </CalendarContainer> */}
+      </CalendarContainer> 
     </Section>
   );
 };

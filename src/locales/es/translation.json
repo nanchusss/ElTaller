@@ -53,7 +53,8 @@
     "reserva": "Reserva",
     "contacto": "Contacto",
     "tienda": "Tienda",
-     "quienes": "Quienes somos"
+     "quienes": "Quienes somos",
+      "carta": "Carta"
   },
   "asistente": {
   "saludo": "Hola 👋 ¿En qué puedo ayudarte hoy?",

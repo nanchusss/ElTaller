@@ -118,6 +118,7 @@ const Header = () => {
           >
             {t("header.tienda")}
           </StyledLink>
+          <StyledLink to="/carta">{t("header.carta")}</StyledLink>
           <StyledLink to="/quienes-somos">{t("header.quienes")}</StyledLink>
         </LeftGroup>
 
@@ -141,6 +142,9 @@ const Header = () => {
           </StyledLink>
           <StyledLink to="/contacto" onClick={() => setMenuAbierto(false)}>
             {t("header.contacto")}
+          </StyledLink>
+          <StyledLink to="/carta" onClick={() => setMenuAbierto(false)}>
+            {t("header.carta")}
           </StyledLink>
           <StyledLink
             to="https://www.aguaymanto.shop"
