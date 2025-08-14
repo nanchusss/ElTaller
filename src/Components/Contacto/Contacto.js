@@ -4,8 +4,9 @@ import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import ilustracion from "./images/ilustracion.png";
 import { useTranslation } from "react-i18next";
+import emailjs from "@emailjs/browser"; // Importación de EmailJS
 
-// ...styled-components sin cambios
+// ...styled-components (sin cambios)
 
 const Section = styled.section`
   background-color: #fff9f0;
@@ -88,6 +89,7 @@ const Contacto = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
     if (!nombre || !email || !mensaje) {
       setEstado({
         success: false,
@@ -96,17 +98,39 @@ const Contacto = () => {
       return;
     }
 
-    setEstado({
-      success: true,
-      msg: t("contacto.enviado"),
-    });
-    setNombre("");
-    setEmail("");
-    setMensaje("");
+    const templateParams = {
+      nombre,
+      email,
+      mensaje,
+    };
 
-    setTimeout(() => {
-      navigate("/GraciasContacto");
-    }, 0);
+    emailjs
+      .send(
+        "service_pgxu3ij", // tu Service ID
+        "template_4m5n9ur", // tu Template ID
+        templateParams,
+        "y6n4qGd0Vvdb2QmoH" // tu Public Key
+      )
+      .then(() => {
+        setEstado({
+          success: true,
+          msg: t("contacto.enviado"),
+        });
+        setNombre("");
+        setEmail("");
+        setMensaje("");
+
+        setTimeout(() => {
+          navigate("/GraciasContacto");
+        }, 1500);
+      })
+      .catch((error) => {
+        console.error("Error al enviar:", error);
+        setEstado({
+          success: false,
+          msg: t("contacto.errorEnvio"),
+        });
+      });
   };
 
   return (
@@ -142,3 +166,4 @@ const Contacto = () => {
 };
 
 export default Contacto;
+
