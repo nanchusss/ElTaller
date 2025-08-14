@@ -4,7 +4,7 @@ import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 import { useNavigate, Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import emailjs from "emailjs-com";
+import emailjs from "@emailjs/browser";
 import { Helmet } from "react-helmet";
 
 // 👇 Meta info
