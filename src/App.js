@@ -12,11 +12,13 @@ import ReservaGrupal from "./Components/Grupal/Grupal.js";
 import Eventos from "./Components/Eventos/Eventos.js";
 import QuienesSomos from "./Components/QuienesSomos/QuienesSomos.js"; // ajustá el path si hace falta
 import Carta from "./Components/Carta/carta.js"; 
+import AvisoPopup from "./Components/AvisoPopup/AvisoPopup.js"; // Importa el componente AvisoPopup
 
 const App = () => {
   return (
     <>
       <GlobalStyle />
+      <AvisoPopup /> {/* Agrega el componente AvisoPopup aquí */}
       <Router>
         <Header />
         <div
