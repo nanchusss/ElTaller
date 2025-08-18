@@ -68,7 +68,7 @@ const AvisoPopup = () => {
       <Popup>
         <Title>¡Estamos en transición!</Title>
         <Text>
-          Estamos buscando el local perfecto, pero actualmente <strong>El Taller</strong> funciona en <strong>Vilanova del Vallès</strong>, en un espacio anexo a nuestro hogar, muy acogedor y con parking gratuito.
+          Estamos buscando el local perfecto, pero actualmente <strong>El Taller</strong> funciona en <strong>Vilanova del Vallès</strong>, en un espacio anexo a nuestro hogar.
         </Text>
         <Text>
           Si te interesa asistir, podés hacerlo desde el botón de <strong>WhatsApp</strong> o desde la sección de <strong>Reservas</strong>.
