@@ -141,7 +141,7 @@ function Carta() {
 
 
   const dulces = [
-    { nombre: 'Carrot cake', precio: '3,50 €', descripcion: 'Pastel de zanahoria y especias.' },
+    { nombre: 'Carrot cake', precio: '1€', descripcion: 'Pastel de zanahoria y nuez.' },
     { nombre: 'Magdalena', precio: '1,50 €', descripcion: 'Chocolate o Vainilla.' },
     
   ];
