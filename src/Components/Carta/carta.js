@@ -131,7 +131,7 @@ function Carta() {
   const cafes = [
     { nombre: 'Espresso', precio: '1,50 €' },
     { nombre: 'Café con leche', precio: '2,00 €' },
-    { nombre: 'Latte', precio: '2,20 €', descripcion: 'Café con mucha leche espumada.' },
+  
   ];
 
   const affogatos = [
@@ -141,21 +141,22 @@ function Carta() {
 
 
   const dulces = [
-    { nombre: 'Carrot cake', precio: '3,00 €', descripcion: 'Pastel casero de zanahoria y especias.' },
-    { nombre: 'Cookies artesanales', precio: '1,80 €', descripcion: 'Galletas horneadas en el taller.' },
+    { nombre: 'Carrot cake', precio: '3,50 €', descripcion: 'Pastel de zanahoria y especias.' },
+    { nombre: 'Magdalena', precio: '1,50 €', descripcion: 'Chocolate o Vainilla.' },
     
   ];
 
   const salados = [
     { nombre: 'Entrepan de salmón, queso Finlandia y rúcula', precio: '5,50 €' },
-    { nombre: 'Entrepan de jamón serrano', precio: '5,00 €' },
+  
   ];
 
   const bebidas = [
     { nombre: 'Agua saborizada natural (500 ml)', precio: '3 €', descripcion: 'Agua fresca con frutas y hierbas naturales. Variedad según el día.' },
-    { nombre: 'Limonada con jengibre y menta', precio: '3 €', descripcion: 'Refrescante y natural. Hecha en casa con limón, jengibre, menta fresca y azúcar mascab¡¡¡¡¡.' },
-    { nombre: 'Refrescos', precio: '2 €', descripcion: 'Coca Cola, Sprite, Fanta Naranja' },
+    { nombre: 'Limonada con jengibre y menta', precio: '3.5 €', descripcion: 'Refrescante y natural. Hecha en casa con limón, jengibre, menta fresca y azúcar mascab¡¡¡¡¡.' },
+    { nombre: 'Refrescos', precio: '2 €', descripcion: 'Coca Cola Zero, Coca Cola, Refresco Naranja, Refresco Limón' },
     { nombre: 'Agua con gas', precio: '1,5 €', descripcion: 'Vichy Catalán' },
+    { nombre: 'Agua sin gas', precio: '1,5 €', descripcion: 'Solan de Cabras' },
   ];
 
   return (
