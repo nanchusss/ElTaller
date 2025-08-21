@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   version="1.1"
+   id="svg1"
+   width="1122.5197"
+   height="1587.4016"
+   viewBox="0 0 1122.5197 1587.4016"
+   sodipodi:docname="editable logo.svg"
+   inkscape:version="1.4.2 (ebf0e940, 2025-05-08)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs1">
+    <rect
+       x="126.99213"
+       y="425.79714"
+       width="41.085689"
+       height="20.542845"
+       id="rect1" />
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath3">
+      <path
+         d="M 0,0 H 842 V 1191 H 0 Z"
+         transform="matrix(1,0,0,1.1502642,-139.50306,-637.99258)"
+         id="path3" />
+    </clipPath>
+  </defs>
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     showgrid="false"
+     inkscape:zoom="0.62695145"
+     inkscape:cx="594.14489"
+     inkscape:cy="548.68683"
+     inkscape:window-width="1712"
+     inkscape:window-height="955"
+     inkscape:window-x="0"
+     inkscape:window-y="39"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="g1">
+    <inkscape:page
+       x="0"
+       y="0"
+       inkscape:label="1"
+       id="page1"
+       width="1122.5197"
+       height="1587.4016"
+       margin="0"
+       bleed="0" />
+  </sodipodi:namedview>
+  <g
+     id="g1"
+     inkscape:groupmode="layer"
+     inkscape:label="1">
+    <path
+       id="path2"
+       d="m 777.922,453.586 c 0,187.285 -158.641,339.109 -354.332,339.109 -195.692,0 -354.328,-151.824 -354.328,-339.109 0,-187.281 158.636,-339.106 354.328,-339.106 195.691,0 354.332,151.825 354.332,339.106 z"
+       style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none"
+       transform="scale(1.3333333)"
+       sodipodi:nodetypes="sssss" />
+    <g
+       opacity="0.742958"
+       id="g3">
+      <text
+         xml:space="preserve"
+         transform="matrix(1.3333333,0,0,1.159154,186.00407,739.53165)"
+         clip-path="url(#clipPath3)"
+         id="text3"><tspan
+           style="font-variant:normal;font-weight:500;font-size:42.5377px;font-family:'Avenir Next';writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+           x="0"
+           dx="0 0 0 0 0 0 0 -0.51045275 -0.76567912 0 0 0 0 0 -0.51045275 0 0 0 0 0 0 0 0 -0.76567912 0 -0.51045275"
+           y="0"
+           id="tspan3">CERÀMICA  ·  COFFEE  · ART</tspan></text>
+    </g>
+    <text
+       id="text4"
+       xml:space="preserve"
+       transform="scale(0.84168936,1.1880868)"
+       x="189.75349"
+       y="539.12994"
+       style="font-size:21.6035px;stroke-width:1.8003"><tspan
+         id="tspan4"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:202.55px;font-family:'DM Serif Display';-inkscape-font-specification:'DM Serif Display';writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1.8003"
+         x="189.75349"
+         dx="0 0 -7.4943309 -3.6458902 -16.203959"
+         y="539.12994">EL TALLER</tspan></text>
+    <text
+       xml:space="preserve"
+       id="text1"
+       style="fill:#000000;text-orientation:auto;-inkscape-font-specification:'DM Serif Display';font-family:'DM Serif Display';line-height:74.45669291px;font-size:14.66666667px;stroke-width:75.59055118;font-weight:normal;text-align:start;writing-mode:lr-tb;direction:ltr;font-style:normal;font-stretch:normal;font-variant:normal;white-space:pre;shape-inside:url(#rect1)" />
+  </g>
+</svg>
