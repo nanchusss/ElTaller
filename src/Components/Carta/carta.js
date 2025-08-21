@@ -147,7 +147,7 @@ function Carta() {
   ];
 
   const salados = [
-    { nombre: 'Entrepan de salmón, queso Finlandia y rúcula', precio: '5,50 €' },
+    { nombre: 'Entrepan de salmón, queso Finlandia y rúcula', precio: '3,50 €' },
   
   ];
 
