@@ -18,7 +18,7 @@ const App = () => {
   return (
     <>
       <GlobalStyle />
-      <AvisoPopup /> {/* Agrega el componente AvisoPopup aquí */}
+      
       <Router>
         <Header />
         <div
