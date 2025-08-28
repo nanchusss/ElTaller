@@ -228,7 +228,25 @@ const Reservas = () => {
   });
 
   const navigate = useNavigate();
-  const horarios = ["18:00", "20:00"];
+
+  // Fechas permitidas (20 y 27 de septiembre de 2025)
+  const allowedDates = [
+    new Date(2025, 8, 20), // meses 0-index (8 = septiembre)
+    new Date(2025, 8, 27),
+  ].map(d => new Date(d.getFullYear(), d.getMonth(), d.getDate())); // normalizar sin hora
+
+  // Horarios con descripción y duración
+  const DURACION = "1 h 30 a 2 h";
+  const horarios = [
+    {
+      hora: "11:00",
+      experiencia: "Pinta tu cerámica + infusión y algo dulce",
+    },
+    {
+      hora: "19:00",
+      experiencia: "Pinta tu cerámica + vermut y picoteo",
+    },
+  ];
 
   const handleFormChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -242,8 +260,10 @@ const Reservas = () => {
       email: formData.email,
       telefono: formData.telefono,
       fecha: fecha.toLocaleDateString(),
-      hora: horarioSeleccionado,
+      hora: horarioSeleccionado?.hora || "",
       personas,
+      experiencia: horarioSeleccionado?.experiencia || "",
+      duracion: DURACION,
     };
 
     emailjs
@@ -262,20 +282,26 @@ const Reservas = () => {
       });
   };
 
+  const isSameDay = (a, b) =>
+    a.getFullYear() === b.getFullYear() &&
+    a.getMonth() === b.getMonth() &&
+    a.getDate() === b.getDate();
+
   const isDisabledDay = ({ date }) => {
-    const day = date.getDay();
+    // Normalizar fecha sin hora
+    const d = new Date(date.getFullYear(), date.getMonth(), date.getDate());
+
+    // Regla 48 h
     const hoy = new Date();
     const hoySinHora = new Date(hoy.getFullYear(), hoy.getMonth(), hoy.getDate());
     const fechaLimite = new Date(hoySinHora);
-    fechaLimite.setDate(fechaLimite.getDate() + 2); // 48h
+    fechaLimite.setDate(fechaLimite.getDate() + 2);
 
-    return (
-      day === 0 ||
-      day === 1 ||
-      day === 2 ||
-      day === 3 ||
-      date < fechaLimite
-    );
+    const esPermitida = allowedDates.some(ad => isSameDay(ad, d));
+    const respeta48h = d >= fechaLimite;
+
+    // Deshabilitar todo lo que NO sea una de las dos fechas o no cumpla 48h
+    return !(esPermitida && respeta48h);
   };
 
   return (
@@ -305,19 +331,26 @@ const Reservas = () => {
 
         {step === 2 && fecha && (
           <>
-            <h3 style={{ marginBottom: "1.5rem", fontFamily: "Playfair Display", color: "#5a7263" }}>
+            <h3 style={{ marginBottom: "1rem", fontFamily: "Playfair Display", color: "#5a7263" }}>
               {t("reservas.seleccionaHora")}
             </h3>
+            <p style={{ marginTop: 0, marginBottom: "1.5rem", color: "#6d6762" }}>
+              Duración: {DURACION}
+            </p>
             <Horarios>
-              {horarios.map((hora) => (
+              {horarios.map((h) => (
                 <Horario
-                  key={hora}
+                  key={h.hora}
                   onClick={() => {
-                    setHorarioSeleccionado(hora);
+                    setHorarioSeleccionado(h);
                     setStep(3);
                   }}
+                  title={h.experiencia}
                 >
-                  {hora}
+                  <div style={{ fontWeight: 600 }}>{h.hora}</div>
+                  <div style={{ fontSize: "0.9rem", opacity: 0.9, marginTop: 4 }}>
+                    {h.experiencia}
+                  </div>
                 </Horario>
               ))}
             </Horarios>
@@ -376,5 +409,6 @@ const Reservas = () => {
     </Section>
   );
 };
+
 
 export default Reservas;

@@ -3,12 +3,11 @@ import styled from "styled-components";
 import { NavLink } from "react-router-dom";
 import { FaWhatsapp } from "react-icons/fa";
 import pintando from "./Images/imagen1.png";
-import cafe from "./Images/imagen2.png";
-import estanteria from "./Images/Fachada Alfons IV.jpeg";
-import macetas from "./Images/Interior 3.jpeg";
-import frente from "./Images/Interior Alfons IV.jpeg";
 import grupo from "./Images/imagen6.png";
-import banner from "./Images/Fachada Alfons IV.jpeg";
+import banner from "./Images/1.jpeg";
+import estanteria1 from "./Images/estanteria.jpeg";
+import jarra from "./Images/zoom jarra.jpeg";
+import panfleto from "./Images/panfleto.png";
 import AsistenteIA from "../Asistente/Asistente";
 import { useTranslation } from "react-i18next";
 import PreviewEventos from "../ClickEventos/ClickEventos";
@@ -300,7 +299,7 @@ const Home = () => {
         {t("home.moments")}
       </Title>
       <Carousel>
-        {[pintando, cafe, estanteria, macetas, frente, grupo].map(
+        {[pintando, jarra, estanteria1, grupo].map(
           (img, index) => (
             <CarouselImage
               key={index}
