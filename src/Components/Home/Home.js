@@ -12,7 +12,8 @@ import AsistenteIA from "../Asistente/Asistente";
 import { useTranslation } from "react-i18next";
 import PreviewEventos from "../ClickEventos/ClickEventos";
 import { Helmet } from "react-helmet";
-
+import bannerVideo from "./Images/video.mp4";
+import Banner from "../Banner/Banner"
 <Helmet>
   <title>El Taller d’Aguaymanto – Café Creatiu</title>
   <meta
@@ -26,6 +27,16 @@ const Section = styled.section`
   padding: 4rem 1.5rem;
   text-align: center;
 `;
+
+const BannerVideo = styled.video`
+  margin: 4rem auto 2rem;
+  display: block;
+  width: 100%;
+  border-radius: 16px;
+  object-fit: cover;
+  max-height: 600px; /* opcional: límite de altura */
+`;
+
 
 const Title = styled.h1`
   font-size: 5rem;
@@ -246,7 +257,8 @@ const Home = () => {
       <SubTitleMini>{t("home.subtitleMini")}</SubTitleMini>
       <Subtitle>{t("home.subtitle")}</Subtitle>
       <CTAButton to="/reservas">{t("home.ctaButton")}</CTAButton>
-      <BannerImage src={banner} alt="Vista del Taller de Aguaymanto" />
+    
+<Banner />
 
       <Divider />
       <HighlightCard>
