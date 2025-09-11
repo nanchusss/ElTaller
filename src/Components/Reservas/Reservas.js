@@ -231,17 +231,14 @@ const Reservas = () => {
 
   // Fechas permitidas (20 y 27 de septiembre de 2025)
   const allowedDates = [
-    new Date(2025, 8, 20), // meses 0-index (8 = septiembre)
-    new Date(2025, 8, 27),
+    new Date(2025, 10, 4), // meses 0-index (8 = septiembre)
+  
   ].map(d => new Date(d.getFullYear(), d.getMonth(), d.getDate())); // normalizar sin hora
 
   // Horarios con descripción y duración
   const DURACION = "1 h 30 a 2 h";
   const horarios = [
-    {
-      hora: "11:00",
-      experiencia: "Pinta tu cerámica + infusión y algo dulce",
-    },
+    
     {
       hora: "19:00",
       experiencia: "Pinta tu cerámica + vermut y picoteo",
