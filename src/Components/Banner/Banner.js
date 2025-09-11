@@ -4,11 +4,8 @@ import styled, { css } from "styled-components";
 
 /** 
  * MODO: "landscape" | "portrait" | "rotate90" | "rotate-90"
- * - landscape: contenedor 16:9
- * - portrait: contenedor 9:16
- * - rotate90 / rotate-90: si el video se ve de lado
  */
-const BANNER_MODE = "landscape"; // probá "portrait" o "rotate90" si es vertical o está de lado
+const BANNER_MODE = "landscape";
 
 const BannerVideoWrapper = styled.div`
   position: relative;
@@ -17,16 +14,20 @@ const BannerVideoWrapper = styled.div`
   border-radius: 16px;
   overflow: hidden;
 
-  /* Aspect-ratio del contenedor según modo */
+  /* Desktop por default */
   ${({ mode }) =>
     mode === "portrait"
       ? css`
           aspect-ratio: 9 / 16;
         `
       : css`
-          /* default landscape */
           aspect-ratio: 16 / 9;
         `}
+
+  /* En mobile forzamos vertical */
+  @media (max-width: 768px) {
+    aspect-ratio: 9 / 16;
+  }
 `;
 
 const BannerVideo = styled.video`
@@ -34,11 +35,9 @@ const BannerVideo = styled.video`
   inset: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover; /* recorta sin deformar */
+  object-fit: cover;
   transform-origin: center;
 
-  /* Si el archivo viene con orientación mal escrita en metadatos,
-     forzamos rotación sin deformar */
   ${({ mode }) =>
     mode === "rotate90" &&
     css`
@@ -51,7 +50,6 @@ const BannerVideo = styled.video`
     `}
 `;
 
-// En tu JSX, reemplazá el <BannerImage .../> por esto:
 const Banner = () => (
   <BannerVideoWrapper mode={BANNER_MODE}>
     <BannerVideo
@@ -60,7 +58,6 @@ const Banner = () => (
       loop
       playsInline
       preload="metadata"
-      // poster={banner} // opcional: tu imagen 1.jpeg como poster
       mode={BANNER_MODE}
     >
       <source src={bannerVideo} type="video/mp4" />
@@ -70,3 +67,4 @@ const Banner = () => (
 );
 
 export default Banner;
+

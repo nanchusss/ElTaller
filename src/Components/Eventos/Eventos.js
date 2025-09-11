@@ -7,7 +7,7 @@ import imagen3 from "./images/evento3.png";
 import { Helmet } from "react-helmet";
 
 <Helmet>
-  <title>El Taller d’Aguaymanto – Cerámica, plantas y café</title>
+  <title>El Taller d’Aguaymanto – Cerámica y café</title>
   <meta
     name="description"
     content="Un espacio creativo en Barcelona para talleres, eventos y experiencias con cerámica."
