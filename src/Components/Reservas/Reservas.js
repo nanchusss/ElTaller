@@ -229,19 +229,18 @@ const Reservas = () => {
 
   const navigate = useNavigate();
 
-  // Fechas permitidas (20 y 27 de septiembre de 2025)
+  // ✅ Fechas permitidas: 4 y 11 de octubre de 2025 (mes 9 porque es 0-index)
   const allowedDates = [
-    new Date(2025, 10, 4), // meses 0-index (8 = septiembre)
-  
+    new Date(2025, 9, 4),
+    new Date(2025, 9, 11),
   ].map(d => new Date(d.getFullYear(), d.getMonth(), d.getDate())); // normalizar sin hora
 
-  // Horarios con descripción y duración
+  // Horarios (19:00 fijo)
   const DURACION = "1 h 30 a 2 h";
   const horarios = [
-    
     {
       hora: "19:00",
-      experiencia: "Pinta tu cerámica + vermut y picoteo",
+      experiencia: "Pinta tu cerámica + vino y picoteo",
     },
   ];
 
@@ -297,7 +296,7 @@ const Reservas = () => {
     const esPermitida = allowedDates.some(ad => isSameDay(ad, d));
     const respeta48h = d >= fechaLimite;
 
-    // Deshabilitar todo lo que NO sea una de las dos fechas o no cumpla 48h
+    // Deshabilitar lo que NO sea una de las fechas permitidas o no cumpla 48h
     return !(esPermitida && respeta48h);
   };
 
@@ -360,7 +359,7 @@ const Reservas = () => {
             <Select
               id="personas"
               value={personas}
-              onChange={(e) => setPersonas(e.target.value)}
+              onChange={(e) => setPersonas(parseInt(e.target.value, 10))}
             >
               {[1, 2, 3, 4, 5, 6].map((n) => (
                 <option key={n} value={n}>
@@ -406,6 +405,5 @@ const Reservas = () => {
     </Section>
   );
 };
-
 
 export default Reservas;
