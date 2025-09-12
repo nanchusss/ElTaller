@@ -14,13 +14,17 @@ import PreviewEventos from "../ClickEventos/ClickEventos";
 import { Helmet } from "react-helmet";
 import bannerVideo from "./Images/video.mp4";
 import Banner from "../Banner/Banner"
+import LogoElTaller from "../Home/Images/ELTALLERLOGO.png";
 <Helmet>
+ 
   <title>El Taller d’Aguaymanto – Café Creatiu</title>
   <meta
     name="description"
     content="Un espacio creativo en Vilanova del Vallés para disfrutar de un café, taller para pintar cerámica, eventos y experiencias con cerámica."
   />
 </Helmet>;
+
+ 
 
 const Section = styled.section`
   background-color: #fff9f0;
@@ -253,10 +257,17 @@ const Home = () => {
 
   return (
     <Section>
-      <Title>{t("home.title")}</Title>
-      <SubTitleMini>{t("home.subtitleMini")}</SubTitleMini>
+
+      <img
+    src={LogoElTaller}
+    alt="Logo El Taller d’Aguaymanto"
+    style={{ maxWidth: "220px", margin: "0 auto 2rem", display: "block" }}
+  />
+      
       <Subtitle>{t("home.subtitle")}</Subtitle>
       <CTAButton to="/reservas">{t("home.ctaButton")}</CTAButton>
+
+      
     
 <Banner />
 

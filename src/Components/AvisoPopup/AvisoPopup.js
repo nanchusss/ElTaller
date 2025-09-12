@@ -31,11 +31,6 @@ const Title = styled.h2`
   margin-bottom: 1rem;
 `;
 
-// const Text = styled.p`
-//   color: #6d6762;
-//   font-size: 1rem;
-//   margin-bottom: 1.5rem;
-// `;
 
 const Button = styled.button`
   background-color: #f0b65b;
