@@ -240,7 +240,7 @@ const Reservas = () => {
   const horarios = [
     {
       hora: "19:00",
-      experiencia: "Pinta tu cerámica + vino y picoteo",
+      experiencia: "Pinta tu cerámica + vino y picoteo. Precio por persona: 40€",
     },
   ];
 
