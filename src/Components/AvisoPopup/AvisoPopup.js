@@ -1,6 +1,7 @@
 // src/Components/AvisoPopup.js
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
+import octubre from "../Home/Images/octubre.png";
 
 const Overlay = styled.div`
   position: fixed;
@@ -30,11 +31,11 @@ const Title = styled.h2`
   margin-bottom: 1rem;
 `;
 
-const Text = styled.p`
-  color: #6d6762;
-  font-size: 1rem;
-  margin-bottom: 1.5rem;
-`;
+// const Text = styled.p`
+//   color: #6d6762;
+//   font-size: 1rem;
+//   margin-bottom: 1.5rem;
+// `;
 
 const Button = styled.button`
   background-color: #f0b65b;
@@ -66,13 +67,8 @@ const AvisoPopup = () => {
   return (
     <Overlay>
       <Popup>
-        <Title>¡Estamos en transición!</Title>
-        <Text>
-          Estamos buscando el local perfecto.
-        </Text>
-        <Text>
-          Si te interesa asistir, a nuestro actual taller, puedes hacerlo desde el botón de <strong>WhatsApp</strong> o desde la sección de <strong>Reservas</strong>.
-        </Text>
+        <img src={octubre} alt="Aviso" style={{ width: '1000px', marginBottom: '1rem' }} />
+        <Title>¡Novedad en Octubre!</Title>
         <Button onClick={() => setVisible(false)}>Entendido</Button>
       </Popup>
     </Overlay>

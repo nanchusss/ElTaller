@@ -18,6 +18,7 @@ const App = () => {
   return (
     <>
       <GlobalStyle />
+      <AvisoPopup /> {/* Añade el componente AvisoPopup aquí */}
       
       <Router>
         <Header />
@@ -29,8 +30,10 @@ const App = () => {
             zIndex: 1000,
           }}
         ></div>
+        
         <Routes>
           <Route path="/" element={<Home />} />
+          
           <Route path="/reservas" element={<Reservas />} />
           <Route path="/contacto" element={<Contacto />} />
           <Route path="/gracias" element={<Gracias />} />

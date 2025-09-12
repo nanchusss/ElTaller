@@ -12,7 +12,7 @@ import { Helmet } from "react-helmet";
   <title>El Taller d’Aguaymanto – Un café amb art</title>
   <meta
     name="description"
-    content="Un espacio creativo en Granollers para talleres, eventos y experiencias con cerámica."
+    content="Un espacio creativo en Vilanova del Vallés para talleres, eventos y experiencias con cerámica."
   />
 </Helmet>;
 
