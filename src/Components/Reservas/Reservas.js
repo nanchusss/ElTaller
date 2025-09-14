@@ -7,15 +7,6 @@ import { useTranslation } from "react-i18next";
 import emailjs from "@emailjs/browser";
 import { Helmet } from "react-helmet";
 
-// 👇 Meta info
-<Helmet>
-  <title>El Taller d’Aguaymanto – Un café amb art</title>
-  <meta
-    name="description"
-    content="Un espacio creativo en Vilanova del Vallés para talleres, eventos y experiencias con cerámica."
-  />
-</Helmet>;
-
 // ✅ Tus estilos (sin cambios)
 const Section = styled.section`
   background-color: #fff9f0;
@@ -230,17 +221,52 @@ const Reservas = () => {
   const navigate = useNavigate();
 
   // ✅ Fechas permitidas: 4 y 11 de octubre de 2025 (mes 9 porque es 0-index)
-  const allowedDates = [
-    new Date(2025, 9, 4),
-    new Date(2025, 9, 11),
-  ].map(d => new Date(d.getFullYear(), d.getMonth(), d.getDate())); // normalizar sin hora
+  const allowedDates = [new Date(2025, 9, 4), new Date(2025, 9, 11)].map(
+    (d) => new Date(d.getFullYear(), d.getMonth(), d.getDate())
+  ); // normalizar sin hora
 
-  // Horarios (19:00 fijo)
+  // 🧠 Duración fija
   const DURACION = "1 h 30 a 2 h";
+
+  // 🔎 Utilidades de fecha
+  const isSameDay = (a, b) =>
+    a.getFullYear() === b.getFullYear() &&
+    a.getMonth() === b.getMonth() &&
+    a.getDate() === b.getDate();
+
+  const isOct4 = (d) => isSameDay(d, new Date(2025, 9, 4));
+  const isOct11 = (d) => isSameDay(d, new Date(2025, 9, 11));
+
+  // 🧩 Experiencia y precio según fecha
+  const getExperienciaPorFecha = (d) => {
+    if (!d) {
+      return {
+        experiencia:
+          "Pinta tu cerámica + vino y picoteo. Precio por persona: 37€",
+        precio: 37,
+      };
+    }
+    const base = new Date(d.getFullYear(), d.getMonth(), d.getDate());
+    if (isOct11(base)) {
+      return {
+        experiencia: "Cerámica, vino y picoteo. Precio por persona: 35€",
+        precio: 35,
+      };
+    }
+    // Por defecto (incluye 4/10 tal cual)
+    return {
+      experiencia:
+        "Pinta tu cerámica + vino y picoteo. Precio por persona: 37€",
+      precio: 37,
+    };
+  };
+
+  // 🕖 Horarios (19:00 fijo) con experiencia dinámica según fecha
+  const experienciaInfo = getExperienciaPorFecha(fecha);
   const horarios = [
     {
       hora: "19:00",
-      experiencia: "Pinta tu cerámica + vino y picoteo. Precio por persona: 40€",
+      experiencia: experienciaInfo.experiencia,
     },
   ];
 
@@ -260,6 +286,7 @@ const Reservas = () => {
       personas,
       experiencia: horarioSeleccionado?.experiencia || "",
       duracion: DURACION,
+      precio: experienciaInfo.precio, // <- opcional en tu plantilla de EmailJS
     };
 
     emailjs
@@ -278,22 +305,21 @@ const Reservas = () => {
       });
   };
 
-  const isSameDay = (a, b) =>
-    a.getFullYear() === b.getFullYear() &&
-    a.getMonth() === b.getMonth() &&
-    a.getDate() === b.getDate();
-
   const isDisabledDay = ({ date }) => {
     // Normalizar fecha sin hora
     const d = new Date(date.getFullYear(), date.getMonth(), date.getDate());
 
     // Regla 48 h
     const hoy = new Date();
-    const hoySinHora = new Date(hoy.getFullYear(), hoy.getMonth(), hoy.getDate());
+    const hoySinHora = new Date(
+      hoy.getFullYear(),
+      hoy.getMonth(),
+      hoy.getDate()
+    );
     const fechaLimite = new Date(hoySinHora);
     fechaLimite.setDate(fechaLimite.getDate() + 2);
 
-    const esPermitida = allowedDates.some(ad => isSameDay(ad, d));
+    const esPermitida = allowedDates.some((ad) => isSameDay(ad, d));
     const respeta48h = d >= fechaLimite;
 
     // Deshabilitar lo que NO sea una de las fechas permitidas o no cumpla 48h
@@ -302,6 +328,15 @@ const Reservas = () => {
 
   return (
     <Section>
+      {/* 👇 Meta info */}
+      <Helmet>
+        <title>El Taller d’Aguaymanto – Un café amb art</title>
+        <meta
+          name="description"
+          content="Un espacio creativo en Vilanova del Vallés para talleres, eventos y experiencias con cerámica."
+        />
+      </Helmet>
+
       <Title>{t("reservas.titulo")}</Title>
       <SubText>{t("reservas.subtexto")}</SubText>
       <GroupLink to="/Grupal">{t("reservas.linkGrupal")}</GroupLink>
@@ -309,13 +344,20 @@ const Reservas = () => {
       <CalendarContainer>
         {step === 1 && (
           <>
-            <h3 style={{ marginBottom: "2rem", fontFamily: "Playfair Display", color: "#5a7263" }}>
+            <h3
+              style={{
+                marginBottom: "2rem",
+                fontFamily: "Playfair Display",
+                color: "#5a7263",
+              }}
+            >
               {t("reservas.seleccionaDia")}
             </h3>
             <CustomCalendarWrapper>
               <Calendar
                 onChange={(value) => {
                   setFecha(value);
+                  setHorarioSeleccionado(null);
                   setStep(2);
                 }}
                 value={fecha}
@@ -327,7 +369,13 @@ const Reservas = () => {
 
         {step === 2 && fecha && (
           <>
-            <h3 style={{ marginBottom: "1rem", fontFamily: "Playfair Display", color: "#5a7263" }}>
+            <h3
+              style={{
+                marginBottom: "1rem",
+                fontFamily: "Playfair Display",
+                color: "#5a7263",
+              }}
+            >
               {t("reservas.seleccionaHora")}
             </h3>
             <p style={{ marginTop: 0, marginBottom: "1.5rem", color: "#6d6762" }}>
@@ -344,7 +392,13 @@ const Reservas = () => {
                   title={h.experiencia}
                 >
                   <div style={{ fontWeight: 600 }}>{h.hora}</div>
-                  <div style={{ fontSize: "0.9rem", opacity: 0.9, marginTop: 4 }}>
+                  <div
+                    style={{
+                      fontSize: "0.9rem",
+                      opacity: 0.9,
+                      marginTop: 4,
+                    }}
+                  >
                     {h.experiencia}
                   </div>
                 </Horario>
