@@ -19,7 +19,7 @@ const App = () => {
     <>
       <GlobalStyle />
       
-      
+      <AvisoPopup /> 
       <Router>
         <Header />
         <div

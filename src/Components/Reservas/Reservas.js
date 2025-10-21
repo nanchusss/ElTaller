@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useMemo } from "react";
 import styled from "styled-components";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
@@ -220,13 +220,13 @@ const Reservas = () => {
 
   const navigate = useNavigate();
 
-  // ✅ Fechas permitidas: 4 y 11 de octubre de 2025 (mes 9 porque es 0-index)
-  const allowedDates = [new Date(2025, 9, 4), new Date(2025, 9, 11)].map(
-    (d) => new Date(d.getFullYear(), d.getMonth(), d.getDate())
-  ); // normalizar sin hora
-
-  // 🧠 Duración fija
-  const DURACION = "1 h 30 a 2 h";
+  // ✅ Fechas permitidas: 4 y 11 de octubre, 15 y 29 de noviembre de 2025
+  const allowedDates = [
+    new Date(2025, 9, 4),
+    new Date(2025, 9, 11),
+    new Date(2025, 10, 15),
+    new Date(2025, 10, 29),
+  ].map((d) => new Date(d.getFullYear(), d.getMonth(), d.getDate()));
 
   // 🔎 Utilidades de fecha
   const isSameDay = (a, b) =>
@@ -234,41 +234,71 @@ const Reservas = () => {
     a.getMonth() === b.getMonth() &&
     a.getDate() === b.getDate();
 
-  const isOct4 = (d) => isSameDay(d, new Date(2025, 9, 4));
   const isOct11 = (d) => isSameDay(d, new Date(2025, 9, 11));
+  const isNov15 = (d) => isSameDay(d, new Date(2025, 10, 15));
+  const isNov29 = (d) => isSameDay(d, new Date(2025, 10, 29));
 
-  // 🧩 Experiencia y precio según fecha
-  const getExperienciaPorFecha = (d) => {
+  // 🧩 Info base por fecha (para fechas que no son 15/11 ni 29/11)
+  const getBaseInfoPorFecha = (d) => {
     if (!d) {
       return {
-        experiencia:
-          "Pinta tu cerámica + vino y picoteo. Precio por persona: 37€",
+        experiencia: "Pinta tu cerámica + vino y picoteo",
         precio: 37,
+        duracion: "1 h 30 a 2 h",
       };
     }
     const base = new Date(d.getFullYear(), d.getMonth(), d.getDate());
     if (isOct11(base)) {
       return {
-        experiencia: "Cerámica, vino y picoteo. Precio por persona: 35€",
+        experiencia: "Cerámica, vino y picoteo",
         precio: 35,
+        duracion: "1 h 30 a 2 h",
       };
     }
-    // Por defecto (incluye 4/10 tal cual)
     return {
-      experiencia:
-        "Pinta tu cerámica + vino y picoteo. Precio por persona: 37€",
+      experiencia: "Pinta tu cerámica + vino y picoteo",
       precio: 37,
+      duracion: "1 h 30 a 2 h",
     };
   };
 
-  // 🕖 Horarios (19:00 fijo) con experiencia dinámica según fecha
-  const experienciaInfo = getExperienciaPorFecha(fecha);
-  const horarios = [
-    {
-      hora: "19:00",
-      experiencia: experienciaInfo.experiencia,
-    },
-  ];
+  const baseInfo = getBaseInfoPorFecha(fecha);
+
+  // 🕖 Horarios
+  // - 15/11 y 29/11:
+  //   * 11:00 → Crea tu set de cerámica + infusión y algo dulce (2 h, 43 €)
+  //   * 18:00 → Pinta tu cerámica + vino y picoteo (1 h 30 min, 45 €)
+  // - Resto (4/10, 11/10): 19:00 con su experiencia/precio base
+  const horarios = useMemo(() => {
+    if (!fecha) return [];
+    const base = new Date(fecha.getFullYear(), fecha.getMonth(), fecha.getDate());
+
+    if (isNov15(base) || isNov29(base)) {
+      return [
+        {
+          hora: "11:00",
+          experiencia: "Crea tu set de cerámica + infusión y algo dulce",
+          duracion: "2 h",
+          precio: 43,
+        },
+        {
+          hora: "18:00",
+          experiencia: "Pinta tu cerámica + vino y picoteo",
+          duracion: "1 h 30 min",
+          precio: 45,
+        },
+      ];
+    }
+
+    return [
+      {
+        hora: "19:00",
+        experiencia: baseInfo.experiencia,
+        duracion: baseInfo.duracion,
+        precio: baseInfo.precio,
+      },
+    ];
+  }, [fecha, baseInfo.experiencia, baseInfo.duracion, baseInfo.precio]);
 
   const handleFormChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -281,12 +311,12 @@ const Reservas = () => {
       nombre: formData.nombre,
       email: formData.email,
       telefono: formData.telefono,
-      fecha: fecha.toLocaleDateString(),
+      fecha: fecha?.toLocaleDateString(),
       hora: horarioSeleccionado?.hora || "",
       personas,
       experiencia: horarioSeleccionado?.experiencia || "",
-      duracion: DURACION,
-      precio: experienciaInfo.precio, // <- opcional en tu plantilla de EmailJS
+      duracion: horarioSeleccionado?.duracion || "",
+      precio: horarioSeleccionado?.precio ?? "",
     };
 
     emailjs
@@ -322,13 +352,11 @@ const Reservas = () => {
     const esPermitida = allowedDates.some((ad) => isSameDay(ad, d));
     const respeta48h = d >= fechaLimite;
 
-    // Deshabilitar lo que NO sea una de las fechas permitidas o no cumpla 48h
     return !(esPermitida && respeta48h);
   };
 
   return (
     <Section>
-      {/* 👇 Meta info */}
       <Helmet>
         <title>El Taller d’Aguaymanto – Un café amb art</title>
         <meta
@@ -378,9 +406,7 @@ const Reservas = () => {
             >
               {t("reservas.seleccionaHora")}
             </h3>
-            <p style={{ marginTop: 0, marginBottom: "1.5rem", color: "#6d6762" }}>
-              Duración: {DURACION}
-            </p>
+
             <Horarios>
               {horarios.map((h) => (
                 <Horario
@@ -389,17 +415,26 @@ const Reservas = () => {
                     setHorarioSeleccionado(h);
                     setStep(3);
                   }}
-                  title={h.experiencia}
+                  title={`${h.experiencia} · Duración: ${h.duracion} · Precio: ${h.precio}€`}
                 >
                   <div style={{ fontWeight: 600 }}>{h.hora}</div>
                   <div
                     style={{
                       fontSize: "0.9rem",
-                      opacity: 0.9,
+                      opacity: 0.95,
                       marginTop: 4,
+                      lineHeight: 1.25,
                     }}
                   >
                     {h.experiencia}
+                    <br />
+                    {`Duración: ${h.duracion}`}
+                    {h.precio ? (
+                      <>
+                        <br />
+                        {`Precio: ${h.precio}€`}
+                      </>
+                    ) : null}
                   </div>
                 </Horario>
               ))}
