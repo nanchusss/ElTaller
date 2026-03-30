@@ -19,6 +19,7 @@ const Nav = styled.nav`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  font-size: 3rem;
   flex-wrap: wrap;
 `;
 
@@ -40,6 +41,7 @@ const LeftGroup = styled.div`
 const LanguageWrapper = styled.div`
   display: flex;
   width: 100px;
+  font-size: 2.2rem;
   align-items: center;
   gap: 0.5rem;
 `;
@@ -47,7 +49,7 @@ const LanguageWrapper = styled.div`
 const MenuToggle = styled.button`
   background: none;
   border: none;
-  font-size: 2rem;
+  font-size: 2.5rem;
   color: #0c0c0cff;
   cursor: pointer;
   display: none;

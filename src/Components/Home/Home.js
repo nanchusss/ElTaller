@@ -1,7 +1,9 @@
 import styled from "styled-components";
+import { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import { FaWhatsapp } from "react-icons/fa";
 import pintando from "./Images/imagen1.png";
+import AvisoPopup from "../AvisoPopup/AvisoPopup";
 
 import estanteria1 from "./Images/taller1.jpeg";
 import taller1 from "./Images/taller2.jpeg";
@@ -253,8 +255,24 @@ const WhatsApp = styled.a`
 const Home = () => {
   const { t } = useTranslation();
 
+  const [avisoVisible, setAvisoVisible] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setAvisoVisible(false);
+    }, 5000);
+
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
+
+    
     <>
+
+    {avisoVisible && (
+      <AvisoPopup onClose={() => setAvisoVisible(false)} />
+    )}
       <Helmet>
         <title>El Taller d’Aguaymanto</title>
       </Helmet>
