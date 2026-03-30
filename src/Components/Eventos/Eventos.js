@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { useTranslation } from "react-i18next";
-import imagen1 from "./images/evento1.png";
+import imagen1 from "./images/evento1.jpeg";
 import imagen2 from "./images/evento2.png";
 import imagen3 from "./images/evento3.png";
 import { Helmet } from "react-helmet";
@@ -96,7 +96,8 @@ const CTAButton = styled.a`
   margin-top: 1rem;
 
   &:hover {
-    background-color: #dda94f;
+    background-color: #dc9333ff;
+    color: white;
   }
 `;
 

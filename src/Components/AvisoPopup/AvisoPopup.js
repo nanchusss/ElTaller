@@ -1,7 +1,7 @@
 // src/Components/AvisoPopup.js
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import octubre from "../Home/Images/noviembre.png";
+import talleres from "../Home/Images/talleres.png";
 
 const Overlay = styled.div`
   position: fixed;
@@ -62,8 +62,8 @@ const AvisoPopup = () => {
   return (
     <Overlay>
       <Popup>
-        <img src={octubre} alt="Aviso" style={{ width: '1000px', marginBottom: '1rem' }} />
-        <Title> T'esperem novembre!</Title>
+        <img src={talleres} alt="Aviso" style={{ width: '1000px', marginBottom: '1rem' }} />
+        <Title> Te esperamos en El Taller</Title>
         <Button onClick={() => setVisible(false)}>Entendido</Button>
       </Popup>
     </Overlay>

@@ -4,11 +4,12 @@ import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 import { useTranslation } from "react-i18next";
 import LanguageSwitcher from "../Botones/Botones";
+import logo from "../Home/Images/ELTALLERLOGO.png";
 
 const HeaderContainer = styled.header`
-  background-color: #fff;
-  padding: 1rem 2rem;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: #f1e3d2ff;
+  padding: 0.5rem 2.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
   position: sticky;
   top: 0;
   z-index: 1000;
@@ -21,10 +22,15 @@ const Nav = styled.nav`
   flex-wrap: wrap;
 `;
 
+const Logo = styled.img`
+  height: 100px;
+  object-fit: contain;
+`;
+
 const LeftGroup = styled.div`
   display: flex;
   align-items: center;
-  gap: 2rem;
+  gap: 2.2rem;
 
   @media (max-width: 768px) {
     display: none;
@@ -41,7 +47,7 @@ const MenuToggle = styled.button`
   background: none;
   border: none;
   font-size: 2rem;
-  color: #5a7263;
+  color: #0c0c0cff;
   cursor: pointer;
   display: none;
 
@@ -55,7 +61,8 @@ const MobileMenu = styled.div`
   flex-direction: column;
   width: 100%;
   margin-top: 1rem;
-  gap: 1rem;
+  gap: 1.2rem;
+  padding-top: 1rem;
 
   @media (min-width: 769px) {
     display: none;
@@ -66,7 +73,7 @@ const StyledLink = styled(NavLink)`
   text-decoration: none;
   color: #5a7263;
   font-weight: 600;
-  font-size: 1rem;
+  font-size: 1.05rem;
   position: relative;
   padding-bottom: 4px;
 
@@ -106,11 +113,18 @@ const Header = () => {
   return (
     <HeaderContainer>
       <Nav>
-        {/* Sección izquierda (links desktop) */}
+
+        {/* LOGO */}
+        <NavLink to="/">
+          <Logo src={logo} alt="El Taller Logo" />
+        </NavLink>
+
+        {/* LINKS DESKTOP */}
         <LeftGroup>
           <StyledLink to="/">{t("header.inicio")}</StyledLink>
           <StyledLink to="/reservas">{t("header.reserva")}</StyledLink>
           <StyledLink to="/contacto">{t("header.contacto")}</StyledLink>
+
           <StyledLink
             to="https://www.aguaymanto.shop"
             target="_blank"
@@ -118,21 +132,21 @@ const Header = () => {
           >
             {t("header.tienda")}
           </StyledLink>
-          <StyledLink to="/carta">{t("header.carta")}</StyledLink>
-          <StyledLink to="/quienes-somos">{t("header.quienes")}</StyledLink>
+
+          <StyledLink to="/quienes-somos">
+            {t("header.quienes")}
+          </StyledLink>
         </LeftGroup>
 
-        {/* Botón hamburguesa (solo mobile) */}
-        <MenuToggle onClick={toggleMenu} aria-label="Abrir menú">
-          ≡
-        </MenuToggle>
-
-        {/* Sección derecha (botones de idioma siempre visibles) */}
+        {/* DERECHA */}
         <LanguageWrapper>
           <LanguageSwitcher />
+          <MenuToggle onClick={toggleMenu} aria-label="Abrir menú">
+            ≡
+          </MenuToggle>
         </LanguageWrapper>
 
-        {/* Menú mobile desplegable */}
+        {/* MOBILE */}
         <MobileMenu open={menuAbierto}>
           <StyledLink to="/" onClick={() => setMenuAbierto(false)}>
             {t("header.inicio")}
@@ -143,9 +157,6 @@ const Header = () => {
           <StyledLink to="/contacto" onClick={() => setMenuAbierto(false)}>
             {t("header.contacto")}
           </StyledLink>
-          <StyledLink to="/carta" onClick={() => setMenuAbierto(false)}>
-            {t("header.carta")}
-          </StyledLink>
           <StyledLink
             to="https://www.aguaymanto.shop"
             target="_blank"
@@ -154,7 +165,9 @@ const Header = () => {
           >
             {t("header.tienda")}
           </StyledLink>
-          <StyledLink to="/quienes-somos">{t("header.quienes")}</StyledLink>
+          <StyledLink to="/quienes-somos" onClick={() => setMenuAbierto(false)}>
+            {t("header.quienes")}
+          </StyledLink>
         </MobileMenu>
       </Nav>
     </HeaderContainer>

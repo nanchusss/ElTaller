@@ -1,45 +1,42 @@
-import React, { useState, useMemo } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 import { useNavigate, Link } from "react-router-dom";
-import { useTranslation } from "react-i18next";
 import emailjs from "@emailjs/browser";
 import { Helmet } from "react-helmet";
 
-// ✅ Tus estilos (sin cambios)
 const Section = styled.section`
-  background-color: #fff9f0;
-  padding: 4rem 1.5rem;
+  background-color: #f6f3ef;
+  padding: 5rem 1.5rem;
   text-align: center;
-  position: relative;
 `;
 
 const Title = styled.h2`
-  font-size: 2.8rem;
-  color: #726a5a;
-  margin-bottom: 2rem;
+  font-size: 3rem;
+  color: #3f6b5a;
+  margin-bottom: 1.5rem;
   font-family: "Playfair Display", serif;
 `;
 
 const SubText = styled.p`
-  max-width: 700px;
-  margin: 0 auto 2rem auto;
+  max-width: 680px;
+  margin: 0 auto 2.5rem auto;
   color: #6d6762;
-  font-size: 1.1rem;
-  border: 2px solid #5a7263;
-  padding: 1rem;
-  border-radius: 20px;
-  background-color: #fff;
+  font-size: 1.05rem;
+  padding: 1.4rem;
+  border-radius: 18px;
+  background-color: #ffffff;
+  border: 1px solid rgba(0,0,0,0.08);
 `;
 
 const CalendarContainer = styled.div`
-  max-width: 1000px;
+  max-width: 1100px;
   margin: 3rem auto;
-  background: #fdf6ec;
+  background: #ffffff;
   padding: 3rem;
-  border-radius: 20px;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  border-radius: 28px;
+  box-shadow: 0 18px 40px rgba(0,0,0,0.06);
 `;
 
 const CustomCalendarWrapper = styled.div`
@@ -47,171 +44,141 @@ const CustomCalendarWrapper = styled.div`
   justify-content: center;
 
   .react-calendar {
-    width: 100%;
-    max-width: 900px;
-    border: none;
-    background-color: #fff;
-    font-family: "Open Sans", sans-serif;
+    width: 100% !important;
+    max-width: 1000px;
+    font-size: 1.15rem;
+    padding: 2.5rem;
     border-radius: 20px;
-    padding: 2rem;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.05);
+    background: transparent;
+    border: none;
   }
 
   .react-calendar__navigation button {
-    background: none;
-    color: #5a7263;
     font-size: 1.3rem;
-    font-weight: bold;
-    padding: 0.75rem;
-    border: none;
+    color: #3f6b5a;
+    background: none;
   }
 
-  .react-calendar__month-view__weekdays {
-    text-transform: uppercase;
-    color: #5a7263;
-    font-size: 1rem;
+  .react-calendar__navigation button:hover {
+    opacity: 0.6;
   }
 
   .react-calendar__tile {
+    padding: 1.4rem 0.5rem !important;
+    font-size: 1.05rem;
+    border-radius: 14px;
     background: transparent;
-    color: #6d6762;
-    font-weight: 500;
-    padding: 1.2rem 0.8rem;
-    border-radius: 12px;
-    transition: all 0.2s ease;
+    color: #4a4a4a;
+    transition: all 0.25s ease;
   }
 
-  .react-calendar__tile:disabled {
-    background: none;
-    color: #ccc;
-    pointer-events: none;
+  /* hover general */
+  .react-calendar__tile:enabled:hover {
+    color: #d67447;
+    transform: scale(1.08);
   }
 
-  .react-calendar__tile:hover {
-    background: #f0b65b;
-    color: white;
-  }
-
+  /* hoy */
   .react-calendar__tile--now {
-    background: #e3a092;
-    color: white;
+    border: 1px solid rgba(0,0,0,0.12);
   }
 
-  .react-calendar__tile--active {
-    background: #5a7263;
-    color: white;
-    font-weight: bold;
-  }
+  /* DISPONIBLE (elegante, no pesado) */
+.react-calendar__tile.available {
+  background: rgba(214, 116, 71, 0.12);
+  color: #d67447;
+  border-radius: 14px;
+  font-weight: 600;
+}
 
-  @media (max-width: 768px) {
-    .react-calendar {
-      padding: 1rem;
-    }
-
-    .react-calendar__tile {
-      padding: 0.6rem;
-      font-size: 0.85rem;
-    }
-
-    .react-calendar__navigation button {
-      font-size: 1rem;
-    }
-  }
-`;
-
-const Horarios = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 1.5rem;
-  margin: 3rem auto;
-`;
-
-const Horario = styled.button`
-  background-color: #f0b65b;
-  border: none;
-  border-radius: 30px;
-  padding: 0.9rem 1.5rem;
+/* hover (ahí sí entra el color fuerte) */
+.react-calendar__tile.available:hover {
+  background: #d67447;
   color: white;
-  font-weight: bold;
-  font-size: 1.1rem;
-  cursor: pointer;
-  &:hover {
-    background-color: #dda94f;
+  transform: scale(1.08);
+}
+
+/* SELECCIONADO */
+.react-calendar__tile--active {
+  background: #3f6b5a !important;
+  color: white;
+  border-radius: 16px;
+  transform: scale(1.12);
+}
+
+  .react-calendar__tile--active:hover {
+    background: #355a4b !important;
   }
 `;
 
-const SelectorContainer = styled.div`
-  margin: 3rem auto;
-  max-width: 400px;
-  background: #fff;
-  padding: 2rem;
-  border-radius: 20px;
-  border: 2px solid #e3a092;
+const Card = styled.div`
+  border: 1px solid rgba(0,0,0,0.08);
+  border-radius: 18px;
+  padding: 1.6rem;
+  text-align: left;
+  cursor: pointer;
+  background: #ffffff;
+  transition: all 0.25s ease;
+
+  &:hover {
+    border-color: #d67447;
+    transform: translateY(-4px);
+  }
+
+  &.active {
+    border: 2px solid #3f6b5a;
+  }
 `;
 
-const Label = styled.label`
-  display: block;
-  margin-bottom: 0.5rem;
-  font-weight: bold;
-  color: #5a7263;
-  font-family: "Playfair Display", serif;
-`;
+const Button = styled.button`
+  background: #3f6b5a;
+  color: white;
+  border: none;
+  padding: 1rem 1.6rem;
+  border-radius: 999px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 1.5rem;
 
-const Select = styled.select`
-  width: 100%;
-  padding: 1rem;
-  border-radius: 12px;
-  border: 1px solid #ccc;
-  font-size: 1rem;
-  font-family: "Open Sans", sans-serif;
+  &:hover {
+    background: #355a4b;
+  }
 `;
 
 const Form = styled.form`
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  max-width: 500px;
+  max-width: 420px;
   margin: 2rem auto;
 `;
 
 const Input = styled.input`
   padding: 1rem;
-  border-radius: 10px;
-  border: 1px solid #ccc;
-  font-size: 1rem;
-`;
+  border-radius: 12px;
+  border: 1px solid rgba(0,0,0,0.15);
 
-const Button = styled.button`
-  background-color: #5a7263;
-  color: white;
-  border: none;
-  padding: 1rem;
-  border-radius: 10px;
-  font-weight: bold;
-  font-size: 1.1rem;
-  cursor: pointer;
-  &:hover {
-    background-color: #4b5c52;
+  &:focus {
+    outline: none;
+    border-color: #3f6b5a;
   }
 `;
 
 const GroupLink = styled(Link)`
   display: inline-block;
-  margin-top: 2.5rem;
-  color: #5a7263;
-  font-weight: bold;
-  font-size: 1rem;
-  text-decoration: underline;
+  margin-top: 2rem;
+  color: #3f6b5a;
+
+  &:hover {
+    text-decoration: underline;
+  }
 `;
 
-// 👉 Componente principal
 const Reservas = () => {
-  const { t } = useTranslation();
   const [step, setStep] = useState(1);
   const [fecha, setFecha] = useState(null);
-  const [horarioSeleccionado, setHorarioSeleccionado] = useState(null);
-  const [personas, setPersonas] = useState(1);
+  const [tipoSeleccionado, setTipoSeleccionado] = useState(null);
+
   const [formData, setFormData] = useState({
     nombre: "",
     email: "",
@@ -220,89 +187,20 @@ const Reservas = () => {
 
   const navigate = useNavigate();
 
-  // ✅ Fechas permitidas: 4 y 11 de octubre, 15 y 29 de noviembre de 2025
-  const allowedDates = [
-    new Date(2025, 9, 4),
-    new Date(2025, 9, 11),
-    new Date(2025, 10, 15),
-    new Date(2025, 10, 29),
-  ].map((d) => new Date(d.getFullYear(), d.getMonth(), d.getDate()));
-
-  // 🔎 Utilidades de fecha
-  const isSameDay = (a, b) =>
-    a.getFullYear() === b.getFullYear() &&
-    a.getMonth() === b.getMonth() &&
-    a.getDate() === b.getDate();
-
-  const isOct11 = (d) => isSameDay(d, new Date(2025, 9, 11));
-  const isNov15 = (d) => isSameDay(d, new Date(2025, 10, 15));
-  const isNov29 = (d) => isSameDay(d, new Date(2025, 10, 29));
-
-  // 🧩 Info base por fecha (para fechas que no son 15/11 ni 29/11)
-  const getBaseInfoPorFecha = (d) => {
-    if (!d) {
-      return {
-        experiencia: "Pinta tu cerámica + vino y picoteo",
-        precio: 37,
-        duracion: "1 h 30 a 2 h",
-      };
-    }
-    const base = new Date(d.getFullYear(), d.getMonth(), d.getDate());
-    if (isOct11(base)) {
-      return {
-        experiencia: "Cerámica, vino y picoteo",
-        precio: 35,
-        duracion: "1 h 30 a 2 h",
-      };
-    }
-    return {
-      experiencia: "Pinta tu cerámica + vino y picoteo",
-      precio: 37,
-      duracion: "1 h 30 a 2 h",
-    };
+  const isAvailable = (date) => {
+    const d = new Date(date.getFullYear(), date.getMonth(), date.getDate());
+    const esSabado = d.getDay() === 6;
+    const esMesValido = [3, 4, 5].includes(d.getMonth());
+    return esSabado && esMesValido;
   };
 
-  const baseInfo = getBaseInfoPorFecha(fecha);
+  const isDisabledDay = ({ date }) => !isAvailable(date);
 
-  // 🕖 Horarios
-  // - 15/11 y 29/11:
-  //   * 11:00 → Crea tu set de cerámica + infusión y algo dulce (2 h, 43 €)
-  //   * 18:00 → Pinta tu cerámica + vino y picoteo (1 h 30 min, 45 €)
-  // - Resto (4/10, 11/10): 19:00 con su experiencia/precio base
-  const horarios = useMemo(() => {
-    if (!fecha) return [];
-    const base = new Date(fecha.getFullYear(), fecha.getMonth(), fecha.getDate());
-
-    if (isNov15(base) || isNov29(base)) {
-      return [
-        {
-          hora: "11:00",
-          experiencia: "Crea tu set de cerámica + infusión y algo dulce",
-          duracion: "2 h",
-          precio: 43,
-        },
-        {
-          hora: "18:00",
-          experiencia: "Pinta tu cerámica + vino y picoteo",
-          duracion: "1 h 30 min",
-          precio: 45,
-        },
-      ];
-    }
-
-    return [
-      {
-        hora: "19:00",
-        experiencia: baseInfo.experiencia,
-        duracion: baseInfo.duracion,
-        precio: baseInfo.precio,
-      },
-    ];
-  }, [fecha, baseInfo.experiencia, baseInfo.duracion, baseInfo.precio]);
-
-  const handleFormChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
+  const opciones = [
+    { titulo: "Pack 2 clases", descripcion: "Ideal para probar el taller", precio: "60€" },
+    { titulo: "Pack mensual", descripcion: "2 clases al mes · cocciones incluidas", precio: "100€" },
+    { titulo: "Pinta tu cerámica", descripcion: "Clase dirigida puntual", precio: "37€" },
+  ];
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -312,184 +210,85 @@ const Reservas = () => {
       email: formData.email,
       telefono: formData.telefono,
       fecha: fecha?.toLocaleDateString(),
-      hora: horarioSeleccionado?.hora || "",
-      personas,
-      experiencia: horarioSeleccionado?.experiencia || "",
-      duracion: horarioSeleccionado?.duracion || "",
-      precio: horarioSeleccionado?.precio ?? "",
+      tipo: tipoSeleccionado?.titulo,
+      precio: tipoSeleccionado?.precio,
     };
 
     emailjs
-      .send(
-        "service_pgxu3ij",
-        "template_zw59ehq",
-        templateParams,
-        "y6n4qGd0Vvdb2QmoH"
-      )
-      .then(() => {
-        navigate("/gracias");
-      })
-      .catch((error) => {
-        console.error("Error al enviar email:", error);
-        alert("Error al enviar la reserva. Por favor, intentá de nuevo.");
-      });
-  };
-
-  const isDisabledDay = ({ date }) => {
-    // Normalizar fecha sin hora
-    const d = new Date(date.getFullYear(), date.getMonth(), date.getDate());
-
-    // Regla 48 h
-    const hoy = new Date();
-    const hoySinHora = new Date(
-      hoy.getFullYear(),
-      hoy.getMonth(),
-      hoy.getDate()
-    );
-    const fechaLimite = new Date(hoySinHora);
-    fechaLimite.setDate(fechaLimite.getDate() + 2);
-
-    const esPermitida = allowedDates.some((ad) => isSameDay(ad, d));
-    const respeta48h = d >= fechaLimite;
-
-    return !(esPermitida && respeta48h);
+      .send("service_pgxu3ij", "template_zw59ehq", templateParams, "y6n4qGd0Vvdb2QmoH")
+      .then(() => navigate("/gracias"))
+      .catch(() => alert("Error al enviar"));
   };
 
   return (
     <Section>
       <Helmet>
-        <title>El Taller d’Aguaymanto – Un café amb art</title>
-        <meta
-          name="description"
-          content="Un espacio creativo en Vilanova del Vallés para talleres, eventos y experiencias con cerámica."
-        />
+        <title>Taller cerámica</title>
       </Helmet>
 
-      <Title>{t("reservas.titulo")}</Title>
-      <SubText>{t("reservas.subtexto")}</SubText>
-      <GroupLink to="/Grupal">{t("reservas.linkGrupal")}</GroupLink>
+      <Title>Taller de cerámica y pintura</Title>
+
+      <SubText>
+        Sábados de 10h a 12h <br />
+        Elige cómo quieres vivir la experiencia ✨
+      </SubText>
+
+      <GroupLink to="/Grupal">¿Buscas algo puntual?</GroupLink>
 
       <CalendarContainer>
+
         {step === 1 && (
           <>
-            <h3
-              style={{
-                marginBottom: "2rem",
-                fontFamily: "Playfair Display",
-                color: "#5a7263",
-              }}
-            >
-              {t("reservas.seleccionaDia")}
-            </h3>
+            <h3>Elige tu día</h3>
             <CustomCalendarWrapper>
               <Calendar
                 onChange={(value) => {
                   setFecha(value);
-                  setHorarioSeleccionado(null);
                   setStep(2);
                 }}
                 value={fecha}
                 tileDisabled={isDisabledDay}
+                tileClassName={({ date, view }) => {
+                  if (view === "month" && isAvailable(date)) {
+                    return "available";
+                  }
+                }}
               />
             </CustomCalendarWrapper>
           </>
         )}
 
-        {step === 2 && fecha && (
+        {step === 2 && (
           <>
-            <h3
-              style={{
-                marginBottom: "1rem",
-                fontFamily: "Playfair Display",
-                color: "#5a7263",
-              }}
-            >
-              {t("reservas.seleccionaHora")}
-            </h3>
+            <h3 style={{ marginBottom: "1.5rem" }}>Elige tu experiencia</h3>
 
-            <Horarios>
-              {horarios.map((h) => (
-                <Horario
-                  key={h.hora}
-                  onClick={() => {
-                    setHorarioSeleccionado(h);
-                    setStep(3);
-                  }}
-                  title={`${h.experiencia} · Duración: ${h.duracion} · Precio: ${h.precio}€`}
+            <div style={{ display: "flex", flexDirection: "column", gap: "1rem", maxWidth: "500px", margin: "0 auto" }}>
+              {opciones.map((op, i) => (
+                <Card
+                  key={i}
+                  onClick={() => setTipoSeleccionado(op)}
+                  className={tipoSeleccionado?.titulo === op.titulo ? "active" : ""}
                 >
-                  <div style={{ fontWeight: 600 }}>{h.hora}</div>
-                  <div
-                    style={{
-                      fontSize: "0.9rem",
-                      opacity: 0.95,
-                      marginTop: 4,
-                      lineHeight: 1.25,
-                    }}
-                  >
-                    {h.experiencia}
-                    <br />
-                    {`Duración: ${h.duracion}`}
-                    {h.precio ? (
-                      <>
-                        <br />
-                        {`Precio: ${h.precio}€`}
-                      </>
-                    ) : null}
-                  </div>
-                </Horario>
+                  <strong>{op.titulo}</strong><br />
+                  <span style={{ color: "#6d6762" }}>{op.descripcion}</span><br />
+                  <strong style={{ color: "#4f7a65" }}>{op.precio}</strong>
+                </Card>
               ))}
-            </Horarios>
+            </div>
+
+            {tipoSeleccionado && <Button onClick={() => setStep(3)}>Continuar</Button>}
           </>
         )}
 
-        {step === 3 && horarioSeleccionado && (
-          <SelectorContainer>
-            <Label htmlFor="personas">{t("reservas.labelPersonas")}</Label>
-            <Select
-              id="personas"
-              value={personas}
-              onChange={(e) => setPersonas(parseInt(e.target.value, 10))}
-            >
-              {[1, 2, 3, 4, 5, 6].map((n) => (
-                <option key={n} value={n}>
-                  {t(`reservas.persona${n}`)}
-                </option>
-              ))}
-            </Select>
-            <Button onClick={() => setStep(4)} style={{ marginTop: "1.5rem" }}>
-              {t("reservas.botonContinuar")}
-            </Button>
-          </SelectorContainer>
-        )}
-
-        {step === 4 && (
+        {step === 3 && (
           <Form onSubmit={handleSubmit}>
-            <Input
-              type="text"
-              name="nombre"
-              placeholder={t("reservas.placeholderNombre")}
-              value={formData.nombre}
-              onChange={handleFormChange}
-              required
-            />
-            <Input
-              type="email"
-              name="email"
-              placeholder={t("reservas.placeholderEmail")}
-              value={formData.email}
-              onChange={handleFormChange}
-              required
-            />
-            <Input
-              type="tel"
-              name="telefono"
-              placeholder={t("reservas.placeholderTelefono")}
-              value={formData.telefono}
-              onChange={handleFormChange}
-            />
-            <Button type="submit">{t("reservas.botonConfirmar")}</Button>
+            <Input type="text" placeholder="Nombre" required onChange={(e) => setFormData({ ...formData, nombre: e.target.value })} />
+            <Input type="email" placeholder="Email" required onChange={(e) => setFormData({ ...formData, email: e.target.value })} />
+            <Input type="tel" placeholder="Teléfono" onChange={(e) => setFormData({ ...formData, telefono: e.target.value })} />
+            <Button type="submit">Confirmar</Button>
           </Form>
         )}
+
       </CalendarContainer>
     </Section>
   );
