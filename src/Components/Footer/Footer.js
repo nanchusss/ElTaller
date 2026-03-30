@@ -4,9 +4,10 @@ import styled from "styled-components";
 
 const FooterContainer = styled.footer`
   background-color: #fff;
-  padding: 2rem;
+  padding: 4rem;
   text-align: center;
-  font-size: 0.9rem;
+  font-size: 1.5rem;
+  padding: 30px;
   color: #666;
   border-top: 1px solid #eee;
 `;
@@ -34,6 +35,7 @@ const Footer = () => {
       >
         Instagram
       </InstagramLink>
+      <div>Contacto: <a href="mailto:info@aguaymanto.es">info@aguaymanto.es</a></div>
     </FooterContainer>
   );
 };

@@ -23,7 +23,7 @@ const Nav = styled.nav`
 `;
 
 const Logo = styled.img`
-  height: 100px;
+  height: 130px;
   object-fit: contain;
 `;
 
@@ -39,6 +39,7 @@ const LeftGroup = styled.div`
 
 const LanguageWrapper = styled.div`
   display: flex;
+  width: 100px;
   align-items: center;
   gap: 0.5rem;
 `;
@@ -78,7 +79,7 @@ const StyledLink = styled(NavLink)`
   padding-bottom: 4px;
 
   &.active {
-    border-bottom: 2px solid #f0b65b;
+    border-bottom: 2px solid #35664dff;
     color: #2e2e2e;
   }
 

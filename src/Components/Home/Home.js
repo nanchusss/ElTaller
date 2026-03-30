@@ -223,8 +223,10 @@ const GalleryImg = styled.img`
 /* FRASE */
 
 const Closing = styled.p`
-  max-width: 600px;
-  margin: 4rem auto;
+  max-width: 1000px;
+  pading: 50px;
+  font-size: 2.2rem;
+  margin: 3rem auto;
   text-align: center;
   color: #6d6762;
 `;
@@ -310,7 +312,13 @@ const Home = () => {
         </HighlightContent>
       </HighlightBlock>
 
+     
+
       <Section>
+         <Closing>
+       
+        Talleres, cerámica y momentos que se inspiran.
+      </Closing>
         <Gallery>
           {[pintando, taller4, jarra, estanteria1, taller1, taller2, taller3].map((img, i) => (
             <GalleryImg key={i} src={img} />
@@ -318,10 +326,7 @@ const Home = () => {
         </Gallery>
       </Section>
 
-      <Closing>
-        Un espacio para desconectar, crear y compartir.
-        Talleres, cerámica y momentos que se quedan.
-      </Closing>
+      
 
       <WhatsApp href="https://wa.me/34683704011" target="_blank">
         <FaWhatsapp />
