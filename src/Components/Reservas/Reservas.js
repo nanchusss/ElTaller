@@ -109,6 +109,46 @@ const CustomCalendarWrapper = styled.div`
   .react-calendar__tile--active:hover {
     background: #355a4b !important;
   }
+
+  /* 📱 MOBILE OPTIMIZADO */
+@media (max-width: 768px) {
+
+  .react-calendar {
+    padding: 1.5rem;
+    font-size: 1rem;
+  }
+
+  .react-calendar__navigation {
+    margin-bottom: 1rem;
+  }
+
+  .react-calendar__navigation button {
+    font-size: 1.4rem;
+    padding: 0.5rem;
+  }
+
+  /* días */
+  .react-calendar__tile {
+    padding: 1.2rem 0.2rem !important;
+    font-size: 1.1rem;
+  }
+
+  /* hover mobile OFF (no tiene sentido táctil) */
+  .react-calendar__tile:enabled:hover {
+    transform: none;
+    color: inherit;
+  }
+
+  /* seleccionado más claro */
+  .react-calendar__tile--active {
+    transform: scale(1.05);
+  }
+
+  /* disponible más visible en mobile */
+  .react-calendar__tile.available {
+    background: rgba(214, 116, 71, 0.18);
+  }
+}
 `;
 
 const Card = styled.div`
