@@ -274,9 +274,25 @@ const Home = () => {
     {avisoVisible && (
       <AvisoPopup onClose={() => setAvisoVisible(false)} />
     )}
-      <Helmet>
-        <title>El Taller d’Aguaymanto</title>
-      </Helmet>
+   <Helmet>
+  <title>
+    Taller de cerámica en Barcelona | Eventos y experiencias creativas
+  </title>
+
+  <meta
+    name="description"
+    content="Taller de cerámica en Granollers. Ideal para cumpleaños, eventos y team building en un espacio creativo y acogedor."
+  />
+
+  {/* OPEN GRAPH */}
+  <meta property="og:title" content="Taller de cerámica en Granollers" />
+  <meta
+    property="og:description"
+    content="Vive una experiencia creativa única en El Taller d’Aguaymanto."
+  />
+<meta property="og:image" content="/images/tallerbonito.jpg" />
+  <meta property="og:type" content="website" />
+</Helmet>
 
       <Hero>
         <Video autoPlay muted loop playsInline>
@@ -288,6 +304,9 @@ const Home = () => {
           <CTA to="/reservas">{t("home.ctaButton")}</CTA>
         </HeroContent>
       </Hero>
+
+      
+
 
       <Section>
         <CardsWrapper>
