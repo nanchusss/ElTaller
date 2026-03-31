@@ -49,15 +49,25 @@ const LanguageWrapper = styled.div`
 const MenuToggle = styled.button`
   background: none;
   border: none;
-  font-size: 2.5rem;
-  color: #0c0c0cff;
   cursor: pointer;
   display: none;
+  flex-direction: column;
+  gap: 5px;
+  padding: 5px;
 
   @media (max-width: 768px) {
-    display: block;
+    display: flex;
+  }
+
+  span {
+    width: 30px;
+    height: 3.5px;
+    background: #0c0c0c;
+    border-radius: 2px;
+    transition: all 0.3s ease;
   }
 `;
+
 
 const MobileMenu = styled.div`
   display: ${(props) => (props.open ? "flex" : "none")};
@@ -66,6 +76,13 @@ const MobileMenu = styled.div`
   margin-top: 1rem;
   gap: 1.2rem;
   padding-top: 1rem;
+
+  @media (max-width: 768px) {
+    gap: 1.8rem;
+    padding: 1.5rem 0;
+    align-items: center;      /* 👈 PRO */
+    text-align: center;       /* 👈 PRO */
+  }
 
   @media (min-width: 769px) {
     display: none;
@@ -76,7 +93,7 @@ const StyledLink = styled(NavLink)`
   text-decoration: none;
   color: #5a7263;
   font-weight: 600;
-  font-size: 1.05rem;
+  font-size: 1.60rem;
   position: relative;
   padding-bottom: 4px;
 
@@ -144,9 +161,11 @@ const Header = () => {
         {/* DERECHA */}
         <LanguageWrapper>
           <LanguageSwitcher />
-          <MenuToggle onClick={toggleMenu} aria-label="Abrir menú">
-            ≡
-          </MenuToggle>
+          <MenuToggle onClick={toggleMenu}>
+  <span />
+  <span />
+  <span />
+</MenuToggle>
         </LanguageWrapper>
 
         {/* MOBILE */}

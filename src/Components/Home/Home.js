@@ -335,7 +335,7 @@ const Home = () => {
       <Section>
          <Closing>
        
-        Talleres, cerámica y momentos que se inspiran.
+        Talleres, cerámica y momentos que inspiran.
       </Closing>
         <Gallery>
           {[pintando, taller4, jarra, estanteria1, taller1, taller2, taller3].map((img, i) => (
