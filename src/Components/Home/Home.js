@@ -75,15 +75,19 @@ const Title = styled.h1`
 
 const CTA = styled(NavLink)`
   margin-top: 2rem;
-  padding: 1rem 2.5rem;
+  padding: 1.4rem 3.2rem;
   border-radius: 999px;
   background: #d67447;
   color: white;
   text-decoration: none;
+  font-size: 1.3rem; /* 🔥 clave */
+  font-weight: 500;
+  letter-spacing: 0.5px;
 
   &:hover {
     background: #df6535ff;
     color: white;
+    transform: scale(1.05);
   }
 `;
 
@@ -335,7 +339,7 @@ const Home = () => {
     )}
    <Helmet>
   <title>
-    Taller de cerámica en Barcelona | Eventos y experiencias creativas
+    Taller de cerámica en Granollers | Eventos y experiencias creativas
   </title>
 
   <meta
@@ -382,7 +386,10 @@ const Home = () => {
       <Section>
         <CardsWrapper>
           <Card>
-            <CardImage src={pintando} />
+            <CardImage
+  src={pintando}
+  alt="Personas pintando cerámica en taller en Granollers"
+/>
             <CardText>
               <CardTitle>{t("home.feature1.title")}</CardTitle>
               <CardDesc>{t("home.feature1.text")}</CardDesc>
@@ -394,11 +401,11 @@ const Home = () => {
               <CardTitle>{t("home.feature2.title")}</CardTitle>
               <CardDesc>{t("home.feature2.text")}</CardDesc>
             </CardText>
-            <CardImage src={evento3} />
+            <CardImage src={evento3} alt="Evento de cerámica en grupo en Granollers" />
           </Card>
 
           <Card>
-            <CardImage src={jarra} />
+            <CardImage src={jarra} alt="Jarra de cerámica pintada a mano" />
             <CardText>
               <CardTitle>{t("home.feature3.title")}</CardTitle>
               <CardDesc>{t("home.feature3.text")}</CardDesc>
@@ -409,15 +416,15 @@ const Home = () => {
 
       {/* 🔥 BLOQUE EVENTOS MEJORADO */}
       <HighlightBlock>
-        <HighlightImage src={evento2} />
+        <HighlightImage src={evento2} alt="Evento de cerámica en Granollers" />
         <HighlightOverlay />
 
         <HighlightContent>
           <HighlightTitle>{t("eventos.titulo")}</HighlightTitle>
           <HighlightText>{t("eventos.subtexto")}</HighlightText>
           <HighlightButton to="/eventos">
-            {t("eventos.boton")}
-          </HighlightButton>
+  Obtén más Información
+</HighlightButton>
         </HighlightContent>
       </HighlightBlock>
 
@@ -430,7 +437,7 @@ const Home = () => {
       </Closing>
         <Gallery>
           {[pintando, taller4, jarra, estanteria1, taller1, taller2, taller3].map((img, i) => (
-            <GalleryImg key={i} src={img} />
+            <GalleryImg key={i} src={img} alt={`Imagen del taller ${i + 1}`} />
           ))}
         </Gallery>
       </Section>
