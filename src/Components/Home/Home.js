@@ -14,7 +14,7 @@ import jarra from "./Images/taza.jpg.webp";
 
 import evento2 from "./Images/evento2.png";
 import evento3 from "./Images/evento3.png";
-import bannerVideo from "./Images/video.mp4";
+import bannerVideo from "./Images/videoeltallerdefinitivo.mp4";
 import AsistenteIA from "../Asistente/Asistente";
 import { useTranslation } from "react-i18next";
 import { Helmet } from "react-helmet";
