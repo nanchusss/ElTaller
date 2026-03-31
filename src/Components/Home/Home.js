@@ -19,6 +19,19 @@ import AsistenteIA from "../Asistente/Asistente";
 import { useTranslation } from "react-i18next";
 import { Helmet } from "react-helmet";
 
+import { keyframes } from "styled-components";
+
+const fadeUp = keyframes`
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+`;
+
 /* HERO VIDEO */
 
 const Hero = styled.section`
@@ -251,6 +264,52 @@ const WhatsApp = styled.a`
   justify-content: center;
 `;
 
+
+
+const AboutSection = styled.section`
+  padding: 4rem 1.5rem;
+  text-align: center;
+  background: #ffffffff;
+  position: relative;
+`;
+
+const AboutContent = styled.div`
+  max-width: 1300px;
+  margin: 0 auto;
+  animation: ${fadeUp} 1s ease forwards;
+`;
+
+const AboutTitle = styled.h1`
+  font-family: 'Fraunces', serif;
+  font-size: 3.8rem;
+  margin-bottom: 2rem;
+  color: #3f5c4a;
+
+  animation: ${fadeUp} 0.8s ease forwards;
+`;
+
+const AboutText = styled.p`
+  color: #6d6762;
+  line-height: 1.8;
+  margin-bottom: 1.5rem;
+  font-size: 1.65rem;
+
+  opacity: 0;
+  animation: ${fadeUp} 1s ease forwards;
+
+  &:nth-child(2) {
+    animation-delay: 0.2s;
+  }
+
+  &:nth-child(3) {
+    animation-delay: 0.4s;
+  }
+
+  &:nth-child(4) {
+    animation-delay: 0.6s;
+  }
+`;
+
 /* COMPONENT */
 
 const Home = () => {
@@ -305,7 +364,19 @@ const Home = () => {
         </HeroContent>
       </Hero>
 
-      
+  <AboutSection>
+
+ 
+
+  <AboutContent>
+    <AboutTitle>{t("quienes.titulo")}</AboutTitle>
+
+    <AboutText>{t("quienes.p1")}</AboutText>
+    <AboutText>{t("quienes.p2")}</AboutText>
+    <AboutText>{t("quienes.p3")}</AboutText>
+  </AboutContent>
+
+</AboutSection>
 
 
       <Section>
@@ -350,7 +421,7 @@ const Home = () => {
         </HighlightContent>
       </HighlightBlock>
 
-     
+ 
 
       <Section>
          <Closing>
