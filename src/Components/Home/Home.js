@@ -10,7 +10,7 @@ import taller1 from "./Images/taller2.jpeg";
 import taller2 from "./Images/taller3.jpeg";
 import taller3 from "./Images/tallerbonito.jpeg";
 import taller4 from "./Images/estanteria.jpeg";
-import jarra from "./Images/zoom jarra.jpeg";
+import jarra from "./Images/taza.jpg.webp";
 
 import evento2 from "./Images/evento2.png";
 import evento3 from "./Images/evento3.png";
@@ -131,12 +131,13 @@ const CardText = styled.div``;
 
 const CardTitle = styled.h3`
   font-family: 'Fraunces', serif;
-  font-size: 2rem;
+  font-size: 2.2rem;
   margin-bottom: 1rem;
 `;
 
 const CardDesc = styled.p`
   color: #6d6762;
+  font-size: 1.5rem;
 `;
 
 /* 🔥 NUEVO HIGHLIGHT (CLAVE) */
