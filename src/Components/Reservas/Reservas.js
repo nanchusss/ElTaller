@@ -238,7 +238,7 @@ const Reservas = () => {
 
   const opciones = [
     { titulo: "Pack 2 clases", descripcion: "Ideal para probar el taller", precio: "60€" },
-    { titulo: "Pack mensual", descripcion: "2 clases al mes · cocciones incluidas", precio: "100€" },
+    { titulo: "Pack mensual", descripcion: "4 clases al mes · cocciones incluidas", precio: "95€" },
     { titulo: "Pinta tu cerámica", descripcion: "Clase dirigida puntual", precio: "37€" },
   ];
 

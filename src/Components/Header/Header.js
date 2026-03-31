@@ -40,10 +40,14 @@ const LeftGroup = styled.div`
 
 const LanguageWrapper = styled.div`
   display: flex;
-  width: 100px;
-  font-size: 2.2rem;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.8rem;
+
+  button {
+    font-size: 1.6rem;     /* 👈 más grande */
+    padding: 0.4rem 0.6rem;
+    border-radius: 8px;
+  }
 `;
 
 const MenuToggle = styled.button`

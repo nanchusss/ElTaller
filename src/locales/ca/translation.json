@@ -160,11 +160,12 @@
    "previewEventos": {
     "titulo": "Esdeveniments personalitzats"
   },
-  "quienes": {
+"quienes": {
   "titulo": "Qui som",
-  "p1": "A El Taller d’Aguaymanto treballem amb un propòsit clar: crear un espai on la ceràmica, la cura per l’artesania i el trobament entre persones tinguin lloc.",
-  "p2": "El projecte neix d’una història familiar vinculada al fang: la Ligia, la meva besàvia, va ser ceramista i pintora. Avui continuem aquesta tradició la meva mare, Marité, i jo, Nancy, com a tercera generació.",
-  "p3": "Apostem per la creativitat compartida, per objectes fets amb intenció i per experiències que convidin a baixar el ritme. Des d’un taller fins a una celebració, el nostre objectiu és senzill: que tothom se senti part."
+  "p1": "A El Taller d’Aguaymanto treballem amb un propòsit clar: crear un espai on l’art i la trobada entre persones tinguin lloc.",
+  "p2": "Som un taller de ceràmica situat a Granollers, al Vallés Oriental, on pots venir a pintar, crear i compartir moments especials.",
+  "p3": "El projecte neix d’una història familiar vinculada a l’art, una tradició que uneix tres generacions.",
+  "p4": "Organitzem tallers, aniversaris infantils i activitats de team building en un entorn creatiu i acollidor."
 }
 
 
