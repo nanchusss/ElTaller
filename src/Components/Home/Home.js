@@ -339,16 +339,16 @@ const Home = () => {
     )}
    <Helmet>
   <title>
-    Taller de cerámica en Granollers | Eventos y experiencias creativas
+    Taller de cerámica en Vilanova del Vallés a 8 minutos de Granollers | Eventos y experiencias creativas
   </title>
 
   <meta
     name="description"
-    content="Taller de cerámica en Granollers. Ideal para cumpleaños, eventos y team building en un espacio creativo y acogedor."
+    content="Taller de cerámica en Vilanova del Vallés a 8 minutos de Granollers. Ideal para cumpleaños, eventos y team building en un espacio creativo y acogedor."
   />
 
   {/* OPEN GRAPH */}
-  <meta property="og:title" content="Taller de cerámica en Granollers" />
+  <meta property="og:title" content="Taller de cerámica en Vilanova del Vallés a 8 minutos de Granollers" />
   <meta
     property="og:description"
     content="Vive una experiencia creativa única en El Taller d’Aguaymanto."
@@ -388,7 +388,7 @@ const Home = () => {
           <Card>
             <CardImage
   src={pintando}
-  alt="Personas pintando cerámica en taller en Granollers"
+  alt="Personas pintando cerámica en taller en Vilanova del Vallés cerca de Granollers"
 />
             <CardText>
               <CardTitle>{t("home.feature1.title")}</CardTitle>
