@@ -237,9 +237,10 @@ const Reservas = () => {
   const isDisabledDay = ({ date }) => !isAvailable(date);
 
   const opciones = [
-    { titulo: "Pack 2 clases", descripcion: "Ideal para probar el taller", precio: "60€" },
-    { titulo: "Pack mensual", descripcion: "4 clases al mes · cocciones incluidas", precio: "95€" },
+    
     { titulo: "Pinta tu cerámica", descripcion: "Clase dirigida puntual", precio: "37€" },
+    { titulo: "Pinta tu cerámica y Vino+ Picoteo", descripcion: "Sólo para Grupos a partir de 4 personas", precio: "47€" },{ titulo: "Pack 2 clases", descripcion: "Ideal para probar el taller", precio: "60€" },
+    { titulo: "Pack mensual", descripcion: "4 clases al mes · cocciones incluidas", precio: "95€" },
   ];
 
   const handleSubmit = (e) => {
@@ -273,7 +274,7 @@ const Reservas = () => {
         Elige cómo quieres vivir la experiencia ✨
       </SubText>
 
-      <GroupLink to="/Grupal">¿Buscas algo puntual?</GroupLink>
+      <GroupLink to="/Grupal">¿Buscas algo puntual? Podemos ayudarte a encontrar la mejor opción. Buscar un día diferente y ajustar los horarios es posible.</GroupLink>
 
       <CalendarContainer>
 
