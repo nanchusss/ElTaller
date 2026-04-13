@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
-import { useNavigate, Link, useLocation} from "react-router-dom";
+import { useNavigate, useLocation} from "react-router-dom";
 import emailjs from "@emailjs/browser";
-import { Helmet } from "react-helmet";
+
 
 const Section = styled.section`
   background-color: #f6f3ef;
@@ -139,26 +139,6 @@ const CustomCalendarWrapper = styled.div`
   }
 `;
 
-const Card = styled.div`
-  border: 1px solid rgba(0,0,0,0.08);
-  border-radius: 18px;
-  padding: 1.6rem;
-  text-align: left;
-  cursor: pointer;
-  background: #ffffff;
-  transition: all 0.25s ease;
-
-  &:hover {
-    border-color: #d67447;
-    transform: translateY(-4px);
-  }
-
-  &.active {
-    border: 2px solid #3f6b5a;
-  }
-
-
-`;
 
 const Button = styled.button`
   background: #3f6b5a;
@@ -194,16 +174,6 @@ const Input = styled.input`
   }
 `;
 
-const GroupLink = styled(Link)`
-  display: inline-block;
-  margin-top: 1.5rem;
-  font-size: 1rem;
-  color: #3f6b5a;
-
-  &:hover {
-    text-decoration: underline;
-  }
-`;
 
 const Reservas = () => {
 
@@ -216,7 +186,7 @@ const Reservas = () => {
   const experienciaInicial =
     location.state || (saved ? JSON.parse(saved) : null);
 
-  const [tipoSeleccionado, setTipoSeleccionado] = useState(experienciaInicial);
+  const [tipoSeleccionado] = useState(experienciaInicial);
   const [step, setStep] = useState(1);
   const [fecha, setFecha] = useState(null);
 
@@ -263,6 +233,22 @@ const Reservas = () => {
       })
       .catch(() => alert("Error al enviar"));
   };
+
+  if (!tipoSeleccionado) {
+  return (
+    <Section>
+      <Title>Selecciona una experiencia</Title>
+
+      <SubText>
+        Primero elige qué quieres hacer en el taller ✨
+      </SubText>
+
+      <Button onClick={() => navigate("/experiencias")}>
+        Ver experiencias
+      </Button>
+    </Section>
+  );
+}
 
   return (
     <Section>
