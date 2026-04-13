@@ -227,13 +227,13 @@ const Experiencias = () => {
                 to="/reservas"
                 onClick={() =>
                   guardarExperiencia({
-                    tipo: "Workshops creativos",
-                    precio: "Próximas fechas"
+                    tipo: "Workshop Pinta Cerámica + Vino",
+                    precio: "47€ por Persona"
                   })
                 }
                 state={{
-                  tipo: "Workshops creativos",
-                  precio: "Próximas fechas"
+                  tipo: "Workshop Pinta Cerámica + Vino",
+                  precio: "47€ por Persona"
                 }}
               >
                 Reservar
