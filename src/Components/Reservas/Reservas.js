@@ -274,14 +274,17 @@ const Reservas = () => {
             )}
 
             <CustomCalendarWrapper>
-              <Calendar
-                onChange={(value) => {
-                  setFecha(value);
-                  setStep(2);
-                }}
-                value={fecha}
-                tileDisabled={isDisabledDay}
-              />
+             <Calendar
+  onChange={(value) => {
+    setFecha(value);
+    setStep(2);
+  }}
+  value={fecha}
+  tileDisabled={isDisabledDay}
+  tileClassName={({ date }) =>
+    isAvailable(date) ? "available" : null
+  }
+/>
             </CustomCalendarWrapper>
           </>
         )}

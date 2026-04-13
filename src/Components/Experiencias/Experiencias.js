@@ -189,7 +189,7 @@ const Experiencias = () => {
               </Highlight>
               <Price>95€ / mes </Price>
 
-              <ButtonSecondary
+              <ButtonPrimary
                 to="/reservas"
                 onClick={() =>
                   guardarExperiencia({
@@ -203,7 +203,7 @@ const Experiencias = () => {
                 }}
               >
                 Reservar
-              </ButtonSecondary>
+              </ButtonPrimary>
             </Card>
 
             {/* WORKSHOPS */}
@@ -223,7 +223,7 @@ const Experiencias = () => {
 
               <Price>47€ por persona</Price>
 
-              <ButtonSecondary
+              <ButtonPrimary
                 to="/reservas"
                 onClick={() =>
                   guardarExperiencia({
@@ -237,7 +237,7 @@ const Experiencias = () => {
                 }}
               >
                 Reservar
-              </ButtonSecondary>
+              </ButtonPrimary>
             </Card>
 
           </Grid>
