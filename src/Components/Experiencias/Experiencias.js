@@ -143,19 +143,19 @@ const Experiencias = () => {
                 Ideal para desconectar o compartir un plan diferente
               </Highlight>
 
-              <Price>Desde 37€</Price>
+              <Price>Desde 37€ por persona</Price>
 
               <ButtonPrimary
                 to="/reservas"
                 onClick={() =>
                   guardarExperiencia({
                     tipo: "Pinta tu propia cerámica",
-                    precio: "Desde 37€"
+                    precio: "Desde 37€ por persona"
                   })
                 }
                 state={{
                   tipo: "Pinta tu propia cerámica",
-                  precio: "Desde 37€"
+                  precio: "Desde 37€ por persona"
                 }}
               >
                 Reservar
