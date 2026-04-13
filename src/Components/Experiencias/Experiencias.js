@@ -208,20 +208,20 @@ const Experiencias = () => {
 
             {/* WORKSHOPS */}
             <Card>
-              <CardTitle>Workshop 2 sesiones</CardTitle>
+              <CardTitle>Pinta tu Cerámica + Vino y picoteo</CardTitle>
 
               <CardText>
-                Taller guiado para producir tu taza y tu plato de desayuno. 
+                Taller guiado para pintar tu pieza más vino y algo para picar
               </CardText>
 
               <Highlight>
-                Diviértete y haz tu primera experiencia en cerámica!
+                Diviértete y haz tu primera experiencia pintando cerámica!
               </Highlight>
               <Highlight>
-                Materiales incluídos
+                Grupos mínimo de 4 personas
               </Highlight>
 
-              <Price>Dos Clases 60€</Price>
+              <Price>Dos Clases 47€ por persona</Price>
 
               <ButtonSecondary
                 to="/reservas"
