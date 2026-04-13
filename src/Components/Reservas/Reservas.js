@@ -255,7 +255,6 @@ const Reservas = () => {
       <Title>Taller de cerámica y pintura</Title>
 
       <SubText>
-        Sábados de 10h a 12h <br />
         Elige cómo quieres vivir la experiencia ✨
       </SubText>
 

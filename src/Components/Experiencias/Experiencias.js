@@ -3,40 +3,48 @@ import { NavLink } from "react-router-dom";
 import { Helmet } from "react-helmet";
 
 const Wrapper = styled.section`
-  padding: 5rem 1.2rem;
+  padding: 4rem 1.2rem;
   background: #f6f3ef;
+
+  @media (max-width: 768px) {
+    padding: 3rem 1rem;
+  }
 `;
 
 const Container = styled.div`
-  max-width: 900px;
+  max-width: 980px;
   margin: 0 auto;
   text-align: center;
 `;
 
 const Title = styled.h1`
   font-family: 'Fraunces', serif;
-  font-size: 3rem;
+  font-size: 2.8rem;
   color: #3f5c4a;
-  margin-bottom: 0.8rem;
+  margin-bottom: 0.6rem;
 
   @media (max-width: 768px) {
-    font-size: 2.2rem;
+    font-size: 2rem;
+    line-height: 1.2;
   }
 `;
 
 const Subtitle = styled.p`
   color: #6d6762;
-  font-size: 1.1rem;
-  margin-bottom: 2.5rem;
+  font-size: 1.05rem;
+  margin-bottom: 2.2rem;
 
   @media (max-width: 768px) {
-    font-size: 1rem;
+    font-size: 0.95rem;
+    padding: 0 0.5rem;
   }
 `;
 
 const Grid = styled.div`
   display: grid;
   gap: 1.5rem;
+
+  grid-template-columns: 1fr;
 
   @media (min-width: 768px) {
     grid-template-columns: repeat(3, 1fr);
@@ -45,61 +53,90 @@ const Grid = styled.div`
 
 const Card = styled.div`
   background: white;
-  border-radius: 18px;
+  border-radius: 20px;
   padding: 1.6rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.05);
-  transition: all 0.2s ease;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.06);
+  transition: all 0.25s ease;
   text-align: left;
+  position: relative;
 
   &:hover {
-    transform: translateY(-3px);
+    transform: translateY(-4px);
   }
 
   @media (max-width: 768px) {
-    max-width: 380px;
+    max-width: 420px;
     margin: 0 auto;
+    padding: 1.4rem;
   }
 `;
 
 const CardTitle = styled.h3`
-  font-size: 1.4rem;
-  margin-bottom: 0.6rem;
+  font-size: 1.3rem;
+  margin-bottom: 0.5rem;
   color: #3f5c4a;
+
+  @media (max-width: 768px) {
+    font-size: 1.2rem;
+  }
 `;
 
 const CardText = styled.p`
   color: #6d6762;
-  font-size: 0.95rem;
-  margin-bottom: 0.6rem;
+  font-size: 0.92rem;
+  margin-bottom: 0.5rem;
+  line-height: 1.4;
 `;
 
 const Highlight = styled.p`
   font-size: 0.9rem;
   color: #3f5c4a;
   margin-bottom: 1rem;
+  font-weight: 500;
 `;
 
 const Price = styled.p`
-  font-weight: 600;
-  margin-bottom: 1.2rem;
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #3f6b5a;
+  margin: 1rem 0 1.4rem;
+
+  span {
+    font-size: 0.85rem;
+    font-weight: 400;
+    color: #6d6762;
+    margin-left: 4px;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 1.4rem;
+  }
 `;
 
 const ButtonPrimary = styled(NavLink)`
   display: inline-block;
-  padding: 0.9rem;
+  padding: 0.85rem;
   background: #d67447;
   color: white;
   border-radius: 30px;
   text-decoration: none;
   width: 100%;
   text-align: center;
+  font-weight: 500;
+  transition: all 0.2s ease;
 
   &:hover {
     transform: scale(1.03);
-    color:white;
+    background: #c9653a;
+    color: white;
+  }
+
+  @media (max-width: 768px) {
+    padding: 1rem;
+    font-size: 0.95rem;
   }
 `;
 
@@ -142,8 +179,11 @@ const Experiencias = () => {
               <Highlight>
                 Ideal para desconectar o compartir un plan diferente
               </Highlight>
+              <Highlight>
+                Sábados de 10h a 12h. Otros horarios a consultar.
+              </Highlight>
 
-              <Price>Desde 37€ por persona</Price>
+              <Price>37€ por persona</Price>
 
               <ButtonPrimary
                 to="/reservas"
@@ -203,7 +243,7 @@ const Experiencias = () => {
               <CardTitle>Pinta tu Cerámica + Vino y picoteo</CardTitle>
 
               <CardText>
-                Taller guiado para pintar tu pieza más vino y algo para picar
+                Un plan diferente: cerámica + vino en un ambiente relajado
               </CardText>
 
               <Highlight>
