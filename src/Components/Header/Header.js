@@ -146,7 +146,7 @@ const Header = () => {
         {/* LINKS DESKTOP */}
         <LeftGroup>
           <StyledLink to="/">{t("header.inicio")}</StyledLink>
-          <StyledLink to="/reservas">{t("header.reserva")}</StyledLink>
+          <StyledLink to="/experiencias-ceramica-granollers">{t("header.reserva")}</StyledLink>
           <StyledLink to="/contacto">{t("header.contacto")}</StyledLink>
 
           <StyledLink

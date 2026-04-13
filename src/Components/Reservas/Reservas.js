@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate, Link, useLocation} from "react-router-dom";
 import emailjs from "@emailjs/browser";
 import { Helmet } from "react-helmet";
 
@@ -23,7 +23,7 @@ const SubText = styled.p`
   max-width: 680px;
   margin: 0 auto 2.5rem auto;
   color: #6d6762;
-  font-size: 1.05rem;
+  font-size: 1.25rem;
   padding: 1.4rem;
   border-radius: 18px;
   background-color: #ffffff;
@@ -31,7 +31,7 @@ const SubText = styled.p`
 `;
 
 const CalendarContainer = styled.div`
-  max-width: 1100px;
+  max-width: 650px;
   margin: 3rem auto;
   background: #ffffff;
   padding: 3rem;
@@ -53,7 +53,6 @@ const CustomCalendarWrapper = styled.div`
     border: none;
   }
 
-  /* navegación */
   .react-calendar__navigation {
     margin-bottom: 1.5rem;
   }
@@ -64,7 +63,6 @@ const CustomCalendarWrapper = styled.div`
     background: none;
   }
 
-  /* GRID correcto */
   .react-calendar__month-view__weekdays {
     text-transform: uppercase;
     font-size: 0.75rem;
@@ -78,35 +76,28 @@ const CustomCalendarWrapper = styled.div`
     gap: 6px;
   }
 
-  /* DÍAS (clave) */
   .react-calendar__tile {
-    aspect-ratio: 1 / 1; /* 🔥 evita deformaciones */
+    aspect-ratio: 1 / 1;
     padding: 0 !important;
-
     display: flex;
     align-items: center;
     justify-content: center;
-
     font-size: 0.95rem;
     border-radius: 12px;
     background: transparent;
     color: #4a4a4a;
-
     transition: all 0.2s ease;
   }
 
-  /* hover */
   .react-calendar__tile:enabled:hover {
     color: #d67447;
     transform: scale(1.05);
   }
 
-  /* hoy */
   .react-calendar__tile--now {
     border: 1px solid rgba(0,0,0,0.12);
   }
 
-  /* DISPONIBLE */
   .react-calendar__tile.available {
     background: rgba(214, 116, 71, 0.12);
     color: #d67447;
@@ -118,7 +109,6 @@ const CustomCalendarWrapper = styled.div`
     color: white;
   }
 
-  /* SELECCIONADO */
   .react-calendar__tile--active {
     background: #3f6b5a !important;
     color: white;
@@ -129,9 +119,7 @@ const CustomCalendarWrapper = styled.div`
     background: #355a4b !important;
   }
 
-  /* 📱 MOBILE */
   @media (max-width: 768px) {
-
     .react-calendar {
       padding: 1rem;
       font-size: 0.95rem;
@@ -168,6 +156,8 @@ const Card = styled.div`
   &.active {
     border: 2px solid #3f6b5a;
   }
+
+
 `;
 
 const Button = styled.button`
@@ -206,7 +196,8 @@ const Input = styled.input`
 
 const GroupLink = styled(Link)`
   display: inline-block;
-  margin-top: 2rem;
+  margin-top: 1.5rem;
+  font-size: 1rem;
   color: #3f6b5a;
 
   &:hover {
@@ -215,9 +206,19 @@ const GroupLink = styled(Link)`
 `;
 
 const Reservas = () => {
+
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  // 🔥 recuperar datos guardados
+  const saved = localStorage.getItem("experienciaSeleccionada");
+
+  const experienciaInicial =
+    location.state || (saved ? JSON.parse(saved) : null);
+
+  const [tipoSeleccionado, setTipoSeleccionado] = useState(experienciaInicial);
   const [step, setStep] = useState(1);
   const [fecha, setFecha] = useState(null);
-  const [tipoSeleccionado, setTipoSeleccionado] = useState(null);
 
   const [formData, setFormData] = useState({
     nombre: "",
@@ -225,24 +226,23 @@ const Reservas = () => {
     telefono: "",
   });
 
-  const navigate = useNavigate();
-
+  // 🔥 disponibilidad
   const isAvailable = (date) => {
+    const today = new Date();
+
     const d = new Date(date.getFullYear(), date.getMonth(), date.getDate());
+    const hoy = new Date(today.getFullYear(), today.getMonth(), today.getDate());
+
     const esSabado = d.getDay() === 6;
-    const esMesValido = [3, 4, 5].includes(d.getMonth());
-    return esSabado && esMesValido;
+    const esMayo = d.getMonth() === 4;
+    const noEsPasado = d >= hoy;
+
+    return esSabado && esMayo && noEsPasado;
   };
 
   const isDisabledDay = ({ date }) => !isAvailable(date);
 
-  const opciones = [
-    
-    { titulo: "Pinta tu cerámica", descripcion: "Clase dirigida puntual", precio: "37€" },
-    { titulo: "Pinta tu cerámica y Vino+ Picoteo", descripcion: "Sólo para Grupos a partir de 4 personas", precio: "47€" },{ titulo: "Pack 2 clases", descripcion: "Ideal para probar el taller", precio: "60€" },
-    { titulo: "Pack mensual", descripcion: "4 clases al mes · cocciones incluidas", precio: "95€" },
-  ];
-
+  // 🔥 submit
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -251,22 +251,21 @@ const Reservas = () => {
       email: formData.email,
       telefono: formData.telefono,
       fecha: fecha?.toLocaleDateString(),
-      tipo: tipoSeleccionado?.titulo,
-      precio: tipoSeleccionado?.precio,
+      tipo: tipoSeleccionado?.tipo || tipoSeleccionado?.titulo || "",
+      precio: tipoSeleccionado?.precio || "",
     };
 
     emailjs
       .send("service_pgxu3ij", "template_zw59ehq", templateParams, "y6n4qGd0Vvdb2QmoH")
-      .then(() => navigate("/gracias"))
+      .then(() => {
+        localStorage.removeItem("experienciaSeleccionada");
+        navigate("/gracias");
+      })
       .catch(() => alert("Error al enviar"));
   };
 
   return (
     <Section>
-      <Helmet>
-        <title>Taller cerámica</title>
-      </Helmet>
-
       <Title>Taller de cerámica y pintura</Title>
 
       <SubText>
@@ -274,13 +273,20 @@ const Reservas = () => {
         Elige cómo quieres vivir la experiencia ✨
       </SubText>
 
-      <GroupLink to="/Grupal">¿Buscas algo puntual? Podemos ayudarte a encontrar la mejor opción. Buscar un día diferente y ajustar los horarios es posible.</GroupLink>
-
       <CalendarContainer>
 
+        {/* STEP 1 */}
         {step === 1 && (
           <>
             <h3>Elige tu día</h3>
+
+            {tipoSeleccionado && (
+              <p style={{ marginBottom: "1rem" }}>
+                {tipoSeleccionado.tipo || tipoSeleccionado.titulo} ·{" "}
+                {tipoSeleccionado.precio}
+              </p>
+            )}
+
             <CustomCalendarWrapper>
               <Calendar
                 onChange={(value) => {
@@ -289,45 +295,57 @@ const Reservas = () => {
                 }}
                 value={fecha}
                 tileDisabled={isDisabledDay}
-                tileClassName={({ date, view }) => {
-                  if (view === "month" && isAvailable(date)) {
-                    return "available";
-                  }
-                }}
               />
             </CustomCalendarWrapper>
           </>
         )}
 
+        {/* STEP 2 */}
         {step === 2 && (
           <>
-            <h3 style={{ marginBottom: "1.5rem" }}>Elige tu experiencia</h3>
+            <h3>Estás a un paso ✨</h3>
 
-            <div style={{ display: "flex", flexDirection: "column", gap: "1rem", maxWidth: "500px", margin: "0 auto" }}>
-              {opciones.map((op, i) => (
-                <Card
-                  key={i}
-                  onClick={() => setTipoSeleccionado(op)}
-                  className={tipoSeleccionado?.titulo === op.titulo ? "active" : ""}
-                >
-                  <strong>{op.titulo}</strong><br />
-                  <span style={{ color: "#6d6762" }}>{op.descripcion}</span><br />
-                  <strong style={{ color: "#4f7a65" }}>{op.precio}</strong>
-                </Card>
-              ))}
+            <div style={{
+              background: "#f6f3ef",
+              padding: "1rem",
+              borderRadius: "12px",
+              marginBottom: "1.5rem"
+            }}>
+              <strong>{fecha?.toLocaleDateString()}</strong><br />
+              {tipoSeleccionado?.tipo || tipoSeleccionado?.titulo} ·{" "}
+              {tipoSeleccionado?.precio}
             </div>
 
-            {tipoSeleccionado && <Button onClick={() => setStep(3)}>Continuar</Button>}
-          </>
-        )}
+            <Form onSubmit={handleSubmit}>
+              <Input
+                type="text"
+                placeholder="Nombre"
+                required
+                onChange={(e) =>
+                  setFormData({ ...formData, nombre: e.target.value })
+                }
+              />
 
-        {step === 3 && (
-          <Form onSubmit={handleSubmit}>
-            <Input type="text" placeholder="Nombre" required onChange={(e) => setFormData({ ...formData, nombre: e.target.value })} />
-            <Input type="email" placeholder="Email" required onChange={(e) => setFormData({ ...formData, email: e.target.value })} />
-            <Input type="tel" placeholder="Teléfono" onChange={(e) => setFormData({ ...formData, telefono: e.target.value })} />
-            <Button type="submit">Confirmar</Button>
-          </Form>
+              <Input
+                type="email"
+                placeholder="Email"
+                required
+                onChange={(e) =>
+                  setFormData({ ...formData, email: e.target.value })
+                }
+              />
+
+              <Input
+                type="tel"
+                placeholder="Teléfono"
+                onChange={(e) =>
+                  setFormData({ ...formData, telefono: e.target.value })
+                }
+              />
+
+              <Button type="submit">Confirmar reserva</Button>
+            </Form>
+          </>
         )}
 
       </CalendarContainer>

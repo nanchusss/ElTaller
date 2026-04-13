@@ -2,7 +2,7 @@
   "home": {
     "title": "El Taller",
     "subtitleMini": "d'Aguaymanto",
-    "subtitle": "Un espai creatiu i acollidor a Vilanova del Vallés. Vine a pintar ceràmica, gaudir d’alguna cosa bona i compartir una experiència única.",
+    "subtitle": "Crea, relaxa't i gaudeix · Ceràmica, workshops i experiències úniques",
     "ctaButton": "Reserva la teva plaça",
     "whatYouCanFind": "Què hi pots trobar al Taller?",
     "feature1": {
@@ -124,8 +124,8 @@
   "redireccion": "Seràs redirigit a l'inici en uns segons..."
 },
 "gracias": {
-  "altIlustracion": "Gràcies per la teva reserva",
-  "titulo": "Gràcies per la teva reserva!",
+  "altIlustracion": "Gràcies pel teu missatge",
+  "titulo": "Gràcies pel teu missatge!",
   "texto": "T'esperem per gaudir de la ceràmica a",
   "redireccion": "Seràs redirigit a l'inici en uns segons..."
 },
@@ -137,8 +137,8 @@
   "boton": "Enviar missatge"
 },
   "eventos": {
-    "titulo": "Un espai per crear, celebrar i compartir",
-    "subtexto": "A El Taller d’Aguaymanto organitzem esdeveniments únics: des de team buildings creatius fins a celebracions íntimes. Sempre amb calidesa, creativitat i diversió.",
+    "titulo": "Esdeveniments personalitzats de ceràmica i pintura",
+    "subtexto": "Ofereix una experiència única, creativa i divertida.",
     "cards": {
       "team": {
         "title": "Team buildings",
@@ -146,7 +146,7 @@
       },
       "celebraciones": {
         "title": "Celebracions",
-        "texto": "Festes diferents, envoltades d’argila, rialles i bon cafè. Ideals per a aniversaris o trobades familiars."
+        "texto": "Festes diferents, envoltades d’argila i diversió. Ideals per a aniversaris o trobades familiars."
       },
       "privados": {
         "title": "Tallers privats",
@@ -158,7 +158,7 @@
 },
 
    "previewEventos": {
-    "titulo": "Esdeveniments personalitzats"
+    "titulo": "Esdeveniments personalitzats de ceràmica i pintura"
   },
 "quienes": {
   "titulo": "Qui som",

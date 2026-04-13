@@ -69,8 +69,25 @@ const HeroContent = styled.div`
 const Title = styled.h1`
   font-family: 'Fraunces', serif;
   font-size: 8.5rem;
+  color: white;
   line-height: 1.1;
   max-width: 800px;
+
+  @media (max-width: 768px) {
+    font-size: 4.5rem;
+  }
+`;
+
+const Subtitle = styled.p`
+  font-size: 2rem;
+  color: white;
+  margin-top: 1rem;
+  max-width: 600px;
+  opacity: 0.9;
+
+  @media (max-width: 768px) {
+    font-size: 1.5rem;
+  }
 `;
 
 const CTA = styled(NavLink)`
@@ -197,14 +214,14 @@ const HighlightContent = styled.div`
 
 const HighlightTitle = styled.h2`
   font-family: 'Fraunces', serif;
-  font-size: 2.8rem;
+  font-size: 3rem;
   color: #3f5c4a;
   margin-bottom: 1rem;
 `;
 
 const HighlightText = styled.p`
   color: #5a7263;
-  font-size: 1.2rem;
+  font-size: 2rem;
   margin-bottom: 2rem;
 `;
 
@@ -362,10 +379,16 @@ const Home = () => {
           <source src={bannerVideo} type="video/mp4" />
         </Video>
         <Overlay />
-        <HeroContent>
-          <Title>{t("home.title")}</Title>
-          <CTA to="/reservas">{t("home.ctaButton")}</CTA>
-        </HeroContent>
+       <HeroContent>
+  <Title>
+    {t("home.title")}
+   
+  </Title>
+
+  <Subtitle>{t("home.subtitle")}</Subtitle>
+
+  <CTA to="/experiencias-ceramica-granollers">{t("home.ctaButton")}</CTA>
+</HeroContent>
       </Hero>
 
   <AboutSection>

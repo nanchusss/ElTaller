@@ -2,8 +2,8 @@
   "home": {
     "title": "El Taller",
     "subtitleMini": "de Aguaymanto",
-    "subtitle": "Un espacio creativo y acogedor en Vilanova del Vallés. Pinta tu cerámica y disfruta de una experiencia única",
-    "ctaButton": "Reservar tu plaza",
+    "subtitle": "Crea, relájate y disfruta · Cerámica, workshops y experiencias únicas",
+     "ctaButton": "Reservar tu plaza",
     "whatYouCanFind": "¿Qué puedes encontrar en El Taller?",
     "feature2": {
       "title": "Pintar tu cerámica en una clase guiada",
@@ -121,9 +121,9 @@
   "redireccion": "Serás redirigido al inicio en unos segundos..."
 },
 "gracias": {
-  "altIlustracion": "Gracias por tu reserva",
-  "titulo": "¡Gracias por tu reserva!",
-  "texto": "Te esperamos para disfrutar de la cerámica en",
+  "altIlustracion": "Gracias por tu mensaje!",
+  "titulo": "¡Gracias por tu Mensaje!",
+  "texto": "Te esperamos para disfrutar de la cerámica y la pintura",
   "redireccion": "Serás redirigido al inicio en unos segundos..."
 },
 "reservaGrupal": {
@@ -135,20 +135,20 @@
 },
 
  "eventos": {
-    "titulo": "Un espacio para crear, celebrar y compartir",
-    "subtexto": "En El Taller d’Aguaymanto te ofrecemos nuestro espacio con calidez, creatividad y diversión.",
+    "titulo": "Eventos personalizados",
+    "subtexto": "Ofrece una actividad original, llena de creatividad y diversión.",
     "cards": {
       "team": {
         "title": "Team buildings",
-        "texto": "Reservas grupales con eventos a convenir para fortalecer vínculos, fomentar la creatividad y salir de la rutina."
+        "texto": "Reservas grupales para fortalecer vínculos, fomentar la creatividad y salir de la rutina."
       },
       "celebraciones": {
         "title": "Celebraciones",
-        "texto": "Fiestas distintas, rodeadas de pintura, risas y buen café. Ideal para cumpleaños o encuentros familiares."
+        "texto": "Fiestas distintas, rodeadas de pintura, y diversión. Ideal para cumpleaños o encuentros familiares."
       },
       "privados": {
         "title": "Talleres privados",
-        "texto": "Experiencias a medida para gruposg en un entorno íntimo y acogedor."
+        "texto": "Experiencias a medida para grupos en un entorno íntimo y acogedor."
       }
     },
     "boton": "Solicitar información"
@@ -166,7 +166,6 @@
   "p3": "El proyecto nace de una historia familiar vinculada al arte, una tradición que une tres generaciones.",
   "p4": "Organizamos talleres, cumpleaños infantiles y actividades de team building en un entorno creativo y acogedor."
 }
-
 
 
 

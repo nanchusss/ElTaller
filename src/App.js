@@ -12,24 +12,20 @@ import ReservaGrupal from "./Components/Grupal/Grupal.js";
 import Eventos from "./Components/Eventos/Eventos.js";
 import QuienesSomos from "./Components/QuienesSomos/QuienesSomos.js"; // ajustá el path si hace falta
 import Carta from "./Components/Carta/carta.js"; 
-import AvisoPopup from "./Components/AvisoPopup/AvisoPopup.js"; // Importa el componente AvisoPopup
+import Experiencias from "./Components/Experiencias/Experiencias.js";
+
+
+
 
 const App = () => {
   return (
     <>
       <GlobalStyle />
       
-      <AvisoPopup /> 
+     
       <Router>
         <Header />
-        <div
-          style={{
-            position: "fixed",
-            top: "20px",
-            right: "20px",
-            zIndex: 1000,
-          }}
-        ></div>
+      
         
         <Routes>
           <Route path="/" element={<Home />} />
@@ -37,11 +33,12 @@ const App = () => {
           <Route path="/reservas" element={<Reservas />} />
           <Route path="/contacto" element={<Contacto />} />
           <Route path="/gracias" element={<Gracias />} />
-          <Route path="/GraciasContacto" element={<GraciasContacto />} />
-          <Route path="/Grupal" element={<ReservaGrupal />} />
+          <Route path="/gracias-contacto" element={<GraciasContacto />} />
+          <Route path="/grupal" element={<ReservaGrupal />} />
           <Route path="/eventos" element={<Eventos />} />
           <Route path="/quienes-somos" element={<QuienesSomos />} />
           <Route path="/carta" element={<Carta />} />
+          <Route path="/experiencias-ceramica-granollers" element={<Experiencias />} />
         </Routes>
         <Footer />
       </Router>
