@@ -221,7 +221,7 @@ const Experiencias = () => {
                 Grupos mínimo de 4 personas
               </Highlight>
 
-              <Price>Dos Clases 47€ por persona</Price>
+              <Price>47€ por persona</Price>
 
               <ButtonSecondary
                 to="/reservas"
