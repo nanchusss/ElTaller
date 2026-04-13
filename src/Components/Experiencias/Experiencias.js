@@ -99,19 +99,11 @@ const ButtonPrimary = styled(NavLink)`
 
   &:hover {
     transform: scale(1.03);
+    color:white;
   }
 `;
 
-const ButtonSecondary = styled(NavLink)`
-  display: inline-block;
-  padding: 0.8rem;
-  border: 1px solid #d67447;
-  color: #d67447;
-  border-radius: 30px;
-  text-decoration: none;
-  width: 100%;
-  text-align: center;
-`;
+
 
 const Experiencias = () => {
 
