@@ -336,7 +336,7 @@ const AboutText = styled.p`
 const Home = () => {
   const { t } = useTranslation();
 
-  const [avisoVisible, setAvisoVisible] = useState(true);
+  const [avisoVisible, setAvisoVisible] = useState(false);
 
   useEffect(() => {
     const timer = setTimeout(() => {
