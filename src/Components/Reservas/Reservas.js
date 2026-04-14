@@ -2,9 +2,8 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
-import { useNavigate, useLocation} from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import emailjs from "@emailjs/browser";
-
 
 const Section = styled.section`
   background-color: #f6f3ef;
@@ -78,7 +77,6 @@ const CustomCalendarWrapper = styled.div`
 
   .react-calendar__tile {
     aspect-ratio: 1 / 1;
-    padding: 0 !important;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -118,27 +116,7 @@ const CustomCalendarWrapper = styled.div`
   .react-calendar__tile--active:hover {
     background: #355a4b !important;
   }
-
-  @media (max-width: 768px) {
-    .react-calendar {
-      padding: 1rem;
-      font-size: 0.95rem;
-    }
-
-    .react-calendar__tile {
-      font-size: 0.9rem;
-    }
-
-    .react-calendar__tile--active {
-      transform: scale(1.03);
-    }
-
-    .react-calendar__tile:enabled:hover {
-      transform: none;
-    }
-  }
 `;
-
 
 const Button = styled.button`
   background: #3f6b5a;
@@ -174,13 +152,11 @@ const Input = styled.input`
   }
 `;
 
-
 const Reservas = () => {
 
   const location = useLocation();
   const navigate = useNavigate();
 
-  // 🔥 recuperar datos guardados
   const saved = localStorage.getItem("experienciaSeleccionada");
 
   const experienciaInicial =
@@ -190,13 +166,14 @@ const Reservas = () => {
   const [step, setStep] = useState(1);
   const [fecha, setFecha] = useState(null);
 
+  
+
   const [formData, setFormData] = useState({
     nombre: "",
     email: "",
     telefono: "",
   });
 
-  // 🔥 disponibilidad
   const isAvailable = (date) => {
     const today = new Date();
 
@@ -212,83 +189,109 @@ const Reservas = () => {
 
   const isDisabledDay = ({ date }) => !isAvailable(date);
 
-  // 🔥 submit
-  const handleSubmit = (e) => {
-    e.preventDefault();
+const handleSubmit = (e) => {
+  e.preventDefault();
 
-    const templateParams = {
-      nombre: formData.nombre,
-      email: formData.email,
-      telefono: formData.telefono,
-      fecha: fecha?.toLocaleDateString(),
-      tipo: tipoSeleccionado?.tipo || tipoSeleccionado?.titulo || "",
-      precio: tipoSeleccionado?.precio || "",
-    };
+  if (!tipoSeleccionado?.paymentLink) {
+    alert("Error: experiencia mal configurada");
+    return;
+  }
 
-    emailjs
-      .send("service_pgxu3ij", "template_zw59ehq", templateParams, "y6n4qGd0Vvdb2QmoH")
-      .then(() => {
-        localStorage.removeItem("experienciaSeleccionada");
-        navigate("/gracias");
-      })
-      .catch(() => alert("Error al enviar"));
+  const reserva = {
+    nombre: formData.nombre,
+    email: formData.email,
+    telefono: formData.telefono,
+    fecha: fecha?.toLocaleDateString(),
+    tipo: tipoSeleccionado?.tipo || tipoSeleccionado?.titulo || "",
+    precio: tipoSeleccionado?.precio || "",
+    paymentLink: tipoSeleccionado.paymentLink
   };
 
+  localStorage.setItem("reservaPendiente", JSON.stringify(reserva));
+
+  // 🔥 PARAMS PARA EMAIL
+  const templateParams = {
+    nombre: reserva.nombre,
+    email: reserva.email,
+    telefono: reserva.telefono,
+    fecha: reserva.fecha,
+    tipo: reserva.tipo,
+    precio: reserva.precio,
+  };
+
+  // 🔥 ENVÍO EMAIL
+  emailjs
+    .send(
+      "service_pgxu3ij",
+      "template_zw59ehq",
+      templateParams,
+      "y6n4qGd0Vvdb2QmoH"
+    )
+    .then(() => {
+      console.log("Email enviado correctamente");
+
+      // 👉 SOLO después de enviar → pago
+      window.location.href = tipoSeleccionado.paymentLink;
+    })
+    .catch((error) => {
+      console.error("Error enviando email:", error);
+
+      // 👉 aún así mandamos a pagar
+      window.location.href = tipoSeleccionado.paymentLink;
+    });
+};
+
   if (!tipoSeleccionado) {
-  return (
-    <Section>
-      <Title>Selecciona una experiencia</Title>
-
-      <SubText>
-        Primero elige qué quieres hacer en el taller ✨
-      </SubText>
-
-      <Button onClick={() => navigate("/experiencias")}>
-        Ver experiencias
-      </Button>
-    </Section>
-  );
-}
+    return (
+      <Section>
+        <Title>Selecciona una experiencia</Title>
+        <SubText>
+          Primero elige qué quieres hacer en el taller ✨
+        </SubText>
+        <Button onClick={() => navigate("/experiencias")}>
+          Ver experiencias
+        </Button>
+      </Section>
+    );
+  }
 
   return (
     <Section>
-      <Title>Taller de cerámica y pintura</Title>
+     <Title>
+  {tipoSeleccionado?.tipo || tipoSeleccionado?.titulo}
+</Title>
 
-      <SubText>
-        Elige cómo quieres vivir la experiencia ✨
-      </SubText>
+<SubText>
+  {tipoSeleccionado?.descripcion || "Elige cómo quieres vivir la experiencia ✨"}
+</SubText>
 
       <CalendarContainer>
 
-        {/* STEP 1 */}
         {step === 1 && (
           <>
             <h3>Elige tu día</h3>
 
-            {tipoSeleccionado && (
-              <p style={{ marginBottom: "1rem" }}>
-                {tipoSeleccionado.tipo || tipoSeleccionado.titulo} ·{" "}
-                {tipoSeleccionado.precio}
-              </p>
-            )}
+            <p style={{ marginBottom: "1rem" }}>
+              {tipoSeleccionado.tipo || tipoSeleccionado.titulo} ·{" "}
+              {tipoSeleccionado.precio}
+            </p>
 
             <CustomCalendarWrapper>
-             <Calendar
-  onChange={(value) => {
-    setFecha(value);
-    setStep(2);
-  }}
-  value={fecha}
-  tileDisabled={isDisabledDay}
-  tileClassName={({ date }) =>
-    isAvailable(date) ? "available" : null
-  }
-/>
+              <Calendar
+                onChange={(value) => {
+                  setFecha(value);
+                  setStep(2);
+                }}
+                value={fecha}
+                tileDisabled={isDisabledDay}
+                tileClassName={({ date }) =>
+                  isAvailable(date) ? "available" : null
+                }
+              />
             </CustomCalendarWrapper>
           </>
         )}
 
-        {/* STEP 2 */}
         {step === 2 && (
           <>
             <h3>Estás a un paso ✨</h3>
@@ -300,8 +303,8 @@ const Reservas = () => {
               marginBottom: "1.5rem"
             }}>
               <strong>{fecha?.toLocaleDateString()}</strong><br />
-              {tipoSeleccionado?.tipo || tipoSeleccionado?.titulo} ·{" "}
-              {tipoSeleccionado?.precio}
+              {tipoSeleccionado.tipo || tipoSeleccionado.titulo} ·{" "}
+              {tipoSeleccionado.precio}
             </div>
 
             <Form onSubmit={handleSubmit}>
@@ -331,7 +334,9 @@ const Reservas = () => {
                 }
               />
 
-              <Button type="submit">Confirmar reserva</Button>
+              <Button type="submit">
+                Continuar al pago
+              </Button>
             </Form>
           </>
         )}

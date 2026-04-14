@@ -6,19 +6,15 @@ import imagen2 from "./images/evento2.png";
 import imagen3 from "./images/evento3.png";
 import { Helmet } from "react-helmet";
 
-<Helmet>
-  <title>El Taller d’Aguaymanto – Cerámica y café</title>
-  <meta
-    name="description"
-    content="Un espacio creativo en Granollers, Barcelona para talleres, eventos y experiencias con cerámica."
-  />
-</Helmet>;
+/* SECTION */
 
 const Section = styled.section`
   background-color: #fff9f0;
   padding: 4rem 2rem;
   text-align: center;
 `;
+
+/* TITLES */
 
 const Title = styled.h2`
   font-size: 3rem;
@@ -35,6 +31,8 @@ const SubText = styled.p`
   color: #6d6762;
   font-size: 1.1rem;
 `;
+
+/* CARDS */
 
 const CardsContainer = styled.div`
   display: grid;
@@ -72,16 +70,40 @@ const CardTitle = styled.h3`
   font-size: 1.5rem;
   margin-bottom: 0.75rem;
   font-family: "Playfair Display", serif;
-
-  letter-spacing: 0.5px;
 `;
 
 const CardText = styled.p`
   color: #6d6762;
   font-size: 1.05rem;
   line-height: 1.6;
-  font-family: "Open Sans", sans-serif;
 `;
+
+/* 🔥 BLOQUE CLAVE (VENTA REAL) */
+
+const InfoBox = styled.div`
+  background: white;
+  border-radius: 20px;
+  padding: 2.2rem;
+  max-width: 800px;
+  margin: 0 auto 3rem auto;
+  text-align: left;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+`;
+
+const InfoTitle = styled.h3`
+  font-size: 1.6rem;
+  color: #5a7263;
+  margin-bottom: 1rem;
+  font-family: "Playfair Display", serif;
+`;
+
+const InfoText = styled.p`
+  color: #6d6762;
+  font-size: 1rem;
+  margin-bottom: 0.6rem;
+`;
+
+/* CTA */
 
 const CTAButton = styled.a`
   display: inline-block;
@@ -96,47 +118,88 @@ const CTAButton = styled.a`
   margin-top: 1rem;
 
   &:hover {
-    background-color: #dc9333ff;
+    background-color: #dc9333;
     color: white;
   }
 `;
+
+/* COMPONENT */
 
 const Eventos = () => {
   const { t } = useTranslation();
 
   return (
-    <Section>
-      <Title>{t("eventos.titulo")}</Title>
-      <SubText>{t("eventos.subtexto")}</SubText>
+    <>
+      <Helmet>
+        <title>Eventos y celebraciones en taller de cerámica | Granollers</title>
+        <meta
+          name="description"
+          content="Celebra cumpleaños, eventos o team building en un taller de cerámica cerca de Granollers. Experiencias creativas para grupos."
+        />
+      </Helmet>
 
-      <CardsContainer>
-        <Card>
-          <CardImage src={imagen1} alt="Team building" />
-          <CardContent>
-            <CardTitle> {t("eventos.cards.team.title")}</CardTitle>
-            <CardText>{t("eventos.cards.team.texto")}</CardText>
-          </CardContent>
-        </Card>
+      <Section>
+        <Title>{t("eventos.titulo")}</Title>
 
-        <Card>
-          <CardImage src={imagen2} alt="Celebraciones" />
-          <CardContent>
-            <CardTitle>{t("eventos.cards.celebraciones.title")}</CardTitle>
-            <CardText>{t("eventos.cards.celebraciones.texto")}</CardText>
-          </CardContent>
-        </Card>
+        <SubText>
+          Celebra algo especial de forma diferente: una experiencia creativa para compartir
+        </SubText>
 
-        <Card>
-          <CardImage src={imagen3} alt="Talleres privados" />
-          <CardContent>
-            <CardTitle>{t("eventos.cards.privados.title")}</CardTitle>
-            <CardText>{t("eventos.cards.privados.texto")}</CardText>
-          </CardContent>
-        </Card>
-      </CardsContainer>
+        <CardsContainer>
+          <Card>
+            <CardImage src={imagen1} alt="Team building cerámica" />
+            <CardContent>
+              <CardTitle>Team building creativo</CardTitle>
+              <CardText>
+                Refuerza vínculos en un entorno relajado creando con las manos.
+              </CardText>
+            </CardContent>
+          </Card>
 
-      <CTAButton href="/contacto">{t("eventos.boton")}</CTAButton>
-    </Section>
+          <Card>
+            <CardImage src={imagen2} alt="Cumpleaños cerámica" />
+            <CardContent>
+              <CardTitle>Cumpleaños y celebraciones</CardTitle>
+              <CardText>
+                Celebra tu cumpleaños o una ocasión especial de forma única y creativa.
+              </CardText>
+            </CardContent>
+          </Card>
+
+          <Card>
+            <CardImage src={imagen3} alt="Taller privado cerámica" />
+            <CardContent>
+              <CardTitle>Grupos privados</CardTitle>
+              <CardText>
+                Organiza una experiencia a medida para tu grupo en el taller.
+              </CardText>
+            </CardContent>
+          </Card>
+        </CardsContainer>
+
+        {/* 🔥 BLOQUE QUE CONVIERTE */}
+        <InfoBox>
+          <InfoTitle>Organiza tu evento en el Taller</InfoTitle>
+
+          <InfoText>• Grupos a partir de 4 personas</InfoText>
+          <InfoText>• Experiencia guiada de cerámica</InfoText>
+          <InfoText>• Duración aproximada: 2 horas</InfoText>
+          <InfoText>• Ambiente acogedor y creativo</InfoText>
+
+          <InfoText style={{ marginTop: "1rem", fontWeight: "bold" }}>
+            Desde 47€ por persona (materiales incluidos)
+          </InfoText>
+
+          <InfoText style={{ marginTop: "1rem" }}>
+            Cuéntanos tu idea y te ayudamos a organizarla
+          </InfoText>
+        </InfoBox>
+
+        <CTAButton href="/contacto">
+          Organizar mi evento
+        </CTAButton>
+      </Section>
+    </>
   );
 };
 

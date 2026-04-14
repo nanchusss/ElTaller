@@ -17,6 +17,7 @@ import Experiencias from "./Components/Experiencias/Experiencias.js";
 
 
 
+
 const App = () => {
   return (
     <>
@@ -39,6 +40,7 @@ const App = () => {
           <Route path="/quienes-somos" element={<QuienesSomos />} />
           <Route path="/carta" element={<Carta />} />
           <Route path="/experiencias-ceramica-granollers" element={<Experiencias />} />
+          
         </Routes>
         <Footer />
       </Router>

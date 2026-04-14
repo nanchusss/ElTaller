@@ -140,8 +140,6 @@ const ButtonPrimary = styled(NavLink)`
   }
 `;
 
-
-
 const Experiencias = () => {
 
   const guardarExperiencia = (data) => {
@@ -168,7 +166,7 @@ const Experiencias = () => {
 
           <Grid>
 
-            {/* EXPERIENCIA PRINCIPAL */}
+            {/* PINTA CERÁMICA */}
             <Card>
               <CardTitle>Pinta tu propia cerámica</CardTitle>
 
@@ -189,13 +187,19 @@ const Experiencias = () => {
                 to="/reservas"
                 onClick={() =>
                   guardarExperiencia({
-                    tipo: "Pinta tu propia cerámica",
-                    precio: "Desde 37€ por persona"
+                    tipo: "Pinta tu cerámica",
+                    precio: "Desde 37€ por persona",
+                    descripcion: "Clase guiada donde os acompañaremos en el proceso de decoración de un bizcocho cerámico. Unos días más tarde os entregamos vuestra pieza lista!",
+                    slug: "pinta-tu-ceramica-granollers",
+                    paymentLink: "https://buy.stripe.com/3cI7sK7glejZcEv59K0RG00"
                   })
                 }
                 state={{
-                  tipo: "Pinta tu propia cerámica",
-                  precio: "Desde 37€ por persona"
+                  tipo: "Pinta tu cerámica",
+                  precio: "Desde 37€ por persona",
+                  descripcion: "Clase guiada donde os acompañaremos en el proceso de decoración de un bizcocho cerámico. Unos días más tarde os entregamos vuestra pieza lista!",
+                  slug: "pinta-tu-ceramica-granollers",
+                  paymentLink: "https://buy.stripe.com/3cI7sK7glejZcEv59K0RG00"
                 }}
               >
                 Reservar
@@ -210,35 +214,37 @@ const Experiencias = () => {
                 Aprende técnicas y desarrolla tus propios proyectos.
               </CardText>
 
+              <Highlight>No necesitas experiencia previa</Highlight>
               <Highlight>
-                No necesitas experiencia previa
-              </Highlight>
-<Highlight>
                 Aprende técnicas para hacer tus propias creaciones
               </Highlight>
-<Highlight>
-                2 Horas a la semana
-              </Highlight>
-              <Price>95€ / mes </Price>
+              <Highlight>2 horas a la semana</Highlight>
+
+              <Price>95€ / mes</Price>
 
               <ButtonPrimary
                 to="/reservas"
                 onClick={() =>
                   guardarExperiencia({
-                    tipo: "Clases de cerámica",
-                    precio: "95€ / 4 clases"
+                    tipo: "Clases de cerámica. Asistencia Mensual Sábados de 10h a 12h",
+                    descripcion: "Apuntate a nuestras clases regulares. Te enseñaremos a comprender la cerámica, te acompañaremos en el proceso creativo y primeros pasos para que descubras este nuevo mundo de creatividad y relax",
+                    precio: "95€ / 4 clases",
+                    slug: "taller-ceramica-clases-granollers",
+                    paymentLink: "https://buy.stripe.com/28EbJ00RX0t933V31C0RG03"
                   })
                 }
                 state={{
                   tipo: "Clases de cerámica",
-                  precio: "95€ / 4 clases"
+                  precio: "95€ / 4 clases",
+                  slug: "taller-ceramica-clases-granollers",
+                  paymentLink: "https://buy.stripe.com/28EbJ00RX0t933V31C0RG03"
                 }}
               >
                 Reservar
               </ButtonPrimary>
             </Card>
 
-            {/* WORKSHOPS */}
+            {/* CERÁMICA + VINO */}
             <Card>
               <CardTitle>Pinta tu Cerámica + Vino y picoteo</CardTitle>
 
@@ -247,11 +253,9 @@ const Experiencias = () => {
               </CardText>
 
               <Highlight>
-                Diviértete y haz tu primera experiencia pintando cerámica!
+                Diviértete y haz tu primera experiencia pintando cerámica
               </Highlight>
-              <Highlight>
-                Grupos mínimo de 4 personas
-              </Highlight>
+              <Highlight>Grupos mínimo de 4 personas</Highlight>
 
               <Price>47€ por persona</Price>
 
@@ -260,12 +264,17 @@ const Experiencias = () => {
                 onClick={() =>
                   guardarExperiencia({
                     tipo: "Workshop Pinta Cerámica + Vino",
-                    precio: "47€ por Persona"
+                    precio: "47€ por Persona",
+                    descripcion: "Actividad para grupos mínimo de 4 personas. Actividad en sesión abierta al público. El profe irá explicando las técnicas de decoración mientras acompañamos de una copa de vino y un picoteo sencillo. Todos los materiales están incluídos",
+                    slug: "ceramica-y-vino-granollers",
+                    paymentLink: "https://buy.stripe.com/cNi8wO1W1cbRcEv8lW0RG04"
                   })
                 }
                 state={{
                   tipo: "Workshop Pinta Cerámica + Vino",
-                  precio: "47€ por Persona"
+                  precio: "47€ por Persona",
+                  slug: "ceramica-y-vino-granollers",
+                  paymentLink: "https://buy.stripe.com/cNi8wO1W1cbRcEv8lW0RG04"
                 }}
               >
                 Reservar
