@@ -28,6 +28,14 @@ const SubText = styled.p`
   background-color: #ffffff;
   border: 1px solid rgba(0,0,0,0.08);
 `;
+const Text = styled.p`
+  
+  
+  color: #2b5a2aff;
+  font-size: 1.25rem;
+  padding: 1rem;
+
+`;
 
 const CalendarContainer = styled.div`
   max-width: 650px;
@@ -152,6 +160,40 @@ const Input = styled.input`
   }
 `;
 
+const Select = styled.select`
+  width: 100%;
+  padding: 1rem 1.2rem;
+  border-radius: 14px;
+  max-width: 200px;
+  border: 1px solid rgba(0,0,0,0.08);
+  background-color: #ffffff;
+  color: #4a4a4a;
+  cursor: pointer;
+  margin-bottom: 1rem;
+  font-family: "Playfair Display", serif;
+  font-size: 19px;
+
+  transition: all 0.25s ease;
+
+  /* quitar estilo nativo feo */
+  appearance: none;
+
+  /* flechita custom */
+  background-image: url("data:image/svg+xml;utf8,<svg fill='%233f6b5a' height='20' viewBox='0 0 20 20' width='20' xmlns='http://www.w3.org/2000/svg'><path d='M5.5 7l4.5 5 4.5-5z'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+
+  &:hover {
+    border-color: rgba(214, 116, 71, 0.5);
+  }
+
+  &:focus {
+    outline: none;
+    border-color: #3f6b5a;
+    box-shadow: 0 0 0 2px rgba(63, 107, 90, 0.1);
+  }
+`;
+
 const Reservas = () => {
 
   const location = useLocation();
@@ -165,8 +207,8 @@ const Reservas = () => {
   const [tipoSeleccionado] = useState(experienciaInicial);
   const [step, setStep] = useState(1);
   const [fecha, setFecha] = useState(null);
-
-  
+  const [horario, setHorario] = useState("");
+  const [errorHorario, setErrorHorario] = useState("");
 
   const [formData, setFormData] = useState({
     nombre: "",
@@ -184,62 +226,82 @@ const Reservas = () => {
     const esMayo = d.getMonth() === 4;
     const noEsPasado = d >= hoy;
 
+    if (d.getDate() === 16 && esMayo) return false;
+    if (d.getDate() === 29 && esMayo && noEsPasado) return true;
+
     return esSabado && esMayo && noEsPasado;
   };
 
   const isDisabledDay = ({ date }) => !isAvailable(date);
 
-const handleSubmit = (e) => {
-  e.preventDefault();
+  const getHorarios = () => {
+    const tipo = tipoSeleccionado?.tipo?.toLowerCase() || "";
 
-  if (!tipoSeleccionado?.paymentLink) {
-    alert("Error: experiencia mal configurada");
-    return;
-  }
+    if (tipo.includes("pinta")) {
+      return ["10:00 - 11:30", "11:30 - 13:00"];
+    }
 
-  const reserva = {
-    nombre: formData.nombre,
-    email: formData.email,
-    telefono: formData.telefono,
-    fecha: fecha?.toLocaleDateString(),
-    tipo: tipoSeleccionado?.tipo || tipoSeleccionado?.titulo || "",
-    precio: tipoSeleccionado?.precio || "",
-    paymentLink: tipoSeleccionado.paymentLink
+    if (tipo.includes("vino")) {
+      return ["11:30 - 13:00", "18:00 - 19:30"];
+    }
+
+    return [];
   };
 
-  localStorage.setItem("reservaPendiente", JSON.stringify(reserva));
+  const handleSubmit = (e) => {
+    e.preventDefault();
 
-  // 🔥 PARAMS PARA EMAIL
-  const templateParams = {
-    nombre: reserva.nombre,
-    email: reserva.email,
-    telefono: reserva.telefono,
-    fecha: reserva.fecha,
-    tipo: reserva.tipo,
-    precio: reserva.precio,
+    const esClase = tipoSeleccionado?.tipo?.toLowerCase().includes("clase");
+
+    if (!esClase && !horario) {
+      setErrorHorario("Por favor selecciona un horario ✨");
+      return;
+    }
+
+    setErrorHorario("");
+
+    if (!tipoSeleccionado?.paymentLink) {
+      alert("Error: experiencia mal configurada");
+      return;
+    }
+
+    const reserva = {
+      nombre: formData.nombre,
+      email: formData.email,
+      telefono: formData.telefono,
+      fecha: fecha?.toLocaleDateString(),
+      horario: horario,
+      tipo: tipoSeleccionado?.tipo || tipoSeleccionado?.titulo || "",
+      precio: tipoSeleccionado?.precio || "",
+      paymentLink: tipoSeleccionado.paymentLink
+    };
+
+    localStorage.setItem("reservaPendiente", JSON.stringify(reserva));
+
+    const templateParams = {
+      nombre: reserva.nombre,
+      email: reserva.email,
+      telefono: reserva.telefono,
+      fecha: reserva.fecha,
+      horario: reserva.horario,
+      tipo: reserva.tipo,
+      precio: reserva.precio,
+    };
+
+    emailjs
+      .send(
+        "service_pgxu3ij",
+        "template_zw59ehq",
+        templateParams,
+        "y6n4qGd0Vvdb2QmoH"
+      )
+      .then(() => {
+        window.location.href = tipoSeleccionado.paymentLink;
+      })
+      .catch(() => {
+        window.location.href = tipoSeleccionado.paymentLink;
+      });
   };
-
-  // 🔥 ENVÍO EMAIL
-  emailjs
-    .send(
-      "service_pgxu3ij",
-      "template_zw59ehq",
-      templateParams,
-      "y6n4qGd0Vvdb2QmoH"
-    )
-    .then(() => {
-      console.log("Email enviado correctamente");
-
-      // 👉 SOLO después de enviar → pago
-      window.location.href = tipoSeleccionado.paymentLink;
-    })
-    .catch((error) => {
-      console.error("Error enviando email:", error);
-
-      // 👉 aún así mandamos a pagar
-      window.location.href = tipoSeleccionado.paymentLink;
-    });
-};
 
   if (!tipoSeleccionado) {
     return (
@@ -257,13 +319,13 @@ const handleSubmit = (e) => {
 
   return (
     <Section>
-     <Title>
-  {tipoSeleccionado?.tipo || tipoSeleccionado?.titulo}
-</Title>
+      <Title>
+        {tipoSeleccionado?.tipo || tipoSeleccionado?.titulo}
+      </Title>
 
-<SubText>
-  {tipoSeleccionado?.descripcion || "Elige cómo quieres vivir la experiencia ✨"}
-</SubText>
+      <SubText>
+        {tipoSeleccionado?.descripcion || "Elige cómo quieres vivir la experiencia ✨"}
+      </SubText>
 
       <CalendarContainer>
 
@@ -294,7 +356,7 @@ const handleSubmit = (e) => {
 
         {step === 2 && (
           <>
-            <h3>Estás a un paso ✨</h3>
+            <Text>Estás a un paso ✨</Text>
 
             <div style={{
               background: "#f6f3ef",
@@ -306,6 +368,38 @@ const handleSubmit = (e) => {
               {tipoSeleccionado.tipo || tipoSeleccionado.titulo} ·{" "}
               {tipoSeleccionado.precio}
             </div>
+
+            {tipoSeleccionado?.tipo?.toLowerCase().includes("clase") ? (
+              <p style={{ marginBottom: "1rem" }}>
+                Nos pondremos en contacto contigo para definir horarios ✨
+              </p>
+            ) : (
+              <>
+                <Select
+                  value={horario}
+                  onChange={(e) => {
+                    setHorario(e.target.value);
+                    setErrorHorario("");
+                  }}
+                >
+                  <option value="">Selecciona horario</option>
+                  {getHorarios().map((h, i) => (
+                    <option key={i} value={h}>{h}</option>
+                  ))}
+                </Select>
+
+                {errorHorario && (
+                  <p style={{
+                    color: "#d67447",
+                    fontSize: "0.9rem",
+                    marginTop: "-0.5rem",
+                    marginBottom: "1rem"
+                  }}>
+                    {errorHorario}
+                  </p>
+                )}
+              </>
+            )}
 
             <Form onSubmit={handleSubmit}>
               <Input
