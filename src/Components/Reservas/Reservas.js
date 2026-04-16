@@ -16,7 +16,9 @@ const Title = styled.h2`
   color: #3f6b5a;
   margin-bottom: 1.5rem;
   font-family: "Playfair Display", serif;
-`;
+`
+
+;
 
 const SubText = styled.p`
   max-width: 680px;
@@ -29,12 +31,21 @@ const SubText = styled.p`
   border: 1px solid rgba(0,0,0,0.08);
 `;
 const Text = styled.p`
-  
-  
   color: #2b5a2aff;
-  font-size: 1.25rem;
+  font-size: 20px;
   padding: 1rem;
 
+  @media (max-width: 768px) {
+    font-size: 1.05rem;
+    padding: 0.8rem;
+    line-height: 1.5;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 0.95rem;
+    padding: 0.6rem;
+    line-height: 1.45;
+  }
 `;
 
 const CalendarContainer = styled.div`
@@ -171,7 +182,7 @@ const Select = styled.select`
   cursor: pointer;
   margin-bottom: 1rem;
   font-family: "Playfair Display", serif;
-  font-size: 19px;
+  font-size: 16px;
 
   transition: all 0.25s ease;
 
