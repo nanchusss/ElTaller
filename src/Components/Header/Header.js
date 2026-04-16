@@ -177,7 +177,7 @@ const Header = () => {
           <StyledLink to="/" onClick={() => setMenuAbierto(false)}>
             {t("header.inicio")}
           </StyledLink>
-          <StyledLink to="/reservas" onClick={() => setMenuAbierto(false)}>
+          <StyledLink to="/experiencias-ceramica-granollersgit" onClick={() => setMenuAbierto(false)}>
             {t("header.reserva")}
           </StyledLink>
           <StyledLink to="/contacto" onClick={() => setMenuAbierto(false)}>
