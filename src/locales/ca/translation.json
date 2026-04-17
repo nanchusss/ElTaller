@@ -58,7 +58,8 @@
     "contacto": "Contacte",
     "eventos": "Events",
      "quienes": "Qui som",
-     "carta": "Carta"
+     "carta": "Carta",
+     "regala": "Regalar"
   },
   "asistente": {
   "saludo": "Hola 👋 En què et puc ajudar avui?",
@@ -167,6 +168,9 @@
   "p2": "Som un taller de ceràmica situat a Vilanova del Vallés, a 8 minuts de Granollers, on pots venir a pintar, crear i compartir moments especials.",
   "p3": "El projecte neix d’una història familiar vinculada a l’art, una tradició que uneix tres generacions.",
   "p4": "Organitzem tallers, aniversaris infantils i activitats de team building en un entorn creatiu i acollidor."
+}, 
+"v":{
+  "title":"Un regalo original y creativo"
 }
 
 

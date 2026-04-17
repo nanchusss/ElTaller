@@ -118,28 +118,63 @@ const vouchers = [
   }
 ];
 
+const Section = styled.section`
+  max-width: 1100px;
+  margin: 5rem auto 2rem;
+  text-align: center;
+  padding: 0 1.5rem;
+`;
+
+const MainTitle = styled.h2`
+  font-family: 'Fraunces', serif;
+  font-size: 2.4rem;
+  color: #3f5c4a;
+  margin-bottom: 1rem;
+`;
+
+const Subtitle = styled.p`
+  font-size: 1.1rem;
+  color: #6d6762;
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.5;
+`;
+
 /* COMPONENT */
 
 const VoucherCards = () => {
   return (
-    <Grid>
-      {vouchers.map((v, i) => (
-        <Card key={i}>
-          <div>
-            <Image src={v.img} alt={v.title} />
-            <Title>{v.title}</Title>
-            <Desc>{v.desc}</Desc>
-          </div>
+    <>
+      <Section>
+        <MainTitle>
+          Regala una experiencia creativa única
+        </MainTitle>
+        <Subtitle>
+          Sorprende con algo diferente: un momento para crear con las manos,
+          desconectar del ritmo diario y conectar con el arte, la cerámica y la calma.
+          Un regalo que no se guarda… se vive.
+        </Subtitle>
+      </Section>
 
-          <div>
-            <Price>{v.price}</Price>
-            <Button href={v.link} target="_blank">
-              Comprar voucher
-            </Button>
-          </div>
-        </Card>
-      ))}
-    </Grid>
+      <Grid>
+        {vouchers.map((v, i) => (
+          <Card key={i}>
+            <div>
+              <Image src={v.img} alt={v.title} />
+              <Title>{v.title}</Title>
+              <Desc>{v.desc}</Desc>
+            </div>
+
+            <div>
+              <Price>{v.price}</Price>
+              <Button href={v.link} target="_blank">
+                Comprar voucher
+              </Button>
+            </div>
+          </Card>
+        ))}
+      </Grid>
+    </>
   );
 };
 

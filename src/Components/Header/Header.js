@@ -126,6 +126,16 @@ const StyledLink = styled(NavLink)`
   }
 `;
 
+const StyledLinkSmall = styled(StyledLink)`
+  font-size: 1.2rem;
+  color: #999;
+
+  &.active {
+    color: #666;
+    border-bottom: 2px solid #999;
+  }
+`;
+
 const Header = () => {
   const { t } = useTranslation();
   const [menuAbierto, setMenuAbierto] = useState(false);
@@ -160,6 +170,9 @@ const Header = () => {
           <StyledLink to="/quienes-somos">
             {t("header.quienes")}
           </StyledLink>
+          <StyledLinkSmall to="/regala-pinta-tu-ceramica-granollers">
+            {t("header.regala")}
+          </StyledLinkSmall>
         </LeftGroup>
 
         {/* DERECHA */}
@@ -193,6 +206,9 @@ const Header = () => {
           </StyledLink>
           <StyledLink to="/quienes-somos" onClick={() => setMenuAbierto(false)}>
             {t("header.quienes")}
+          </StyledLink>
+          <StyledLink to="/regala-pinta-tu-ceramica-granollers" onClick={() => setMenuAbierto(false)}>
+            {t("header.regala")}
           </StyledLink>
         </MobileMenu>
       </Nav>
