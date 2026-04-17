@@ -12,7 +12,7 @@ import taller3 from "./Images/tallerbonito.jpeg";
 import taller4 from "./Images/tallervacio2.jpeg";
 import taza from "./Images/taza.jpg.webp";
 
-import evento2 from "./Images/cumpleañosinfantil.png"; 
+import evento2 from "./Images/cumpleanosinfantil.png"; 
 import evento3 from "./Images/mujeresceramicayvino.png";
 import bannerVideo from "./Images/videoeltallerdefinitivo.mp4";
 import AsistenteIA from "../Asistente/Asistente";
