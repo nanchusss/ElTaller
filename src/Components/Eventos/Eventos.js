@@ -109,6 +109,7 @@ const CTAButton = styled.a`
   display: inline-block;
   background-color: #f0b65b;
   color: white;
+  margin-bottom: 40px;
   padding: 1rem 2.5rem;
   font-weight: bold;
   border-radius: 12px;
@@ -131,7 +132,7 @@ const Eventos = () => {
   return (
     <>
       <Helmet>
-        <title>Eventos y celebraciones en taller de cerámica | Granollers</title>
+        <title>Eventos y celebraciones en taller de cerámica | A 8 minutos de Granollers</title>
         <meta
           name="description"
           content="Celebra cumpleaños, eventos o team building en un taller de cerámica cerca de Granollers. Experiencias creativas para grupos."
@@ -176,28 +177,26 @@ const Eventos = () => {
             </CardContent>
           </Card>
         </CardsContainer>
+ <CTAButton href="/contacto">
+          Organizar mi evento
+        </CTAButton>
 
         {/* 🔥 BLOQUE QUE CONVIERTE */}
         <InfoBox>
-          <InfoTitle>Organiza tu evento en el Taller</InfoTitle>
+          <InfoTitle>Organiza tu evento en EL TALLER</InfoTitle>
 
-          <InfoText>• Grupos a partir de 4 personas</InfoText>
-          <InfoText>• Experiencia guiada de cerámica</InfoText>
-          <InfoText>• Duración aproximada: 2 horas</InfoText>
+          <InfoText>• Una experiencia exclusiva para tu grupo</InfoText>
+          <InfoText>• Una clase guiada, súper divertida con todos los materiales incluídos</InfoText>
+          <InfoText>• Pinta tu pieza de cerámica, elige, crea, disfruta</InfoText>
           <InfoText>• Ambiente acogedor y creativo</InfoText>
 
-          <InfoText style={{ marginTop: "1rem", fontWeight: "bold" }}>
-            Desde 47€ por persona (materiales incluidos)
-          </InfoText>
 
           <InfoText style={{ marginTop: "1rem" }}>
-            Cuéntanos tu idea y te ayudamos a organizarla
+            ¡Cuéntanos tu idea!
           </InfoText>
         </InfoBox>
 
-        <CTAButton href="/contacto">
-          Organizar mi evento
-        </CTAButton>
+       
       </Section>
     </>
   );

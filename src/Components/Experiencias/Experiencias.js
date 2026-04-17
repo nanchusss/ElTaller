@@ -1,6 +1,9 @@
 import styled from "styled-components";
 import { NavLink } from "react-router-dom";
 import { Helmet } from "react-helmet";
+import pintura from "./Images/pintando2.jpeg";
+import vino from "./Images/ceramica.png";
+import vino1 from "../Experiencias/Images/vino.png";
 
 const Wrapper = styled.section`
   padding: 4rem 1.2rem;
@@ -12,7 +15,7 @@ const Wrapper = styled.section`
 `;
 
 const Container = styled.div`
-  max-width: 980px;
+  max-width: 1100px; /* ← más ancho y equilibrado */
   margin: 0 auto;
   text-align: center;
 `;
@@ -31,20 +34,23 @@ const Title = styled.h1`
 
 const Subtitle = styled.p`
   color: #6d6762;
-  font-size: 1.05rem;
+  font-size: 1.25rem;
   margin-bottom: 2.2rem;
 
   @media (max-width: 768px) {
-    font-size: 0.95rem;
+    font-size: 1.1rem;
     padding: 0 0.5rem;
   }
 `;
 
 const Grid = styled.div`
   display: grid;
-  gap: 1.5rem;
+  gap: 2rem;
 
   grid-template-columns: 1fr;
+  justify-items: center;
+
+  margin: 0 auto;
 
   @media (min-width: 768px) {
     grid-template-columns: repeat(3, 1fr);
@@ -54,7 +60,7 @@ const Grid = styled.div`
 const Card = styled.div`
   background: white;
   border-radius: 20px;
-  padding: 1.6rem;
+  padding: 1.8rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -62,6 +68,9 @@ const Card = styled.div`
   transition: all 0.25s ease;
   text-align: left;
   position: relative;
+
+  width: 100%;
+  max-width: 340px; /* ← clave para proporción */
 
   &:hover {
     transform: translateY(-4px);
@@ -74,35 +83,35 @@ const Card = styled.div`
   }
 `;
 
-const CardTitle = styled.h3`
-  font-size: 1.3rem;
-  margin-bottom: 0.5rem;
-  color: #3f5c4a;
-
-  @media (max-width: 768px) {
-    font-size: 1.2rem;
-  }
+const CardImage = styled.img`
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin: 0 auto 20px auto; /* ← centrado real */
 `;
 
-const CardText = styled.p`
-  color: #6d6762;
-  font-size: 0.92rem;
+const CardTitle = styled.h3`
+  font-size: 1.4rem;
   margin-bottom: 0.5rem;
-  line-height: 1.4;
+  color: #3f5c4a;
 `;
 
 const Highlight = styled.p`
-  font-size: 0.9rem;
+  font-size: 1.05rem;
   color: #3f5c4a;
-  margin-bottom: 1rem;
-  font-weight: 500;
+  margin-bottom: 0.6rem;
+  font-weight: 400;
+  line-height: 1.4;
 `;
 
 const Price = styled.p`
   font-size: 1.5rem;
   font-weight: 800;
   color: #3f6b5a;
-  margin: 1rem 0 1.4rem;
+
+  margin: 1.2rem 0 1.4rem;
+  margin-top: auto; /* ← ESTA es la clave */
 
   span {
     font-size: 0.85rem;
@@ -118,7 +127,7 @@ const Price = styled.p`
 
 const ButtonPrimary = styled(NavLink)`
   display: inline-block;
-  padding: 0.85rem;
+  padding: 0.9rem;
   background: #d67447;
   color: white;
   border-radius: 30px;
@@ -127,6 +136,12 @@ const ButtonPrimary = styled(NavLink)`
   text-align: center;
   font-weight: 500;
   transition: all 0.2s ease;
+
+  margin-top: auto;
+
+  @media (min-width: 768px) {
+    margin-bottom: 10px; /* ← aire en desktop */
+  }
 
   &:hover {
     transform: scale(1.03);
@@ -137,6 +152,29 @@ const ButtonPrimary = styled(NavLink)`
   @media (max-width: 768px) {
     padding: 1rem;
     font-size: 0.95rem;
+    margin-bottom: 30px;
+  }
+`;
+
+const EventosLink = styled(NavLink)`
+  display: inline-block;
+  margin-top: 2.5rem;
+
+  color: #3f5c4a;
+  font-weight: 500;
+  text-decoration: none;
+
+  border-bottom: 1px solid transparent;
+  transition: all 0.2s ease;
+
+  &:hover {
+    border-bottom: 1px solid #3f5c4a;
+  }
+
+  @media (max-width: 768px) {
+    padding: 1rem;
+    font-size: 1.3rem;
+    margin-bottom: 30px;
   }
 `;
 
@@ -168,120 +206,128 @@ const Experiencias = () => {
 
             {/* PINTA CERÁMICA */}
             <Card>
+              <CardImage src={pintura} alt="Pinta tu cerámica" />
+
               <CardTitle>Pinta tu propia cerámica</CardTitle>
 
-              <CardText>
+              <Highlight>
                 Elige tu pieza, relájate y disfruta del proceso.
-              </CardText>
+              </Highlight>
 
               <Highlight>
                 Ideal para desconectar o compartir un plan diferente
               </Highlight>
+
               <Highlight>
-                Sábados de 10h a 12h. Otros horarios a consultar.
+               Haz click en Reservar y mira los días y horarios disponibles.
+              </Highlight>
+
+              <Highlight>
+                Con Coffee Corner autoservicio para disfrutar de una infusión, café o agua saborizada.
               </Highlight>
 
               <Price>37€ por persona</Price>
 
-              <ButtonPrimary
-                to="/reservas"
-                onClick={() =>
-                  guardarExperiencia({
-                    tipo: "Pinta tu cerámica",
-                    precio: "Desde 37€ por persona",
-                    descripcion: "Clase guiada donde os acompañaremos en el proceso de decoración de un bizcocho cerámico. Unos días más tarde os entregamos vuestra pieza lista!",
-                    slug: "pinta-tu-ceramica-granollers",
-                    paymentLink: "https://buy.stripe.com/3cI7sK7glejZcEv59K0RG00"
-                  })
-                }
-                state={{
-                  tipo: "Pinta tu cerámica",
-                  precio: "Desde 37€ por persona",
-                  descripcion: "Clase guiada donde os acompañaremos en el proceso de decoración de un bizcocho cerámico. Unos días más tarde os entregamos vuestra pieza lista!",
-                  slug: "pinta-tu-ceramica-granollers",
-                  paymentLink: "https://buy.stripe.com/3cI7sK7glejZcEv59K0RG00"
-                }}
-              >
-                Reservar
-              </ButtonPrimary>
+           <ButtonPrimary
+  to="/reservas"
+  onClick={() =>
+    guardarExperiencia({
+      tipo: "Pinta tu cerámica",
+      precio: "37€ por persona",
+      descripcion: "Clase guiada donde os acompañamos en el proceso de decoración de una pieza cerámica.",
+      slug: "pinta-tu-ceramica-granollers",
+      paymentLink: "https://buy.stripe.com/3cI7sK7glejZcEv59K0RG00"
+    })
+  }
+>
+  Reservar
+</ButtonPrimary>
             </Card>
 
             {/* CLASES */}
             <Card>
+              <CardImage src={vino} alt="Clases de cerámica" />
+
               <CardTitle>Clases de cerámica</CardTitle>
 
-              <CardText>
+              <Highlight>
                 Aprende técnicas y desarrolla tus propios proyectos.
-              </CardText>
+              </Highlight>
 
               <Highlight>No necesitas experiencia previa</Highlight>
+
               <Highlight>
-                Aprende técnicas para hacer tus propias creaciones
+                Te acompañamos a cada paso para que disfrutes de la cerámica.
               </Highlight>
+
               <Highlight>2 horas a la semana</Highlight>
+              <Highlight>Horarios a convenir</Highlight>
+
+              <Highlight>
+                Con Coffee Corner autoservicio para disfrutar de una infusión, café o agua saborizada.
+              </Highlight>
 
               <Price>95€ / mes</Price>
 
-              <ButtonPrimary
-                to="/reservas"
-                onClick={() =>
-                  guardarExperiencia({
-                    tipo: "Clases de cerámica. Asistencia Mensual Sábados de 10h a 12h",
-                    descripcion: "Apuntate a nuestras clases regulares. Te enseñaremos a comprender la cerámica, te acompañaremos en el proceso creativo y primeros pasos para que descubras este nuevo mundo de creatividad y relax",
-                    precio: "95€ / 4 clases",
-                    slug: "taller-ceramica-clases-granollers",
-                    paymentLink: "https://buy.stripe.com/28EbJ00RX0t933V31C0RG03"
-                  })
-                }
-                state={{
-                  tipo: "Clases de cerámica",
-                  precio: "95€ / 4 clases",
-                  slug: "taller-ceramica-clases-granollers",
-                  paymentLink: "https://buy.stripe.com/28EbJ00RX0t933V31C0RG03"
-                }}
-              >
-                Reservar
-              </ButtonPrimary>
+   <ButtonPrimary
+  to="/reservas"
+  onClick={() =>
+    guardarExperiencia({
+      tipo: "Clases de cerámica",
+      precio: "95€ / mes",
+      descripcion: "Clases regulares para aprender y desarrollar proyectos.",
+      slug: "taller-ceramica-clases-granollers",
+      paymentLink: "https://buy.stripe.com/28EbJ00RX0t933V31C0RG03"
+    })
+  }
+>
+  Reservar
+</ButtonPrimary>
             </Card>
 
             {/* CERÁMICA + VINO */}
             <Card>
+              <CardImage src={vino1} alt="Cerámica y vino" />
+
               <CardTitle>Pinta tu Cerámica + Vino y picoteo</CardTitle>
 
-              <CardText>
+              <Highlight>
                 Un plan diferente: cerámica + vino en un ambiente relajado
-              </CardText>
+              </Highlight>
 
               <Highlight>
-                Diviértete y haz tu primera experiencia pintando cerámica
+                Diviértete y vive tu primera experiencia pintando cerámica
               </Highlight>
+
               <Highlight>Grupos mínimo de 4 personas</Highlight>
+
+              <Highlight>
+                Con Coffee Corner autoservicio para disfrutar de una infusión, café o agua saborizada.
+              </Highlight>
 
               <Price>47€ por persona</Price>
 
-              <ButtonPrimary
-                to="/reservas"
-                onClick={() =>
-                  guardarExperiencia({
-                    tipo: "Workshop Pinta Cerámica + Vino",
-                    precio: "47€ por Persona",
-                    descripcion: "Actividad para grupos mínimo de 4 personas. Actividad en sesión abierta al público. El profe irá explicando las técnicas de decoración mientras acompañamos de una copa de vino y un picoteo sencillo. Todos los materiales están incluídos",
-                    slug: "ceramica-y-vino-granollers",
-                    paymentLink: "https://buy.stripe.com/cNi8wO1W1cbRcEv8lW0RG04"
-                  })
-                }
-                state={{
-                  tipo: "Workshop Pinta Cerámica + Vino",
-                  precio: "47€ por Persona",
-                  slug: "ceramica-y-vino-granollers",
-                  paymentLink: "https://buy.stripe.com/cNi8wO1W1cbRcEv8lW0RG04"
-                }}
-              >
-                Reservar
-              </ButtonPrimary>
+             <ButtonPrimary
+  to="/reservas"
+  onClick={() =>
+    guardarExperiencia({
+      tipo: "Workshop Pinta Cerámica + Vino",
+      precio: "47€ por persona",
+      descripcion: "Actividad grupal con cerámica, vino y picoteo.",
+      slug: "ceramica-y-vino-granollers",
+      paymentLink: "https://buy.stripe.com/cNi8wO1W1cbRcEv8lW0RG04"
+    })
+  }
+>
+  Reservar
+</ButtonPrimary>
             </Card>
 
           </Grid>
+
+          <EventosLink to="/eventos">
+  ¿Estás planeando un evento? Descubre nuestras experiencias para grupos →
+</EventosLink>
         </Container>
       </Wrapper>
     </>

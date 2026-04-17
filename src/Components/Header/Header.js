@@ -150,11 +150,11 @@ const Header = () => {
           <StyledLink to="/contacto">{t("header.contacto")}</StyledLink>
 
           <StyledLink
-            to="https://www.aguaymanto.shop"
+            to="/eventos"
             target="_blank"
             rel="noopener noreferrer"
           >
-            {t("header.tienda")}
+            {t("header.eventos")}
           </StyledLink>
 
           <StyledLink to="/quienes-somos">
