@@ -13,6 +13,7 @@ import Eventos from "./Components/Eventos/Eventos.js";
 import QuienesSomos from "./Components/QuienesSomos/QuienesSomos.js"; // ajustá el path si hace falta
 import Carta from "./Components/Carta/carta.js"; 
 import Experiencias from "./Components/Experiencias/Experiencias.js";
+import Voucher from "./Components/Voucher/Voucher.js"
 
 
 
@@ -40,6 +41,7 @@ const App = () => {
           <Route path="/quienes-somos" element={<QuienesSomos />} />
           <Route path="/carta" element={<Carta />} />
           <Route path="/experiencias-ceramica-granollers" element={<Experiencias />} />
+          <Route path="/regala-pinta-tu-ceramica-granollers" element={<Voucher/>}/>
           
         </Routes>
         <Footer />

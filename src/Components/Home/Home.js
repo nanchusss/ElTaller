@@ -1,19 +1,19 @@
 import styled from "styled-components";
 import { useState, useEffect } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate} from "react-router-dom";
 import { FaWhatsapp } from "react-icons/fa";
-import pintando from "./Images/imagen1.png";
+import pintando from "./Images/clientapintando.jpeg";
 import AvisoPopup from "../AvisoPopup/AvisoPopup";
 
-import estanteria1 from "./Images/taller1.jpeg";
+import estanteria1 from "./Images/tallerestanteria.jpeg";
 import taller1 from "./Images/taller2.jpeg";
 import taller2 from "./Images/taller3.jpeg";
 import taller3 from "./Images/tallerbonito.jpeg";
-import taller4 from "./Images/estanteria.jpeg";
-import jarra from "./Images/taza.jpg.webp";
+import taller4 from "./Images/tallervacio2.jpeg";
+import taza from "./Images/taza.jpg.webp";
 
-import evento2 from "./Images/evento2.png";
-import evento3 from "./Images/evento3.png";
+import evento2 from "./Images/cumpleañosinfantil.png"; 
+import evento3 from "./Images/mujeresceramicayvino.png";
 import bannerVideo from "./Images/videoeltallerdefinitivo.mp4";
 import AsistenteIA from "../Asistente/Asistente";
 import { useTranslation } from "react-i18next";
@@ -335,6 +335,7 @@ const AboutText = styled.p`
 
 const Home = () => {
   const { t } = useTranslation();
+  const navigate = useNavigate();
 
   const [avisoVisible, setAvisoVisible] = useState(false);
 
@@ -408,9 +409,9 @@ const Home = () => {
 
       <Section>
         <CardsWrapper>
-          <Card>
+          <Card onClick={() => navigate("/eventos")} style={{ cursor: "pointer" }}>
             <CardImage
-  src={pintando}
+  src={evento3}
   alt="Personas pintando cerámica en taller en Vilanova del Vallés cerca de Granollers"
 />
             <CardText>
@@ -419,16 +420,16 @@ const Home = () => {
             </CardText>
           </Card>
 
-          <Card>
+          <Card onClick={() => navigate("/experiencias-ceramica-granollers")} style={{ cursor: "pointer" }}>
             <CardText>
               <CardTitle>{t("home.feature2.title")}</CardTitle>
               <CardDesc>{t("home.feature2.text")}</CardDesc>
             </CardText>
-            <CardImage src={evento3} alt="Evento de cerámica en grupo en Granollers" />
+            <CardImage src={pintando} alt="Pinta tu cerámica, actividad para familias, grupos, amigos" />
           </Card>
 
-          <Card>
-            <CardImage src={jarra} alt="Jarra de cerámica pintada a mano" />
+          <Card onClick={() => navigate("/regala-pinta-tu-ceramica-granollers")} style={{ cursor: "pointer" }}>
+            <CardImage src={taza} alt="Taza de cerámica pintada a mano" />
             <CardText>
               <CardTitle>{t("home.feature3.title")}</CardTitle>
               <CardDesc>{t("home.feature3.text")}</CardDesc>
@@ -459,7 +460,7 @@ const Home = () => {
         Talleres, cerámica y momentos que inspiran.
       </Closing>
         <Gallery>
-          {[pintando, taller4, jarra, estanteria1, taller1, taller2, taller3].map((img, i) => (
+          {[pintando, taller4, taza, estanteria1, taller1, taller2, taller3, evento2, evento3].map((img, i) => (
             <GalleryImg key={i} src={img} alt={`Imagen del taller ${i + 1}`} />
           ))}
         </Gallery>
