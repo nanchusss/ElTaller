@@ -34,11 +34,11 @@ const Title = styled.h1`
 
 const Subtitle = styled.p`
   color: #6d6762;
-  font-size: 1.25rem;
+  font-size: 1.45rem;
   margin-bottom: 2.2rem;
 
   @media (max-width: 768px) {
-    font-size: 1.1rem;
+    font-size: 1.5rem;
     padding: 0 0.5rem;
   }
 `;
@@ -70,7 +70,7 @@ const Card = styled.div`
   position: relative;
 
   width: 100%;
-  max-width: 340px; /* ← clave para proporción */
+  max-width: 400px; /* ← clave para proporción */
 
   &:hover {
     transform: translateY(-4px);
@@ -92,7 +92,7 @@ const CardImage = styled.img`
 `;
 
 const CardTitle = styled.h3`
-  font-size: 1.4rem;
+  font-size: 1.7rem;
   margin-bottom: 0.5rem;
   color: #3f5c4a;
 `;
@@ -134,13 +134,14 @@ const ButtonPrimary = styled(NavLink)`
   text-decoration: none;
   width: 100%;
   text-align: center;
-  font-weight: 500;
+  font-size: 23px;
   transition: all 0.2s ease;
 
   margin-top: auto;
 
   @media (min-width: 768px) {
     margin-bottom: 10px; /* ← aire en desktop */
+    font-size: 17px;
   }
 
   &:hover {
@@ -151,7 +152,7 @@ const ButtonPrimary = styled(NavLink)`
 
   @media (max-width: 768px) {
     padding: 1rem;
-    font-size: 0.95rem;
+    font-size: 1.3rem;
     margin-bottom: 30px;
   }
 `;
@@ -163,6 +164,7 @@ const EventosLink = styled(NavLink)`
   color: #3f5c4a;
   font-weight: 500;
   text-decoration: none;
+  font-size: 23px;
 
   border-bottom: 1px solid transparent;
   transition: all 0.2s ease;

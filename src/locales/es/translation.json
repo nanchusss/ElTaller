@@ -6,16 +6,16 @@
      "ctaButton": "Reservar tu plaza",
     "whatYouCanFind": "¿Qué puedes encontrar en El Taller?",
     "feature2": {
-      "title": "Pintar tu cerámica en una clase guiada",
-      "text": "Dispones de una selección única de piezas listas para decorar a tu manera."
+      "title": "Pinta tu cerámica en una clase guiada",
+      "text": "Dispones de una selección única de piezas listas para decorar a tu manera. ¡Una experiencia creativa y divertida ideal para grupos!"
     },
     "feature1": {
       "title": "Team buildings y celebraciones",
-      "text": "Construye lazos mientras creas, en un ambiente relajado y acogedor."
+      "text": "Construye lazos mientras creas, en un ambiente relajado y acogedor. Un taller en exclusiva para tu grupo, clase guiada y coffee corner"
     },
     "feature3": {
-      "title": "Regalos únicos",
-      "text": "Sorprendete y regala una experiencia en EL TALLER.",
+      "title": "Un regalo original y divertido",
+      "text": "Sorprendete y regala una experiencia en EL TALLER. Disponemos de diferentes opciones para que sorprendas a esa persona especial.  ¡Descubrelos!",
       "boton": "Compra Voucher Regalo"
     },
     "feature4": {
@@ -47,7 +47,10 @@
       "cafe": "Espacio del café",
       "estanteria": "Estantería de piezas",
       "macetas": "Macetas artesanales"
-    }
+    },
+     "ctaExperiencias": "Ver experiencias",
+    "ctaEventos": "Ver eventos",
+    "ctaRegala": "Comprar voucher"
   },
   "header": {
     "inicio": "Inicio",

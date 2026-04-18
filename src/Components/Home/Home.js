@@ -132,7 +132,7 @@ const Card = styled.div`
 
   opacity: 0;
   transform: translateY(60px);
-  animation: fadeUp 0.8s ease forwards;
+  animation: ${fadeUp} 0.8s ease forwards;
 
   &:nth-child(2) {
     animation-delay: 0.2s;
@@ -142,15 +142,9 @@ const Card = styled.div`
     animation-delay: 0.4s;
   }
 
-  @keyframes fadeUp {
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
+    text-align: center; /* 🔥 mejora visual */
   }
 `;
 
@@ -331,6 +325,25 @@ const AboutText = styled.p`
   }
 `;
 
+const CardButton = styled(NavLink)`
+  display: inline-block;
+  margin-top: 1.5rem;
+ 
+align-self: flex-start;
+  padding: 0.8rem 1.6rem;
+  border-radius: 999px;
+  background: #d67447;
+  color: white;
+  text-decoration: none;
+  font-size: 1.1rem;
+  font-weight: 500;
+
+  &:hover {
+    background: #df6535;
+    transform: scale(1.05);
+  }
+`;
+
 /* COMPONENT */
 
 const Home = () => {
@@ -392,7 +405,55 @@ const Home = () => {
 </HeroContent>
       </Hero>
 
-  <AboutSection>
+  
+
+
+      <Section>
+        <CardsWrapper>
+          
+
+          <Card onClick={() => navigate("/experiencias-ceramica-granollers")} style={{ cursor: "pointer" }}>
+
+             <CardImage src={pintando} alt="Pinta tu cerámica, actividad para familias, grupos, amigos" />
+            <CardText>
+              <CardTitle>{t("home.feature2.title")}</CardTitle>
+              <CardDesc>{t("home.feature2.text")}</CardDesc><CardButton to="/experiencias-ceramica-granollers">
+  {t("home.ctaExperiencias")}
+</CardButton>
+            </CardText>
+           
+          </Card>
+
+          <Card onClick={() => navigate("/eventos")} style={{ cursor: "pointer" }}>
+            
+            <CardText>
+              <CardTitle>{t("home.feature1.title")}</CardTitle>
+              <CardDesc>{t("home.feature1.text")}</CardDesc><CardButton to="/eventos">
+  {t("home.ctaEventos")}
+</CardButton>
+            </CardText>
+
+            <CardImage
+  src={evento3}
+  alt="Personas pintando cerámica en taller en Vilanova del Vallés cerca de Granollers"
+/>
+
+          </Card>
+
+          <Card onClick={() => navigate("/regala-pinta-tu-ceramica-granollers")} style={{ cursor: "pointer" }}>
+            <CardImage src={taza} alt="Taza de cerámica pintada a mano" />
+            <CardText>
+              <CardTitle>{t("home.feature3.title")}</CardTitle>
+              <CardDesc>{t("home.feature3.text")}</CardDesc><CardButton to="/regala-pinta-tu-ceramica-granollers">
+  {t("home.ctaRegala")}
+</CardButton>
+            </CardText>
+            
+          </Card>
+        </CardsWrapper>
+      </Section>
+
+      <AboutSection>
 
  
 
@@ -405,38 +466,6 @@ const Home = () => {
   </AboutContent>
 
 </AboutSection>
-
-
-      <Section>
-        <CardsWrapper>
-          <Card onClick={() => navigate("/eventos")} style={{ cursor: "pointer" }}>
-            <CardImage
-  src={evento3}
-  alt="Personas pintando cerámica en taller en Vilanova del Vallés cerca de Granollers"
-/>
-            <CardText>
-              <CardTitle>{t("home.feature1.title")}</CardTitle>
-              <CardDesc>{t("home.feature1.text")}</CardDesc>
-            </CardText>
-          </Card>
-
-          <Card onClick={() => navigate("/experiencias-ceramica-granollers")} style={{ cursor: "pointer" }}>
-            <CardText>
-              <CardTitle>{t("home.feature2.title")}</CardTitle>
-              <CardDesc>{t("home.feature2.text")}</CardDesc>
-            </CardText>
-            <CardImage src={pintando} alt="Pinta tu cerámica, actividad para familias, grupos, amigos" />
-          </Card>
-
-          <Card onClick={() => navigate("/regala-pinta-tu-ceramica-granollers")} style={{ cursor: "pointer" }}>
-            <CardImage src={taza} alt="Taza de cerámica pintada a mano" />
-            <CardText>
-              <CardTitle>{t("home.feature3.title")}</CardTitle>
-              <CardDesc>{t("home.feature3.text")}</CardDesc>
-            </CardText>
-          </Card>
-        </CardsWrapper>
-      </Section>
 
       {/* 🔥 BLOQUE EVENTOS MEJORADO */}
       <HighlightBlock>
